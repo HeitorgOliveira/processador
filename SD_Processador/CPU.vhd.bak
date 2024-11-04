@@ -1,0 +1,111 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity CPU is
+    Port (
+        clk               : in  STD_LOGIC;
+        reset             : in  STD_LOGIC;
+        habilitar_entrada : in  STD_LOGIC;
+        habilitar_saida   : in  STD_LOGIC;
+        habilitar_memoria : in  STD_LOGIC;
+        endereco          : out STD_LOGIC_VECTOR (7 downto 0);
+        dados_entrada      : in  STD_LOGIC_VECTOR (7 downto 0);
+        dados_saida       : out STD_LOGIC_VECTOR (7 downto 0);
+        flags             : out STD_LOGIC_VECTOR (3 downto 0);
+        chaves_entrada    : in  STD_LOGIC_VECTOR (7 downto 0);
+        leds_saida        : out STD_LOGIC_VECTOR (7 downto 0)
+    );
+end CPU;
+
+architecture Comportamental of CPU is
+
+    -- Registradores
+    signal A, B, R : STD_LOGIC_VECTOR(7 downto 0);
+    signal PC : STD_LOGIC_VECTOR(7 downto 0);
+    signal IR : STD_LOGIC_VECTOR(3 downto 0);
+    signal registradores_flags : STD_LOGIC_VECTOR(3 downto 0);
+    signal instrução_atual : STD_LOGIC_VECTOR(3 downto 0);
+    
+    -- Sinais para a ULA e Unidade de Controle
+    signal resultado_ula : STD_LOGIC_VECTOR(7 downto 0);
+    signal habilitar_ula : STD_LOGIC;
+
+    -- Componente ULA
+    component ULA
+        Port (
+            A       : in  STD_LOGIC_VECTOR(7 downto 0);
+            B       : in  STD_LOGIC_VECTOR(7 downto 0);
+            operacao: in  STD_LOGIC_VECTOR(3 downto 0);
+            resultado: out STD_LOGIC_VECTOR(7 downto 0);
+            flags   : out STD_LOGIC_VECTOR(3 downto 0)
+        );
+    end component;
+
+    -- Componente Unidade de Controle
+    component UnidadeControle
+        Port (
+            clk        : in  STD_LOGIC;
+            reset      : in  STD_LOGIC;
+            IR         : in  STD_LOGIC_VECTOR(3 downto 0);
+            A          : in  STD_LOGIC_VECTOR(7 downto 0);
+            B          : in  STD_LOGIC_VECTOR(7 downto 0);
+            R          : out STD_LOGIC_VECTOR(7 downto 0);
+            instrução  : out STD_LOGIC_VECTOR(3 downto 0);
+            habilitar_ula: out STD_LOGIC
+        );
+    end component;
+
+begin
+
+    -- Instanciação da Unidade de Controle
+    UC: UnidadeControle
+        port map (
+            clk => clk,
+            reset => reset,
+            IR => IR,
+            A => A,
+            B => B,
+            R => R,
+            instrução => instrução_atual,
+            habilitar_ula => habilitar_ula
+        );
+
+    -- Instanciação da ULA
+    ULA_inst: ULA
+        port map (
+            A => A,
+            B => B,
+            operacao => instrução_atual,
+            resultado => resultado_ula,
+            flags => registradores_flags
+        );
+
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            PC <= (others => '0');
+            A <= (others => '0');
+            B <= (others => '0');
+            R <= (others => '0');
+            registradores_flags <= (others => '0');
+        elsif rising_edge(clk) then
+            -- Busca de instrução
+            endereco <= PC;
+            IR <= dados_entrada(3 downto 0); -- Lê o opcode
+
+            -- Executar a instrução se habilitado
+            if habilitar_ula = '1' then
+                A <= resultado_ula; -- Atualiza A com o resultado da ULA
+            end if;
+
+            -- Incrementar o PC
+            PC <= PC + 1;
+        end if;
+    end process;
+
+    -- Sinais de saída
+    flags <= registradores_flags;
+
+end Comportamental;

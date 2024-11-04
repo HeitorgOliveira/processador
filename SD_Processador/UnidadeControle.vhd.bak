@@ -1,0 +1,42 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity UnidadeControle is
+    Port (
+        clk          : in  STD_LOGIC;
+        reset        : in  STD_LOGIC;
+        IR           : in  STD_LOGIC_VECTOR(3 downto 0);
+        A            : in  STD_LOGIC_VECTOR(7 downto 0);
+        B            : in  STD_LOGIC_VECTOR(7 downto 0);
+        R            : out STD_LOGIC_VECTOR(7 downto 0);
+        instrução    : out STD_LOGIC_VECTOR(3 downto 0);
+        habilitar_ula: out STD_LOGIC
+    );
+end UnidadeControle;
+
+architecture Comportamental of UnidadeControle is
+begin
+
+    process(clk, reset)
+    begin
+        if reset = '1' then
+            R <= (others => '0');
+            habilitar_ula <= '0';
+        elsif rising_edge(clk) then
+            -- Decodificação da instrução
+            case IR is
+                when "0000" => -- ADD
+                    habilitar_ula <= '1';
+                    R <= A + B;
+                when "0001" => -- SUB
+                    habilitar_ula <= '1';
+                    R <= A - B;
+                when others =>
+                    habilitar_ula <= '0';
+            end case;
+
+            instrução <= IR; -- Atualiza instrução atual
+        end if;
+    end process;
+
+end Comportamental;

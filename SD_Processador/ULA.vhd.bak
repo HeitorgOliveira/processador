@@ -1,0 +1,37 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
+entity ULA is
+    Port (
+        A        : in  STD_LOGIC_VECTOR(7 downto 0);
+        B        : in  STD_LOGIC_VECTOR(7 downto 0);
+        operacao : in  STD_LOGIC_VECTOR(3 downto 0);
+        resultado : out STD_LOGIC_VECTOR(7 downto 0);
+        flags    : out STD_LOGIC_VECTOR(3 downto 0)
+    );
+end ULA;
+
+architecture Comportamental of ULA is
+begin
+
+    process(A, B, operacao)
+    begin
+        case operacao is
+            when "0000" => resultado <= A + B; -- ADD
+            when "0001" => resultado <= A - B; -- SUB
+            when "0010" => resultado <= A and B; -- AND
+            when "0011" => resultado <= A or B; -- OR
+            when "0100" => resultado <= not A; -- NOT
+            when others => resultado <= (others => '0');
+        end case;
+
+        -- Atualiza flags
+        flags(0) <= '1' when resultado = "00000000" else '0'; -- Zero flag
+        flags(1) <= '0'; -- Sinal, simplificado
+        flags(2) <= '0'; -- Carry, simplificado
+        flags(3) <= '0'; -- Overflow, simplificado
+    end process;
+
+end Comportamental;

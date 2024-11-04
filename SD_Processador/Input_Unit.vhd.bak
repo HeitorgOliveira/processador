@@ -1,0 +1,42 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+
+ENTITY Input_Unit IS
+    PORT (
+        keys : IN STD_LOGIC_VECTOR(7 DOWNTO 0); -- Chaves do FPGA
+        clk : IN STD_LOGIC;
+        reset : IN STD_LOGIC;
+        enable : IN STD_LOGIC; -- Habilitar a gravação
+        reg_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) -- Saída do registrador
+    );
+END Input_Unit;
+
+ARCHITECTURE Behavioral OF Input_Unit IS
+    COMPONENT registrador
+        GENERIC (N : INTEGER := 8);
+        PORT (
+            d : IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
+            clk : IN STD_LOGIC;
+            reset : IN STD_LOGIC;
+            enable : IN STD_LOGIC;
+            q : OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0)
+        );
+    END COMPONENT;
+
+    SIGNAL input_reg : STD_LOGIC_VECTOR(7 DOWNTO 0); -- Sinal interno para o registrador
+
+BEGIN
+    -- Instância do registrador
+    reg_inst: registrador
+        PORT MAP (
+            d => keys,
+            clk => clk,
+            reset => reset,
+            enable => enable,
+            q => input_reg
+        );
+
+    -- Saída da unidade de entrada é a saída do registrador
+    reg_out <= input_reg;
+
+END Behavioral;
