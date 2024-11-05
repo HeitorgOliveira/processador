@@ -1,39 +1,26 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
 
-ENTITY Output_Unit IS
-    PORT (
-        data_in : IN STD_LOGIC_VECTOR(7 DOWNTO 0); -- Dados a serem exibidos
-        clk : IN STD_LOGIC; -- Clock
-        reset : IN STD_LOGIC; -- Reset assincrono
-        output_enable : IN STD_LOGIC; -- Habilitar a gravação
-        leds : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) -- Saída para os LEDs
+entity Output_Unit is
+    Port (
+        data_in       : in  std_logic_vector(7 downto 0);  -- Dados do barramento de dados
+        leds          : out std_logic_vector(7 downto 0);  
+        output_enable : in  std_logic;                     
+        clock         : in  std_logic                      -- Clock do sistema
     );
-END Output_Unit;
+end Output_Unit;
 
-ARCHITECTURE Behavioral OF Output_Unit IS
-    COMPONENT registrador
-		  GENERIC (N : INTEGER := 8);
-        PORT (
-            d : IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
-            clk : IN STD_LOGIC;
-            reset : IN STD_LOGIC;
-            enable : IN STD_LOGIC;
-            q : OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0)
-        );
-    END COMPONENT;
+architecture Behavioral of Output_Unit is
+    signal output_reg : std_logic_vector(7 downto 0);  -- Registrador para armazenar o valor atual
+begin
+    process(clock)
+    begin
+        if rising_edge(clock) then
+            if output_enable = '1' then
+                output_reg <= data_in;  -- Atualiza o registrador com o valor do barramento de dados
+            end if;
+        end if;
+    end process;
 
-    SIGNAL output_reg : STD_LOGIC_VECTOR(7 DOWNTO 0); 
-
-BEGIN
-    reg: registrador
-        PORT MAP (
-            d => data_in,
-            clk => clk,
-            reset => reset,
-            enable => output_enable,
-            q => output_reg
-        );
-    leds <= output_reg;
-
-END Behavioral;
+    leds <= output_reg;  -- Exibe o valor armazenado nos LEDs
+end Behavioral;

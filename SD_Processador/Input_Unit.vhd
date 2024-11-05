@@ -2,37 +2,21 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
 ENTITY Input_Unit IS
-    PORT (
-        switches : IN STD_LOGIC_VECTOR(7 DOWNTO 0); -- Chaves do FPGA
-        clk : IN STD_LOGIC; -- Clock
-        reset : IN STD_LOGIC; -- Reset assincrono
-        input_enable : IN STD_LOGIC; -- Habilitar ou nao a gravaçao
-        registro : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) -- Saida do registrador
+    Port (
+        switches      : in  std_logic_vector(7 downto 0);  -- Chaves de entrada (8 bits)
+        data_out      : out std_logic_vector(7 downto 0);  -- Saída para barramento de dados
+        input_enable  : in  std_logic                      -- Habilita leitura
     );
 END Input_Unit;
 
 ARCHITECTURE Behavioral OF Input_Unit IS
-    COMPONENT registrador
-        GENERIC (N : INTEGER := 8);
-        PORT (
-            d : IN STD_LOGIC_VECTOR(N-1 DOWNTO 0);
-            clk : IN STD_LOGIC;
-            reset : IN STD_LOGIC;
-            enable : IN STD_LOGIC;
-            q : OUT STD_LOGIC_VECTOR(N-1 DOWNTO 0)
-        );
-    END COMPONENT;
-
-    SIGNAL input_reg : STD_LOGIC_VECTOR(7 DOWNTO 0); 
-
-BEGIN
-    reg: registrador
-        PORT MAP (
-            d => switches,
-            clk => clk,
-            reset => reset,
-            enable => input_enable,
-            q => input_reg
-        );
-    registro <= input_reg;
+begin
+    process(input_enable, switches)
+    begin
+        if input_enable = '1' then
+            data_out <= switches;  -- Disponibiliza as chaves de entrada no barramento de dados
+        else
+            data_out <= (others => 'Z');  -- Alta impedância quando não está habilitado
+        end if;
+    end process;
 END Behavioral;
