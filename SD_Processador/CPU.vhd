@@ -22,7 +22,7 @@ ARCHITECTURE Behavioral OF CPU IS
     -- Sinais internos
     SIGNAL pc         : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Contador de Programa (PC)
     SIGNAL opcode     : STD_LOGIC_VECTOR(2 DOWNTO 0);    -- Opcode extraído da instrução
-    SIGNAL operand    : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Operando extraído da instrução
+    SIGNAL operand    : STD_LOGIC_VECTOR(4 DOWNTO 0);    -- Operando extraído da instrução
     SIGNAL A, B       : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Operandos A e B para a ULA
     SIGNAL ula_result : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Resultado da ULA
     SIGNAL ula_zero   : STD_LOGIC;

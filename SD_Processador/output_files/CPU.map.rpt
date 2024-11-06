@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Wed Nov  6 12:44:39 2024
+Wed Nov  6 14:13:43 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Wed Nov  6 12:44:39 2024           ;
+; Analysis & Synthesis Status ; Failed - Wed Nov  6 14:13:43 2024           ;
 ; Quartus Prime Version       ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name               ; CPU                                         ;
 ; Top-level Entity Name       ; CPU                                         ;
@@ -161,7 +161,7 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Nov  6 12:44:31 2024
+    Info: Processing started: Wed Nov  6 14:13:35 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -170,8 +170,8 @@ Info (12021): Found 2 design units, including 1 entities, in source file cpu.vhd
     Info (12023): Found entity 1: CPU File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 6
 Warning (12019): Can't analyze file -- file ULAvhd.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file ula.vhd
-    Info (12022): Found design unit 1: ULA-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 18
-    Info (12023): Found entity 1: ULA File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 6
+    Info (12022): Found design unit 1: ULA-behavior File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 17
+    Info (12023): Found entity 1: ULA File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file unidadecontrole.vhd
     Info (12022): Found design unit 1: UnidadeControle-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 27
     Info (12023): Found entity 1: UnidadeControle File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 6
@@ -182,9 +182,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file input_u
 Info (12021): Found 2 design units, including 1 entities, in source file output_unit.vhd
     Info (12022): Found design unit 1: Output_Unit-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Output_Unit.vhd Line: 13
     Info (12023): Found entity 1: Output_Unit File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Output_Unit.vhd Line: 4
-Info (12021): Found 2 design units, including 1 entities, in source file decodificador.vhd
-    Info (12022): Found design unit 1: ROM-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Decodificador.vhd Line: 13
-    Info (12023): Found entity 1: ROM File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Decodificador.vhd Line: 6
+Warning (12019): Can't analyze file -- file Decodificador.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file address_bus.vhd
     Info (12022): Found design unit 1: address_bus-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/address_bus.vhd Line: 14
     Info (12023): Found entity 1: address_bus File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/address_bus.vhd Line: 7
@@ -201,12 +199,15 @@ Info (12021): Found 2 design units, including 1 entities, in source file program
 Info (12021): Found 2 design units, including 1 entities, in source file register8.vhd
     Info (12022): Found design unit 1: register8-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/register8.vhd Line: 16
     Info (12023): Found entity 1: register8 File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/register8.vhd Line: 6
-Error (10327): VHDL error at ULA.vhd(31): can't determine definition of operator ""="" -- found 0 possible definitions File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 31
-Error (10309): VHDL Interface Declaration error in ULA.vhd(31): interface object "result" of mode out cannot be read. Change object mode to buffer. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 31
-Error (10327): VHDL error at ULA.vhd(31): can't determine definition of operator ""/="" -- found 0 possible definitions File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 31
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 3 errors, 4 warnings
-    Error: Peak virtual memory: 4844 megabytes
-    Error: Processing ended: Wed Nov  6 12:44:39 2024
+Info (12021): Found 2 design units, including 1 entities, in source file memoria_unidade.vhd
+    Info (12022): Found design unit 1: memoria_unidade-behavior File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 15
+    Info (12023): Found entity 1: memoria_unidade File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 4
+Info (12127): Elaborating entity "CPU" for the top level hierarchy
+Error (10344): VHDL expression error at CPU.vhd(117): expression has 5 elements, but must have 8 elements File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 117
+Error (12153): Can't elaborate top-level user hierarchy
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 5 warnings
+    Error: Peak virtual memory: 4853 megabytes
+    Error: Processing ended: Wed Nov  6 14:13:43 2024
     Error: Elapsed time: 00:00:08
     Error: Total CPU time (on all processors): 00:00:18
 
