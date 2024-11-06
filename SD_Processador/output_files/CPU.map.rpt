@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Wed Nov  6 14:13:43 2024
+Wed Nov  6 14:54:55 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                              ;
 +-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Wed Nov  6 14:13:43 2024           ;
+; Analysis & Synthesis Status ; Failed - Wed Nov  6 14:54:55 2024           ;
 ; Quartus Prime Version       ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name               ; CPU                                         ;
 ; Top-level Entity Name       ; CPU                                         ;
@@ -161,13 +161,13 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Nov  6 14:13:35 2024
+    Info: Processing started: Wed Nov  6 14:54:47 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file cpu.vhd
-    Info (12022): Found design unit 1: CPU-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 21
-    Info (12023): Found entity 1: CPU File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 6
+    Info (12022): Found design unit 1: CPU-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 14
+    Info (12023): Found entity 1: CPU File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 5
 Warning (12019): Can't analyze file -- file ULAvhd.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file ula.vhd
     Info (12022): Found design unit 1: ULA-behavior File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 17
@@ -203,11 +203,48 @@ Info (12021): Found 2 design units, including 1 entities, in source file memoria
     Info (12022): Found design unit 1: memoria_unidade-behavior File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 15
     Info (12023): Found entity 1: memoria_unidade File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 4
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
-Error (10344): VHDL expression error at CPU.vhd(117): expression has 5 elements, but must have 8 elements File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 117
-Error (12153): Can't elaborate top-level user hierarchy
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 2 errors, 5 warnings
-    Error: Peak virtual memory: 4853 megabytes
-    Error: Processing ended: Wed Nov  6 14:13:43 2024
+Warning (10541): VHDL Signal Declaration warning at CPU.vhd(16): used implicit default value for signal "data_in" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 16
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(16): object "alu_result" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 16
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(19): object "mem_enable" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 19
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(19): object "read_enable" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 19
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(20): object "alu_enable" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 20
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(21): object "reg_a_enable" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 21
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(21): object "reg_b_enable" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 21
+Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:PC" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 25
+Info (12128): Elaborating entity "UnidadeControle" for hierarchy "UnidadeControle:Controle" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 35
+Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(65): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 65
+Info (12128): Elaborating entity "ULA" for hierarchy "ULA:ULA" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 55
+Warning (10492): VHDL Process Statement warning at ULA.vhd(27): signal "signed_A" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 27
+Warning (10492): VHDL Process Statement warning at ULA.vhd(27): signal "signed_B" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 27
+Warning (10492): VHDL Process Statement warning at ULA.vhd(28): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 28
+Warning (10492): VHDL Process Statement warning at ULA.vhd(31): signal "signed_A" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 31
+Warning (10492): VHDL Process Statement warning at ULA.vhd(31): signal "signed_B" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 31
+Warning (10492): VHDL Process Statement warning at ULA.vhd(31): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 31
+Warning (10492): VHDL Process Statement warning at ULA.vhd(38): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 38
+Warning (10492): VHDL Process Statement warning at ULA.vhd(45): signal "signed_A" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 45
+Warning (10492): VHDL Process Statement warning at ULA.vhd(45): signal "signed_B" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 45
+Warning (10492): VHDL Process Statement warning at ULA.vhd(46): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 46
+Warning (10492): VHDL Process Statement warning at ULA.vhd(49): signal "signed_A" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 49
+Warning (10492): VHDL Process Statement warning at ULA.vhd(49): signal "signed_B" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 49
+Warning (10492): VHDL Process Statement warning at ULA.vhd(57): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 57
+Warning (10492): VHDL Process Statement warning at ULA.vhd(86): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 86
+Warning (10492): VHDL Process Statement warning at ULA.vhd(93): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 93
+Warning (10631): VHDL Process Statement warning at ULA.vhd(20): inferring latch(es) for signal or variable "signed_result", which holds its previous value in one or more paths through the process File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
+Info (10041): Inferred latch for "signed_result[0]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
+Info (10041): Inferred latch for "signed_result[1]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
+Info (10041): Inferred latch for "signed_result[2]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
+Info (10041): Inferred latch for "signed_result[3]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
+Info (10041): Inferred latch for "signed_result[4]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
+Info (10041): Inferred latch for "signed_result[5]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
+Info (10041): Inferred latch for "signed_result[6]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
+Info (10041): Inferred latch for "signed_result[7]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
+Info (12128): Elaborating entity "memoria_unidade" for hierarchy "memoria_unidade:Memoria" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 67
+Info (12128): Elaborating entity "Output_Unit" for hierarchy "Output_Unit:Saida" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 77
+Info (12128): Elaborating entity "Input_Unit" for hierarchy "Input_Unit:Entrada" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 85
+Error (12006): Node instance "ram_instance" instantiates undefined entity "ram256x8". Ensure that required library paths are specified correctly, define the specified entity, or change the instantiation. If this entity represents Intel FPGA or third-party IP, generate the synthesis files for the IP. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 35
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 29 warnings
+    Error: Peak virtual memory: 4844 megabytes
+    Error: Processing ended: Wed Nov  6 14:54:55 2024
     Error: Elapsed time: 00:00:08
     Error: Total CPU time (on all processors): 00:00:18
 

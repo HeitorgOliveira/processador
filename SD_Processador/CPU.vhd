@@ -1,147 +1,91 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.ALL;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_unsigned.ALL;
 
 ENTITY CPU IS
     PORT (
-        clk         : IN  STD_LOGIC;                     -- Clock do sistema
-        reset       : IN  STD_LOGIC;                     -- Reset global
-        instr_in    : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);  -- Instrução de entrada
-        data_in     : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);  -- Dados de entrada para operações I/O
-        data_out    : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);  -- Dados de saída da CPU
-        addr_out    : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);  -- Endereço de saída (para memória)
-        Zero        : OUT STD_LOGIC;                     -- Flag Zero da ULA
-        Sign        : OUT STD_LOGIC;                     -- Flag Sign da ULA
-        Carry       : OUT STD_LOGIC;                     -- Flag Carry da ULA
-        Overflow    : OUT STD_LOGIC                      -- Flag Overflow da ULA
+        clock         : IN  STD_LOGIC;                   -- Clock do sistema
+        reset         : IN  STD_LOGIC;                   -- Sinal de reset
+        switches      : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);-- Entrada (switches)
+        leds          : OUT STD_LOGIC_VECTOR(7 DOWNTO 0) -- Saída (LEDs)
     );
 END CPU;
 
 ARCHITECTURE Behavioral OF CPU IS
     -- Sinais internos
-    SIGNAL pc         : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Contador de Programa (PC)
-    SIGNAL opcode     : STD_LOGIC_VECTOR(2 DOWNTO 0);    -- Opcode extraído da instrução
-    SIGNAL operand    : STD_LOGIC_VECTOR(4 DOWNTO 0);    -- Operando extraído da instrução
-    SIGNAL A, B       : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Operandos A e B para a ULA
-    SIGNAL ula_result : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Resultado da ULA
-    SIGNAL ula_zero   : STD_LOGIC;
-    SIGNAL ula_sign   : STD_LOGIC;
-    SIGNAL ula_carry  : STD_LOGIC;
-    SIGNAL ula_overflow : STD_LOGIC;
-
-    -- Componentes internos
-    COMPONENT ULA
-        PORT (
-            A, B     : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
-            opcode   : IN  STD_LOGIC_VECTOR(2 DOWNTO 0);
-            result   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
-            Zero     : OUT STD_LOGIC;
-            Sign     : OUT STD_LOGIC;
-            Carry    : OUT STD_LOGIC;
-            Overflow : OUT STD_LOGIC
-        );
-    END COMPONENT;
-
-    COMPONENT ProgramCounter
-        PORT (
-            clk      : IN  STD_LOGIC;
-            reset    : IN  STD_LOGIC;
-            pc_out   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
-        );
-    END COMPONENT;
-
-    COMPONENT InputUnit
-        PORT (
-            data_in  : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
-            out_data : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
-        );
-    END COMPONENT;
-
-    COMPONENT OutputUnit
-        PORT (
-            data_in  : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
-            data_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
-        );
-    END COMPONENT;
+    SIGNAL pc_out, data_in, data_out, alu_result : STD_LOGIC_VECTOR(7 DOWNTO 0);
+    SIGNAL instrucao                             : STD_LOGIC_VECTOR(7 DOWNTO 0); -- Instrução completa de 8 bits
+    SIGNAL zero_flag, sign_flag, carry_flag, overflow_flag : STD_LOGIC;
+    SIGNAL mem_enable, read_enable, write_enable : STD_LOGIC;
+    SIGNAL input_enable, output_enable, pc_enable, alu_enable : STD_LOGIC;
+    SIGNAL reg_a_enable, reg_b_enable : STD_LOGIC;
 
 BEGIN
-    -- Instância do Program Counter
-    pc_unit : ProgramCounter
-        PORT MAP (
-            clk      => clk,
-            reset    => reset,
-            pc_out   => pc
-        );
+    -- Instância do Program Counter (PC)
+    PC : ENTITY work.program_counter PORT MAP (
+        clock      => clock,
+        reset      => reset,
+        load       => pc_enable,
+        increment  => '1',       -- Aqui podemos ajustar para sempre incrementar
+        new_address => (others => '0'),  -- Endereço inicial do PC
+        pc_out     => pc_out
+    );
 
-    -- Extrai o opcode e o operando da instrução
-    PROCESS(instr_in)
-    BEGIN
-        opcode <= instr_in(7 DOWNTO 5);  -- 3 bits de opcode
-        operand <= instr_in(4 DOWNTO 0); -- Operando de 5 bits
-    END PROCESS;
+    -- Instância da Unidade de Controle
+    Controle : ENTITY work.UnidadeControle PORT MAP (
+        clk           => clock,
+        reset         => reset,
+        instrucao     => instrucao,    -- Instrução completa de 8 bits
+        zero_flag     => zero_flag,
+        sign_flag     => sign_flag,
+        carry_flag    => carry_flag,
+        overflow_flag => overflow_flag,
+        mem_enable    => mem_enable,
+        read_enable   => read_enable,
+        write_enable  => write_enable,
+        input_enable  => input_enable,
+        output_enable => output_enable,
+        pc_enable     => pc_enable,
+        alu_enable    => alu_enable,
+        reg_a_enable  => reg_a_enable,
+        reg_b_enable  => reg_b_enable
+    );
 
-    -- Instância da ULA
-    ula_unit : ULA
-        PORT MAP (
-            A        => A,
-            B        => B,
-            opcode   => opcode,
-            result   => ula_result,
-            Zero     => ula_zero,
-            Sign     => ula_sign,
-            Carry    => ula_carry,
-            Overflow => ula_overflow
-        );
+    -- Instância da ULA (ALU)
+    ULA : ENTITY work.ULA PORT MAP (
+        A        => data_in,
+        B        => data_out,
+        opcode   => instrucao(6 DOWNTO 4), -- Usar parte do opcode da instrução completa
+        result   => alu_result,
+        Zero     => zero_flag,
+        Sign     => sign_flag,
+        Carry    => carry_flag,
+        Overflow => overflow_flag
+    );
 
-    -- Sinais de controle e dados de saída
-    Zero <= ula_zero;
-    Sign <= ula_sign;
-    Carry <= ula_carry;
-    Overflow <= ula_overflow;
-    data_out <= ula_result;  -- Dados de saída da CPU resultante da ULA
-    addr_out <= pc;          -- Endereço de saída baseado no PC
+    -- Instância da Memória
+    Memoria : ENTITY work.memoria_unidade PORT MAP (
+        clock     => clock,
+        data_in   => data_out,
+        rdaddress => pc_out,
+        wraddress => pc_out,
+        wren      => write_enable,
+        data_out  => instrucao  -- Lê a instrução completa da memória para o controle
+    );
 
-    -- Lógica de controle da CPU
-    PROCESS(clk, reset)
-    BEGIN
-        IF reset = '1' THEN
-            -- Reset dos sinais e registradores
-            A <= (others => '0');
-            B <= (others => '0');
-            data_out <= (others => '0');
-        
-        ELSIF rising_edge(clk) THEN
-            CASE opcode IS
-                WHEN "000" =>  -- Exemplo: LOAD A, operando (carrega valor para A)
-                    A <= operand;
+    -- Instância da Unidade de Saída
+    Saida : ENTITY work.Output_Unit PORT MAP (
+        data_in       => data_in,
+        leds          => leds,
+        output_enable => output_enable,
+        clock         => clock
+    );
 
-                WHEN "001" =>  -- Exemplo: LOAD B, operando (carrega valor para B)
-                    B <= operand;
+    -- Instância da Unidade de Entrada
+    Entrada : ENTITY work.Input_Unit PORT MAP (
+        switches      => switches,
+        data_out      => data_out,
+        input_enable  => input_enable
+    );
 
-                WHEN "010" =>  -- ADD A, B
-                    -- Operação de soma entre A e B
-                    A <= ula_result;
-
-                WHEN "011" =>  -- SUB A, B
-                    -- Operação de subtração entre A e B
-                    A <= ula_result;
-
-                WHEN "100" =>  -- AND A, B
-                    -- Operação lógica AND
-                    A <= ula_result;
-
-                WHEN "101" =>  -- OR A, B
-                    -- Operação lógica OR
-                    A <= ula_result;
-
-                WHEN "110" =>  -- OUT A (envia valor de A para saída)
-                    data_out <= A;
-
-                WHEN OTHERS =>
-                    -- NOP ou operações indefinidas
-                    data_out <= A;
-            END CASE;
-        END IF;
-    END PROCESS;
 END Behavioral;
