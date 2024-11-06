@@ -3,135 +3,145 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity CPU is
-    Port (
-        clk : in std_logic;
-        reset : in std_logic;
-        data_out : out std_logic_vector(7 downto 0); -- Dados a serem escritos na memória
-        memoria_enable : out std_logic;               -- Habilita a memória
-        flags : out std_logic_vector(3 downto 0)      -- Flags da ULA
+ENTITY CPU IS
+    PORT (
+        clk         : IN  STD_LOGIC;                     -- Clock do sistema
+        reset       : IN  STD_LOGIC;                     -- Reset global
+        instr_in    : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);  -- Instrução de entrada
+        data_in     : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);  -- Dados de entrada para operações I/O
+        data_out    : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);  -- Dados de saída da CPU
+        addr_out    : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);  -- Endereço de saída (para memória)
+        Zero        : OUT STD_LOGIC;                     -- Flag Zero da ULA
+        Sign        : OUT STD_LOGIC;                     -- Flag Sign da ULA
+        Carry       : OUT STD_LOGIC;                     -- Flag Carry da ULA
+        Overflow    : OUT STD_LOGIC                      -- Flag Overflow da ULA
     );
-end CPU;
+END CPU;
 
-architecture Behavioral of CPU is
-    signal PC : std_logic_vector(7 downto 0);
-    signal IR : std_logic_vector(7 downto 0);
-    signal reg1, reg2 : std_logic_vector(7 downto 0);
-    signal opCode : std_logic_vector(3 downto 0);
-    signal resultado : std_logic_vector(7 downto 0);
-    signal zero_flag, sign_flag, carry_flag, overflow_flag : std_logic;
-    signal pc_enable : std_logic; -- Declaração do sinal pc_enable
+ARCHITECTURE Behavioral OF CPU IS
+    -- Sinais internos
+    SIGNAL pc         : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Contador de Programa (PC)
+    SIGNAL opcode     : STD_LOGIC_VECTOR(2 DOWNTO 0);    -- Opcode extraído da instrução
+    SIGNAL operand    : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Operando extraído da instrução
+    SIGNAL A, B       : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Operandos A e B para a ULA
+    SIGNAL ula_result : STD_LOGIC_VECTOR(7 DOWNTO 0);    -- Resultado da ULA
+    SIGNAL ula_zero   : STD_LOGIC;
+    SIGNAL ula_sign   : STD_LOGIC;
+    SIGNAL ula_carry  : STD_LOGIC;
+    SIGNAL ula_overflow : STD_LOGIC;
 
-    -- Instância da ROM
-    component ROM
-        Port (
-            addr : in std_logic_vector(7 downto 0);
-            data : out std_logic_vector(7 downto 0)
+    -- Componentes internos
+    COMPONENT ULA
+        PORT (
+            A, B     : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
+            opcode   : IN  STD_LOGIC_VECTOR(2 DOWNTO 0);
+            result   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+            Zero     : OUT STD_LOGIC;
+            Sign     : OUT STD_LOGIC;
+            Carry    : OUT STD_LOGIC;
+            Overflow : OUT STD_LOGIC
         );
-    end component;
+    END COMPONENT;
 
-    component Decodificador
-        Port (
-            IR : in std_logic_vector(7 downto 0);
-            clk : in std_logic;
-            reset : in std_logic;
-            reg1 : out std_logic_vector(7 downto 0);
-            reg2 : out std_logic_vector(7 downto 0);
-            opCode : out std_logic_vector(3 downto 0)
+    COMPONENT ProgramCounter
+        PORT (
+            clk      : IN  STD_LOGIC;
+            reset    : IN  STD_LOGIC;
+            pc_out   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
         );
-    end component;
+    END COMPONENT;
 
-    component ULA
-        Port (
-            A : in std_logic_vector(7 downto 0);
-            B : in std_logic_vector(7 downto 0);
-            opcode : in std_logic_vector(3 downto 0);
-            result : out std_logic_vector(7 downto 0);
-            Zero : out std_logic;
-            Sign : out std_logic;
-            Carry : out std_logic;
-            Overflow : out std_logic
+    COMPONENT InputUnit
+        PORT (
+            data_in  : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
+            out_data : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
         );
-    end component;
+    END COMPONENT;
 
-    component UnidadeControle
-        Port (
-            opcode : in std_logic_vector(3 downto 0);
-            clk : in std_logic;
-            reset : in std_logic;
-            zero_flag : in std_logic;
-            sign_flag : in std_logic;
-            carry_flag : in std_logic;
-            overflow_flag : in std_logic;
-            mem_enable : out std_logic;
-            pc_enable : out std_logic; -- Declaração da saída pc_enable na Unidade de Controle
-            alu_enable : out std_logic
+    COMPONENT OutputUnit
+        PORT (
+            data_in  : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);
+            data_out : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
         );
-    end component;
+    END COMPONENT;
 
-    signal instrucao : std_logic_vector(7 downto 0);
-
-begin
-    -- Instância da ROM conectada ao PC
-    rom_inst : ROM
-        port map (
-            addr => PC,
-            data => instrucao
+BEGIN
+    -- Instância do Program Counter
+    pc_unit : ProgramCounter
+        PORT MAP (
+            clk      => clk,
+            reset    => reset,
+            pc_out   => pc
         );
 
-    -- Processamento do PC e busca de instruções
-    process(clk, reset)
-    begin
-        if reset = '1' then
-            PC <= (others => '0');
-        elsif rising_edge(clk) then
-            if pc_enable = '1' then
-                IR <= instrucao;       -- Carrega a instrução atual do ROM
-                PC <= PC + 1;          -- Incrementa o Program Counter
-            end if;
-        end if;
-    end process;
-
-    -- Instância do Decodificador
-    decodificador_inst : Decodificador
-        port map (
-            IR => IR,
-            clk => clk,
-            reset => reset,
-            reg1 => reg1,
-            reg2 => reg2,
-            opCode => opCode
-        );
+    -- Extrai o opcode e o operando da instrução
+    PROCESS(instr_in)
+    BEGIN
+        opcode <= instr_in(7 DOWNTO 5);  -- 3 bits de opcode
+        operand <= instr_in(4 DOWNTO 0); -- Operando de 5 bits
+    END PROCESS;
 
     -- Instância da ULA
-    ula_inst : ULA
-        port map (
-            A => reg1,
-            B => reg2,
-            opcode => opCode,
-            result => resultado,
-            Zero => zero_flag,
-            Sign => sign_flag,
-            Carry => carry_flag,
-            Overflow => overflow_flag
+    ula_unit : ULA
+        PORT MAP (
+            A        => A,
+            B        => B,
+            opcode   => opcode,
+            result   => ula_result,
+            Zero     => ula_zero,
+            Sign     => ula_sign,
+            Carry    => ula_carry,
+            Overflow => ula_overflow
         );
 
-    -- Instância da Unidade de Controle
-    unidade_controle_inst : UnidadeControle
-        port map (
-            opcode => opCode,
-            clk => clk,
-            reset => reset,
-            zero_flag => zero_flag,
-            sign_flag => sign_flag,
-            carry_flag => carry_flag,
-            overflow_flag => overflow_flag,
-            mem_enable => memoria_enable,
-            pc_enable => pc_enable,      -- Conecta pc_enable na Unidade de Controle
-            alu_enable => open           -- Se não utilizado, pode ser desconectado com "open"
-        );
+    -- Sinais de controle e dados de saída
+    Zero <= ula_zero;
+    Sign <= ula_sign;
+    Carry <= ula_carry;
+    Overflow <= ula_overflow;
+    data_out <= ula_result;  -- Dados de saída da CPU resultante da ULA
+    addr_out <= pc;          -- Endereço de saída baseado no PC
 
-    -- Conectando as flags da ULA à saída da CPU
-    flags <= zero_flag & sign_flag & carry_flag & overflow_flag;
+    -- Lógica de controle da CPU
+    PROCESS(clk, reset)
+    BEGIN
+        IF reset = '1' THEN
+            -- Reset dos sinais e registradores
+            A <= (others => '0');
+            B <= (others => '0');
+            data_out <= (others => '0');
+        
+        ELSIF rising_edge(clk) THEN
+            CASE opcode IS
+                WHEN "000" =>  -- Exemplo: LOAD A, operando (carrega valor para A)
+                    A <= operand;
 
-end Behavioral;
+                WHEN "001" =>  -- Exemplo: LOAD B, operando (carrega valor para B)
+                    B <= operand;
+
+                WHEN "010" =>  -- ADD A, B
+                    -- Operação de soma entre A e B
+                    A <= ula_result;
+
+                WHEN "011" =>  -- SUB A, B
+                    -- Operação de subtração entre A e B
+                    A <= ula_result;
+
+                WHEN "100" =>  -- AND A, B
+                    -- Operação lógica AND
+                    A <= ula_result;
+
+                WHEN "101" =>  -- OR A, B
+                    -- Operação lógica OR
+                    A <= ula_result;
+
+                WHEN "110" =>  -- OUT A (envia valor de A para saída)
+                    data_out <= A;
+
+                WHEN OTHERS =>
+                    -- NOP ou operações indefinidas
+                    data_out <= A;
+            END CASE;
+        END IF;
+    END PROCESS;
+END Behavioral;

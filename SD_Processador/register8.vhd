@@ -3,7 +3,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
-entity register is
+entity register8 is
     Port (
         clock    : in  std_logic;                      -- Clock do sistema
         reset    : in  std_logic;                      
@@ -11,9 +11,9 @@ entity register is
         data_in  : in  std_logic_vector(7 downto 0);   -- Entrada
         data_out : out std_logic_vector(7 downto 0)    -- Dados armazenados no registrador
     );
-end register;
+end register8;
 
-architecture Behavioral of register is
+architecture Behavioral of register8 is
     signal reg_value : std_logic_vector(7 downto 0);  -- Registrador interno
 begin
     process(clock, reset)
