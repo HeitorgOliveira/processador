@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Wed Nov  6 14:54:55 2024
+Thu Nov  7 13:21:54 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -10,7 +10,23 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis IP Cores Summary
+  9. State Machine - |CPU|UnidadeControle:Controle|estado
+ 10. Registers Removed During Synthesis
+ 11. Removed Registers Triggering Further Register Optimizations
+ 12. General Register Statistics
+ 13. Source assignments for memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated
+ 14. Parameter Settings for User Entity Instance: memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component
+ 15. altsyncram Parameter Settings by Entity Instance
+ 16. Port Connectivity Checks: "ULA:ULA"
+ 17. Port Connectivity Checks: "UnidadeControle:Controle"
+ 18. Port Connectivity Checks: "program_counter:PC"
+ 19. Post-Synthesis Netlist Statistics for Top Partition
+ 20. Elapsed Time Per Partition
+ 21. Analysis & Synthesis Messages
 
 
 
@@ -34,22 +50,27 @@ https://fpgasoftware.intel.com/eula.
 
 
 
-+---------------------------------------------------------------------------+
-; Analysis & Synthesis Summary                                              ;
-+-----------------------------+---------------------------------------------+
-; Analysis & Synthesis Status ; Failed - Wed Nov  6 14:54:55 2024           ;
-; Quartus Prime Version       ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
-; Revision Name               ; CPU                                         ;
-; Top-level Entity Name       ; CPU                                         ;
-; Family                      ; Cyclone V                                   ;
-; Logic utilization (in ALMs) ; N/A until Partition Merge                   ;
-; Total registers             ; N/A until Partition Merge                   ;
-; Total pins                  ; N/A until Partition Merge                   ;
-; Total virtual pins          ; N/A until Partition Merge                   ;
-; Total block memory bits     ; N/A until Partition Merge                   ;
-; Total PLLs                  ; N/A until Partition Merge                   ;
-; Total DLLs                  ; N/A until Partition Merge                   ;
-+-----------------------------+---------------------------------------------+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Thu Nov  7 13:21:54 2024       ;
+; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
+; Revision Name                   ; CPU                                         ;
+; Top-level Entity Name           ; CPU                                         ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 18                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -155,13 +176,289 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------+-------------+
 
 
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                 ;
++----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                                         ; Library ;
++----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------+---------+
+; CPU.vhd                          ; yes             ; User VHDL File                   ; C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd                ;         ;
+; ULA.vhd                          ; yes             ; User VHDL File                   ; C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd                ;         ;
+; UnidadeControle.vhd              ; yes             ; User VHDL File                   ; C:/Users/15447326/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd    ;         ;
+; Input_Unit.vhd                   ; yes             ; User VHDL File                   ; C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd         ;         ;
+; Output_Unit.vhd                  ; yes             ; User VHDL File                   ; C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Output_Unit.vhd        ;         ;
+; program_counter.vhd              ; yes             ; User VHDL File                   ; C:/Users/15447326/Documents/GitHub/processador/SD_Processador/program_counter.vhd    ;         ;
+; memoria_unidade.vhd              ; yes             ; User VHDL File                   ; C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd    ;         ;
+; ram256x8.vhd                     ; yes             ; User Wizard-Generated File       ; C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.vhd           ;         ;
+; ram256x8.mif                     ; yes             ; User Memory Initialization File  ; C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.mif           ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altsyncram.tdf                ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/stratix_ram_block.inc         ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/lpm_mux.inc                   ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/lpm_decode.inc                ;         ;
+; aglobal211.inc                   ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/aglobal211.inc                ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/a_rdenreg.inc                 ;         ;
+; altrom.inc                       ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altrom.inc                    ;         ;
+; altram.inc                       ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altram.inc                    ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altdpram.inc                  ;         ;
+; db/altsyncram_e504.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf ;         ;
++----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 0              ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 0              ;
+;     -- 7 input functions                    ; 0              ;
+;     -- 6 input functions                    ; 0              ;
+;     -- 5 input functions                    ; 0              ;
+;     -- 4 input functions                    ; 0              ;
+;     -- <=3 input functions                  ; 0              ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 0              ;
+;                                             ;                ;
+; I/O pins                                    ; 18             ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 0              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; leds[0]~output ;
+; Maximum fan-out                             ; 1              ;
+; Total fan-out                               ; 18             ;
+; Average fan-out                             ; 0.50           ;
++---------------------------------------------+----------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |CPU                       ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 18   ; 0            ; |CPU                ; CPU         ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis IP Cores Summary                                                                                                ;
++--------+--------------+---------+--------------+--------------+----------------------------------------------------+-----------------+
+; Vendor ; IP Core Name ; Version ; Release Date ; License Type ; Entity Instance                                    ; IP Include File ;
++--------+--------------+---------+--------------+--------------+----------------------------------------------------+-----------------+
+; Altera ; RAM: 2-PORT  ; 21.1    ; N/A          ; N/A          ; |CPU|memoria_unidade:Memoria|ram256x8:ram_instance ; ram256x8.vhd    ;
++--------+--------------+---------+--------------+--------------+----------------------------------------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |CPU|UnidadeControle:Controle|estado                                                                               ;
++-----------------------+----------------+-----------------------+----------------+-------------------+--------------+---------------+
+; Name                  ; estado.ESCRITA ; estado.ACESSO_MEMORIA ; estado.EXECUTA ; estado.DECODIFICA ; estado.BUSCA ; estado.ESPERA ;
++-----------------------+----------------+-----------------------+----------------+-------------------+--------------+---------------+
+; estado.ESPERA         ; 0              ; 0                     ; 0              ; 0                 ; 0            ; 0             ;
+; estado.BUSCA          ; 0              ; 0                     ; 0              ; 0                 ; 1            ; 1             ;
+; estado.DECODIFICA     ; 0              ; 0                     ; 0              ; 1                 ; 0            ; 1             ;
+; estado.EXECUTA        ; 0              ; 0                     ; 1              ; 0                 ; 0            ; 1             ;
+; estado.ACESSO_MEMORIA ; 0              ; 1                     ; 0              ; 0                 ; 0            ; 1             ;
+; estado.ESCRITA        ; 1              ; 0                     ; 0              ; 0                 ; 0            ; 1             ;
++-----------------------+----------------+-----------------------+----------------+-------------------+--------------+---------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                      ;
++------------------------------------------------+----------------------------------------+
+; Register name                                  ; Reason for Removal                     ;
++------------------------------------------------+----------------------------------------+
+; Output_Unit:Saida|output_reg[0..7]             ; Stuck at GND due to stuck port data_in ;
+; program_counter:PC|pc[0..7]                    ; Lost fanout                            ;
+; UnidadeControle:Controle|estado.ESPERA         ; Lost fanout                            ;
+; UnidadeControle:Controle|estado.BUSCA          ; Lost fanout                            ;
+; UnidadeControle:Controle|estado.DECODIFICA     ; Lost fanout                            ;
+; UnidadeControle:Controle|estado.EXECUTA        ; Lost fanout                            ;
+; UnidadeControle:Controle|estado.ACESSO_MEMORIA ; Lost fanout                            ;
+; UnidadeControle:Controle|estado.ESCRITA        ; Lost fanout                            ;
+; Total Number of Removed Registers = 22         ;                                        ;
++------------------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                    ;
++--------------------------+--------------------+------------------------------------------------+
+; Register name            ; Reason for Removal ; Registers Removed due to This Register         ;
++--------------------------+--------------------+------------------------------------------------+
+; program_counter:PC|pc[0] ; Lost Fanouts       ; UnidadeControle:Controle|estado.BUSCA,         ;
+;                          ;                    ; UnidadeControle:Controle|estado.ACESSO_MEMORIA ;
++--------------------------+--------------------+------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                                    ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                                     ;
++---------------------------------+--------------------+------+-----------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+----------------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                           ;
++------------------------------------+----------------------+----------------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                        ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                                     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                                   ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                                   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                                 ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                        ;
+; OPERATION_MODE                     ; DUAL_PORT            ; Untyped                                                        ;
+; WIDTH_A                            ; 8                    ; Signed Integer                                                 ;
+; WIDTHAD_A                          ; 8                    ; Signed Integer                                                 ;
+; NUMWORDS_A                         ; 256                  ; Signed Integer                                                 ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                                        ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                        ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                        ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                        ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                        ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                        ;
+; WIDTH_B                            ; 8                    ; Signed Integer                                                 ;
+; WIDTHAD_B                          ; 8                    ; Signed Integer                                                 ;
+; NUMWORDS_B                         ; 256                  ; Signed Integer                                                 ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                        ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                        ;
+; ADDRESS_REG_B                      ; CLOCK0               ; Untyped                                                        ;
+; OUTDATA_REG_B                      ; CLOCK0               ; Untyped                                                        ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                        ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                        ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                        ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                        ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                        ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                        ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                        ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                                 ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Signed Integer                                                 ;
+; RAM_BLOCK_TYPE                     ; AUTO                 ; Untyped                                                        ;
+; BYTE_SIZE                          ; 8                    ; Signed Integer                                                 ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                        ;
+; INIT_FILE                          ; ram256x8.mif         ; Untyped                                                        ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                        ;
+; MAXIMUM_DEPTH                      ; 0                    ; Signed Integer                                                 ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                        ;
+; CLOCK_ENABLE_INPUT_B               ; BYPASS               ; Untyped                                                        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL               ; Untyped                                                        ;
+; CLOCK_ENABLE_OUTPUT_B              ; BYPASS               ; Untyped                                                        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                        ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                        ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Signed Integer                                                 ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                        ;
+; CBXI_PARAMETER                     ; altsyncram_e504      ; Untyped                                                        ;
++------------------------------------+----------------------+----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                                          ;
++-------------------------------------------+-------------------------------------------------------------------------------+
+; Name                                      ; Value                                                                         ;
++-------------------------------------------+-------------------------------------------------------------------------------+
+; Number of entity instances                ; 1                                                                             ;
+; Entity Instance                           ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; DUAL_PORT                                                                     ;
+;     -- WIDTH_A                            ; 8                                                                             ;
+;     -- NUMWORDS_A                         ; 256                                                                           ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                                  ;
+;     -- WIDTH_B                            ; 8                                                                             ;
+;     -- NUMWORDS_B                         ; 256                                                                           ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                                                                        ;
+;     -- OUTDATA_REG_B                      ; CLOCK0                                                                        ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                                                                          ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                                     ;
++-------------------------------------------+-------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ULA:ULA"                                                                              ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; result ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "UnidadeControle:Controle"                                                                   ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                             ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+; mem_enable   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; read_enable  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; alu_enable   ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; reg_a_enable ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; reg_b_enable ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------+
+; Port Connectivity Checks: "program_counter:PC" ;
++-------------+-------+----------+---------------+
+; Port        ; Type  ; Severity ; Details       ;
++-------------+-------+----------+---------------+
+; increment   ; Input ; Info     ; Stuck at VCC  ;
+; new_address ; Input ; Info     ; Stuck at GND  ;
++-------------+-------+----------+---------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_lcell_comb     ; 1                           ;
+;     normal            ; 1                           ;
+;         0 data inputs ; 1                           ;
+; boundary_port         ; 18                          ;
+;                       ;                             ;
+; Max LUT depth         ; 0.00                        ;
+; Average LUT depth     ; 0.00                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:00     ;
++----------------+--------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Nov  6 14:54:47 2024
+    Info: Processing started: Thu Nov  7 13:21:44 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -202,6 +499,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file registe
 Info (12021): Found 2 design units, including 1 entities, in source file memoria_unidade.vhd
     Info (12022): Found design unit 1: memoria_unidade-behavior File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 15
     Info (12023): Found entity 1: memoria_unidade File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file ram256x8.vhd
+    Info (12022): Found design unit 1: ram256x8-SYN File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 56
+    Info (12023): Found entity 1: ram256x8 File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 43
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
 Warning (10541): VHDL Signal Declaration warning at CPU.vhd(16): used implicit default value for signal "data_in" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 16
 Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(16): object "alu_result" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 16
@@ -239,13 +539,116 @@ Info (10041): Inferred latch for "signed_result[5]" at ULA.vhd(20) File: C:/User
 Info (10041): Inferred latch for "signed_result[6]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
 Info (10041): Inferred latch for "signed_result[7]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
 Info (12128): Elaborating entity "memoria_unidade" for hierarchy "memoria_unidade:Memoria" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 67
+Info (12128): Elaborating entity "ram256x8" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 35
+Info (12128): Elaborating entity "altsyncram" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 63
+Info (12130): Elaborated megafunction instantiation "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 63
+Info (12133): Instantiated megafunction "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component" with the following parameter: File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 63
+    Info (12134): Parameter "address_aclr_a" = "UNUSED"
+    Info (12134): Parameter "address_aclr_b" = "NONE"
+    Info (12134): Parameter "address_reg_b" = "CLOCK0"
+    Info (12134): Parameter "byte_size" = "8"
+    Info (12134): Parameter "byteena_aclr_a" = "UNUSED"
+    Info (12134): Parameter "byteena_aclr_b" = "NONE"
+    Info (12134): Parameter "byteena_reg_b" = "CLOCK1"
+    Info (12134): Parameter "clock_enable_core_a" = "USE_INPUT_CLKEN"
+    Info (12134): Parameter "clock_enable_core_b" = "USE_INPUT_CLKEN"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_b" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "NORMAL"
+    Info (12134): Parameter "clock_enable_output_b" = "BYPASS"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "ecc_pipeline_stage_enabled" = "FALSE"
+    Info (12134): Parameter "enable_ecc" = "FALSE"
+    Info (12134): Parameter "implement_in_les" = "OFF"
+    Info (12134): Parameter "indata_aclr_a" = "UNUSED"
+    Info (12134): Parameter "indata_aclr_b" = "NONE"
+    Info (12134): Parameter "indata_reg_b" = "CLOCK1"
+    Info (12134): Parameter "init_file" = "ram256x8.mif"
+    Info (12134): Parameter "init_file_layout" = "PORT_A"
+    Info (12134): Parameter "maximum_depth" = "0"
+    Info (12134): Parameter "numwords_a" = "256"
+    Info (12134): Parameter "numwords_b" = "256"
+    Info (12134): Parameter "operation_mode" = "DUAL_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_aclr_b" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "outdata_reg_b" = "CLOCK0"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "ram_block_type" = "AUTO"
+    Info (12134): Parameter "rdcontrol_aclr_b" = "NONE"
+    Info (12134): Parameter "rdcontrol_reg_b" = "CLOCK1"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "read_during_write_mode_port_a" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "read_during_write_mode_port_b" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "stratixiv_m144k_allow_dual_clocks" = "ON"
+    Info (12134): Parameter "width_a" = "8"
+    Info (12134): Parameter "width_b" = "8"
+    Info (12134): Parameter "width_byteena_a" = "1"
+    Info (12134): Parameter "width_byteena_b" = "1"
+    Info (12134): Parameter "width_eccstatus" = "3"
+    Info (12134): Parameter "widthad_a" = "8"
+    Info (12134): Parameter "widthad_b" = "8"
+    Info (12134): Parameter "wrcontrol_aclr_a" = "UNUSED"
+    Info (12134): Parameter "wrcontrol_aclr_b" = "NONE"
+    Info (12134): Parameter "wrcontrol_wraddress_reg_b" = "CLOCK1"
+    Info (12134): Parameter "lpm_hint" = "UNUSED"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_e504.tdf
+    Info (12023): Found entity 1: altsyncram_e504 File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_e504" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated" File: c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12128): Elaborating entity "Output_Unit" for hierarchy "Output_Unit:Saida" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 77
 Info (12128): Elaborating entity "Input_Unit" for hierarchy "Input_Unit:Entrada" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 85
-Error (12006): Node instance "ram_instance" instantiates undefined entity "ram256x8". Ensure that required library paths are specified correctly, define the specified entity, or change the instantiation. If this entity represents Intel FPGA or third-party IP, generate the synthesis files for the IP. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 35
-Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 29 warnings
-    Error: Peak virtual memory: 4844 megabytes
-    Error: Processing ended: Wed Nov  6 14:54:55 2024
-    Error: Elapsed time: 00:00:08
-    Error: Total CPU time (on all processors): 00:00:18
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[0]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 38
+        Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[1]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 73
+        Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[2]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 108
+        Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[3]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 143
+Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
+    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[0]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
+    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[1]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
+    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[2]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
+    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[3]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
+    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[4]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
+    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[5]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
+    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[6]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
+    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[7]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[7]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 283
+        Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[6]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 248
+        Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 213
+        Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[4]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 178
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "leds[0]" is stuck at GND File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 10
+    Warning (13410): Pin "leds[1]" is stuck at GND File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 10
+    Warning (13410): Pin "leds[2]" is stuck at GND File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 10
+    Warning (13410): Pin "leds[3]" is stuck at GND File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 10
+    Warning (13410): Pin "leds[4]" is stuck at GND File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 10
+    Warning (13410): Pin "leds[5]" is stuck at GND File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 10
+    Warning (13410): Pin "leds[6]" is stuck at GND File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 10
+    Warning (13410): Pin "leds[7]" is stuck at GND File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 10
+Info (17049): 14 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 10 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "reset" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "clock" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 7
+    Warning (15610): No output dependent on input pin "switches[0]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "switches[1]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "switches[2]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "switches[3]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "switches[4]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "switches[5]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "switches[6]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "switches[7]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+Info (21057): Implemented 18 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 10 input pins
+    Info (21059): Implemented 8 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 70 warnings
+    Info: Peak virtual memory: 4872 megabytes
+    Info: Processing ended: Thu Nov  7 13:21:54 2024
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:18
 
 

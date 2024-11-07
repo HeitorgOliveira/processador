@@ -1,0 +1,9 @@
+
+State Machine - |CPU|UnidadeControle:Controle|estado
+Name estado.ESCRITA estado.ACESSO_MEMORIA estado.EXECUTA estado.DECODIFICA estado.BUSCA estado.ESPERA 
+estado.ESPERA 0 0 0 0 0 0 
+estado.BUSCA 0 0 0 0 1 1 
+estado.DECODIFICA 0 0 0 1 0 1 
+estado.EXECUTA 0 0 1 0 0 1 
+estado.ACESSO_MEMORIA 0 1 0 0 0 1 
+estado.ESCRITA 1 0 0 0 0 1 
