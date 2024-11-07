@@ -17,7 +17,7 @@
 // PROGRAM "Quartus Prime"
 // VERSION "Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition"
 
-// DATE "11/07/2024 13:22:31"
+// DATE "11/07/2024 13:52:21"
 
 // 
 // Device: Altera 5CEBA4F23C7 Package FBGA484
@@ -40,24 +40,24 @@ input 	[7:0] switches;
 output 	[7:0] leds;
 
 // Design Ports Information
-// leds[0]	=>  Location: PIN_E15,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// leds[1]	=>  Location: PIN_J19,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// leds[2]	=>  Location: PIN_M16,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// leds[3]	=>  Location: PIN_K20,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// leds[4]	=>  Location: PIN_H11,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// leds[5]	=>  Location: PIN_AB20,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// leds[6]	=>  Location: PIN_V18,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// leds[7]	=>  Location: PIN_L22,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// reset	=>  Location: PIN_T12,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// clock	=>  Location: PIN_AB10,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// switches[0]	=>  Location: PIN_U20,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// switches[1]	=>  Location: PIN_AB5,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// switches[2]	=>  Location: PIN_V9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// switches[3]	=>  Location: PIN_R15,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// switches[4]	=>  Location: PIN_W22,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// switches[5]	=>  Location: PIN_K22,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// switches[6]	=>  Location: PIN_K9,	 I/O Standard: 2.5 V,	 Current Strength: Default
-// switches[7]	=>  Location: PIN_G13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// leds[0]	=>  Location: PIN_AA2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// leds[1]	=>  Location: PIN_AA1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// leds[2]	=>  Location: PIN_W2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// leds[3]	=>  Location: PIN_Y3,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// leds[4]	=>  Location: PIN_N2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// leds[5]	=>  Location: PIN_N1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// leds[6]	=>  Location: PIN_U2,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// leds[7]	=>  Location: PIN_U1,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// reset	=>  Location: PIN_U7,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// clock	=>  Location: PIN_W9,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// switches[0]	=>  Location: PIN_U13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// switches[1]	=>  Location: PIN_V13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// switches[2]	=>  Location: PIN_T13,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// switches[3]	=>  Location: PIN_T12,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// switches[4]	=>  Location: PIN_AA15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// switches[5]	=>  Location: PIN_AB15,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// switches[6]	=>  Location: PIN_AA14,	 I/O Standard: 2.5 V,	 Current Strength: Default
+// switches[7]	=>  Location: PIN_AA13,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
 wire gnd;
@@ -84,7 +84,7 @@ wire \switches[7]~input_o ;
 wire \~QUARTUS_CREATED_GND~I_combout ;
 
 
-// Location: IOOBUF_X46_Y45_N42
+// Location: IOOBUF_X0_Y18_N79
 cyclonev_io_obuf \leds[0]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -100,7 +100,7 @@ defparam \leds[0]~output .open_drain_output = "false";
 defparam \leds[0]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X48_Y45_N36
+// Location: IOOBUF_X0_Y18_N96
 cyclonev_io_obuf \leds[1]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -116,7 +116,7 @@ defparam \leds[1]~output .open_drain_output = "false";
 defparam \leds[1]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X54_Y18_N62
+// Location: IOOBUF_X0_Y18_N62
 cyclonev_io_obuf \leds[2]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -132,7 +132,7 @@ defparam \leds[2]~output .open_drain_output = "false";
 defparam \leds[2]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X52_Y45_N2
+// Location: IOOBUF_X0_Y18_N45
 cyclonev_io_obuf \leds[3]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -148,7 +148,7 @@ defparam \leds[3]~output .open_drain_output = "false";
 defparam \leds[3]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X34_Y45_N2
+// Location: IOOBUF_X0_Y19_N39
 cyclonev_io_obuf \leds[4]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -164,7 +164,7 @@ defparam \leds[4]~output .open_drain_output = "false";
 defparam \leds[4]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X40_Y0_N93
+// Location: IOOBUF_X0_Y19_N56
 cyclonev_io_obuf \leds[5]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -180,7 +180,7 @@ defparam \leds[5]~output .open_drain_output = "false";
 defparam \leds[5]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X51_Y0_N2
+// Location: IOOBUF_X0_Y19_N5
 cyclonev_io_obuf \leds[6]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -196,7 +196,7 @@ defparam \leds[6]~output .open_drain_output = "false";
 defparam \leds[6]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOOBUF_X54_Y19_N56
+// Location: IOOBUF_X0_Y19_N22
 cyclonev_io_obuf \leds[7]~output (
 	.i(gnd),
 	.oe(vcc),
@@ -212,7 +212,7 @@ defparam \leds[7]~output .open_drain_output = "false";
 defparam \leds[7]~output .shift_series_termination_control = "false";
 // synopsys translate_on
 
-// Location: IOIBUF_X34_Y0_N18
+// Location: IOIBUF_X10_Y0_N92
 cyclonev_io_ibuf \reset~input (
 	.i(reset),
 	.ibar(gnd),
@@ -223,7 +223,7 @@ defparam \reset~input .bus_hold = "false";
 defparam \reset~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X25_Y0_N52
+// Location: IOIBUF_X11_Y0_N35
 cyclonev_io_ibuf \clock~input (
 	.i(clock),
 	.ibar(gnd),
@@ -234,7 +234,7 @@ defparam \clock~input .bus_hold = "false";
 defparam \clock~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X52_Y0_N35
+// Location: IOIBUF_X33_Y0_N41
 cyclonev_io_ibuf \switches[0]~input (
 	.i(switches[0]),
 	.ibar(gnd),
@@ -245,7 +245,7 @@ defparam \switches[0]~input .bus_hold = "false";
 defparam \switches[0]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X16_Y0_N75
+// Location: IOIBUF_X33_Y0_N58
 cyclonev_io_ibuf \switches[1]~input (
 	.i(switches[1]),
 	.ibar(gnd),
@@ -256,7 +256,7 @@ defparam \switches[1]~input .bus_hold = "false";
 defparam \switches[1]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X16_Y0_N58
+// Location: IOIBUF_X34_Y0_N1
 cyclonev_io_ibuf \switches[2]~input (
 	.i(switches[2]),
 	.ibar(gnd),
@@ -267,7 +267,7 @@ defparam \switches[2]~input .bus_hold = "false";
 defparam \switches[2]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X54_Y15_N21
+// Location: IOIBUF_X34_Y0_N18
 cyclonev_io_ibuf \switches[3]~input (
 	.i(switches[3]),
 	.ibar(gnd),
@@ -278,7 +278,7 @@ defparam \switches[3]~input .bus_hold = "false";
 defparam \switches[3]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X48_Y0_N75
+// Location: IOIBUF_X36_Y0_N35
 cyclonev_io_ibuf \switches[4]~input (
 	.i(switches[4]),
 	.ibar(gnd),
@@ -289,7 +289,7 @@ defparam \switches[4]~input .bus_hold = "false";
 defparam \switches[4]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X54_Y21_N55
+// Location: IOIBUF_X36_Y0_N52
 cyclonev_io_ibuf \switches[5]~input (
 	.i(switches[5]),
 	.ibar(gnd),
@@ -300,7 +300,7 @@ defparam \switches[5]~input .bus_hold = "false";
 defparam \switches[5]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X34_Y45_N52
+// Location: IOIBUF_X34_Y0_N52
 cyclonev_io_ibuf \switches[6]~input (
 	.i(switches[6]),
 	.ibar(gnd),
@@ -311,7 +311,7 @@ defparam \switches[6]~input .bus_hold = "false";
 defparam \switches[6]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: IOIBUF_X38_Y45_N18
+// Location: IOIBUF_X34_Y0_N35
 cyclonev_io_ibuf \switches[7]~input (
 	.i(switches[7]),
 	.ibar(gnd),
@@ -322,7 +322,7 @@ defparam \switches[7]~input .bus_hold = "false";
 defparam \switches[7]~input .simulate_z_as = "z";
 // synopsys translate_on
 
-// Location: LABCELL_X50_Y22_N3
+// Location: MLABCELL_X49_Y20_N0
 cyclonev_lcell_comb \~QUARTUS_CREATED_GND~I (
 // Equation(s):
 

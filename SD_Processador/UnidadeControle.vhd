@@ -93,6 +93,10 @@ begin
                         else
                             proximo_estado <= BUSCA;
                         end if;
+                    when "1001" => proximo_estado <= ACESSO_MEMORIA; -- IN
+                    when "1010" => proximo_estado <= ACESSO_MEMORIA; -- OUT
+                    when "1011" => proximo_estado <= ACESSO_MEMORIA; -- LOAD
+                    when "1100" => proximo_estado <= ACESSO_MEMORIA; -- STORE
                     when others => proximo_estado <= BUSCA;
                 end case;
 
@@ -118,13 +122,25 @@ begin
                 proximo_estado <= ESCRITA;
 
             when ACESSO_MEMORIA =>
-                if opcode = "0110" or opcode = "0111" or opcode = "1000" then -- Saltos
-                    pc_enable <= '1';
-                end if;
+                case opcode is
+                    when "0110" => -- JMP
+                        pc_enable <= '1'; -- Salta para o endereço
+                    when "1001" => -- IN
+                        input_enable <= '1'; -- Ativa leitura das entradas
+                    when "1010" => -- OUT
+                        output_enable <= '1'; -- Ativa saída para LEDs
+                    when "1011" => -- LOAD
+                        read_enable <= '1'; -- Ativa leitura da memória
+                    when "1100" => -- STORE
+                        write_enable <= '1'; -- Ativa escrita na memória
+                    when others =>
+                        -- Não faz nada
+                end case;
                 proximo_estado <= BUSCA;
 
             when ESCRITA =>
-                output_enable <= '1'; -- Ativa saída para LEDs
+                -- Aqui, dependendo da instrução, a saída é ativada (OUT, etc.)
+                output_enable <= '1';
                 proximo_estado <= BUSCA;
 
             when others =>

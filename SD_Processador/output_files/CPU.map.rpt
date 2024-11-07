@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Thu Nov  7 13:21:54 2024
+Thu Nov  7 13:51:55 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -53,7 +53,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Nov  7 13:21:54 2024       ;
+; Analysis & Synthesis Status     ; Successful - Thu Nov  7 13:51:55 2024       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; CPU                                         ;
 ; Top-level Entity Name           ; CPU                                         ;
@@ -458,7 +458,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Thu Nov  7 13:21:44 2024
+    Info: Processing started: Thu Nov  7 13:51:46 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -493,9 +493,7 @@ Warning (12019): Can't analyze file -- file register.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file program_counter.vhd
     Info (12022): Found design unit 1: program_counter-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/program_counter.vhd Line: 18
     Info (12023): Found entity 1: program_counter File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/program_counter.vhd Line: 7
-Info (12021): Found 2 design units, including 1 entities, in source file register8.vhd
-    Info (12022): Found design unit 1: register8-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/register8.vhd Line: 16
-    Info (12023): Found entity 1: register8 File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/register8.vhd Line: 6
+Warning (12019): Can't analyze file -- file register8.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file memoria_unidade.vhd
     Info (12022): Found design unit 1: memoria_unidade-behavior File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 15
     Info (12023): Found entity 1: memoria_unidade File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 4
@@ -645,10 +643,10 @@ Warning (21074): Design contains 10 input pin(s) that do not drive logic
 Info (21057): Implemented 18 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 10 input pins
     Info (21059): Implemented 8 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 70 warnings
-    Info: Peak virtual memory: 4872 megabytes
-    Info: Processing ended: Thu Nov  7 13:21:54 2024
-    Info: Elapsed time: 00:00:10
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 71 warnings
+    Info: Peak virtual memory: 4870 megabytes
+    Info: Processing ended: Thu Nov  7 13:51:55 2024
+    Info: Elapsed time: 00:00:09
     Info: Total CPU time (on all processors): 00:00:18
 
 
