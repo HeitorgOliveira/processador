@@ -35,7 +35,7 @@ begin
     -- Processo de clock e reset
     process(clk, reset)
     begin
-        if reset = '1' then
+        if reset = '0' then
             estado <= ESPERA;
         elsif rising_edge(clk) then
             estado <= proximo_estado;
