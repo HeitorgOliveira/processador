@@ -56,7 +56,7 @@ BEGIN
     ULA : ENTITY work.ULA PORT MAP (
         A        => data_in,               -- Usando diretamente como signed
         B        => data_out,              -- Usando diretamente como signed
-        opcode   => instrucao(6 DOWNTO 4), -- Usar parte do opcode da instrução completa
+        opcode   => instrucao(7 DOWNTO 4), -- Usar parte do opcode da instrução completa
         result   => alu_result,            -- `alu_result` agora é do tipo signed
         Zero     => zero_flag,
         Sign     => sign_flag,

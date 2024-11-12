@@ -34,17 +34,8 @@ BEGIN
                 
             -- Outros opcodes podem ser adicionados conforme necessário
             WHEN OTHERS =>
-                res <= (OTHERS => '0');
-                Carry <= '0';
-                Overflow <= '0';
+                
         END CASE;
-
-        -- Flag Zero: ativa se o resultado é zero
-        IF res = "00000000" THEN
-            Zero <= '1';
-        ELSE
-            Zero <= '0';
-        END IF;
 
     END PROCESS;
 END behavior;

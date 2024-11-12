@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Thu Nov  7 14:22:24 2024
+Tue Nov 12 14:28:05 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -53,7 +53,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Nov  7 14:22:24 2024       ;
+; Analysis & Synthesis Status     ; Successful - Tue Nov 12 14:28:05 2024       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; CPU                                         ;
 ; Top-level Entity Name           ; CPU                                         ;
@@ -203,31 +203,31 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------+---------+
 
 
-+--------------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary                  ;
-+---------------------------------------------+----------------+
-; Resource                                    ; Usage          ;
-+---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 0              ;
-;                                             ;                ;
-; Combinational ALUT usage for logic          ; 0              ;
-;     -- 7 input functions                    ; 0              ;
-;     -- 6 input functions                    ; 0              ;
-;     -- 5 input functions                    ; 0              ;
-;     -- 4 input functions                    ; 0              ;
-;     -- <=3 input functions                  ; 0              ;
-;                                             ;                ;
-; Dedicated logic registers                   ; 0              ;
-;                                             ;                ;
-; I/O pins                                    ; 18             ;
-;                                             ;                ;
-; Total DSP Blocks                            ; 0              ;
-;                                             ;                ;
-; Maximum fan-out node                        ; leds[0]~output ;
-; Maximum fan-out                             ; 1              ;
-; Total fan-out                               ; 18             ;
-; Average fan-out                             ; 0.50           ;
-+---------------------------------------------+----------------+
++-----------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary               ;
++---------------------------------------------+-------------+
+; Resource                                    ; Usage       ;
++---------------------------------------------+-------------+
+; Estimate of Logic utilization (ALMs needed) ; 0           ;
+;                                             ;             ;
+; Combinational ALUT usage for logic          ; 0           ;
+;     -- 7 input functions                    ; 0           ;
+;     -- 6 input functions                    ; 0           ;
+;     -- 5 input functions                    ; 0           ;
+;     -- 4 input functions                    ; 0           ;
+;     -- <=3 input functions                  ; 0           ;
+;                                             ;             ;
+; Dedicated logic registers                   ; 0           ;
+;                                             ;             ;
+; I/O pins                                    ; 18          ;
+;                                             ;             ;
+; Total DSP Blocks                            ; 0           ;
+;                                             ;             ;
+; Maximum fan-out node                        ; switches[0] ;
+; Maximum fan-out                             ; 1           ;
+; Total fan-out                               ; 18          ;
+; Average fan-out                             ; 0.50        ;
++---------------------------------------------+-------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -458,7 +458,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Thu Nov  7 14:22:14 2024
+    Info: Processing started: Tue Nov 12 14:27:56 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -501,42 +501,23 @@ Info (12021): Found 2 design units, including 1 entities, in source file ram256x
     Info (12022): Found design unit 1: ram256x8-SYN File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 56
     Info (12023): Found entity 1: ram256x8 File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 43
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
-Warning (10541): VHDL Signal Declaration warning at CPU.vhd(16): used implicit default value for signal "data_in" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 16
-Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(16): object "alu_result" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 16
+Warning (10541): VHDL Signal Declaration warning at CPU.vhd(17): used implicit default value for signal "data_in" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 17
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(17): object "alu_result" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 17
 Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(19): object "mem_enable" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 19
 Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(19): object "read_enable" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 19
 Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(20): object "alu_enable" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 20
 Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(21): object "reg_a_enable" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 21
 Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(21): object "reg_b_enable" assigned a value but never read File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 21
-Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:PC" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 25
-Info (12128): Elaborating entity "UnidadeControle" for hierarchy "UnidadeControle:Controle" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 35
+Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:PC" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 26
+Info (12128): Elaborating entity "UnidadeControle" for hierarchy "UnidadeControle:Controle" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 36
 Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(65): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 65
-Info (12128): Elaborating entity "ULA" for hierarchy "ULA:ULA" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 55
-Warning (10492): VHDL Process Statement warning at ULA.vhd(27): signal "signed_A" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 27
-Warning (10492): VHDL Process Statement warning at ULA.vhd(27): signal "signed_B" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 27
-Warning (10492): VHDL Process Statement warning at ULA.vhd(28): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 28
-Warning (10492): VHDL Process Statement warning at ULA.vhd(31): signal "signed_A" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 31
-Warning (10492): VHDL Process Statement warning at ULA.vhd(31): signal "signed_B" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 31
-Warning (10492): VHDL Process Statement warning at ULA.vhd(31): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 31
-Warning (10492): VHDL Process Statement warning at ULA.vhd(38): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 38
-Warning (10492): VHDL Process Statement warning at ULA.vhd(45): signal "signed_A" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 45
-Warning (10492): VHDL Process Statement warning at ULA.vhd(45): signal "signed_B" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 45
-Warning (10492): VHDL Process Statement warning at ULA.vhd(46): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 46
-Warning (10492): VHDL Process Statement warning at ULA.vhd(49): signal "signed_A" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 49
-Warning (10492): VHDL Process Statement warning at ULA.vhd(49): signal "signed_B" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 49
-Warning (10492): VHDL Process Statement warning at ULA.vhd(57): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 57
-Warning (10492): VHDL Process Statement warning at ULA.vhd(86): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 86
-Warning (10492): VHDL Process Statement warning at ULA.vhd(93): signal "signed_result" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 93
-Warning (10631): VHDL Process Statement warning at ULA.vhd(20): inferring latch(es) for signal or variable "signed_result", which holds its previous value in one or more paths through the process File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "signed_result[0]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "signed_result[1]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "signed_result[2]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "signed_result[3]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "signed_result[4]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "signed_result[5]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "signed_result[6]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "signed_result[7]" at ULA.vhd(20) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (12128): Elaborating entity "memoria_unidade" for hierarchy "memoria_unidade:Memoria" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 67
+Info (12128): Elaborating entity "ULA" for hierarchy "ULA:ULA" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 56
+Warning (10541): VHDL Signal Declaration warning at ULA.vhd(9): used implicit default value for signal "result" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 9
+Warning (10541): VHDL Signal Declaration warning at ULA.vhd(10): used implicit default value for signal "Zero" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 10
+Warning (10541): VHDL Signal Declaration warning at ULA.vhd(11): used implicit default value for signal "Sign" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 11
+Warning (10541): VHDL Signal Declaration warning at ULA.vhd(12): used implicit default value for signal "Carry" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 12
+Warning (10541): VHDL Signal Declaration warning at ULA.vhd(13): used implicit default value for signal "Overflow" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 13
+Info (12128): Elaborating entity "memoria_unidade" for hierarchy "memoria_unidade:Memoria" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 68
 Info (12128): Elaborating entity "ram256x8" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 35
 Info (12128): Elaborating entity "altsyncram" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 63
 Info (12130): Elaborated megafunction instantiation "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 63
@@ -594,8 +575,8 @@ Info (12133): Instantiated megafunction "memoria_unidade:Memoria|ram256x8:ram_in
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_e504.tdf
     Info (12023): Found entity 1: altsyncram_e504 File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_e504" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated" File: c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "Output_Unit" for hierarchy "Output_Unit:Saida" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 77
-Info (12128): Elaborating entity "Input_Unit" for hierarchy "Input_Unit:Entrada" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 85
+Info (12128): Elaborating entity "Output_Unit" for hierarchy "Output_Unit:Saida" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 78
+Info (12128): Elaborating entity "Input_Unit" for hierarchy "Input_Unit:Entrada" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 87
 Warning (14284): Synthesized away the following node(s):
     Warning (14285): Synthesized away the following RAM node(s):
         Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[0]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 38
@@ -603,10 +584,6 @@ Warning (14284): Synthesized away the following node(s):
         Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[2]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 108
         Warning (14320): Synthesized away node "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[3]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 143
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
-    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[0]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
-    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[1]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
-    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[2]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
-    Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[3]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
     Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[4]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
     Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[5]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
     Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[6]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
@@ -630,23 +607,23 @@ Info (17049): 14 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 10 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "reset" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 8
-    Warning (15610): No output dependent on input pin "clock" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 7
     Warning (15610): No output dependent on input pin "switches[0]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
     Warning (15610): No output dependent on input pin "switches[1]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
     Warning (15610): No output dependent on input pin "switches[2]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
     Warning (15610): No output dependent on input pin "switches[3]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
-    Warning (15610): No output dependent on input pin "switches[4]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
-    Warning (15610): No output dependent on input pin "switches[5]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
-    Warning (15610): No output dependent on input pin "switches[6]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "reset" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 8
+    Warning (15610): No output dependent on input pin "clock" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 7
     Warning (15610): No output dependent on input pin "switches[7]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "switches[6]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "switches[5]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
+    Warning (15610): No output dependent on input pin "switches[4]" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 9
 Info (21057): Implemented 18 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 10 input pins
     Info (21059): Implemented 8 output pins
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 71 warnings
-    Info: Peak virtual memory: 4867 megabytes
-    Info: Processing ended: Thu Nov  7 14:22:24 2024
-    Info: Elapsed time: 00:00:10
-    Info: Total CPU time (on all processors): 00:00:20
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 56 warnings
+    Info: Peak virtual memory: 4876 megabytes
+    Info: Processing ended: Tue Nov 12 14:28:05 2024
+    Info: Elapsed time: 00:00:09
+    Info: Total CPU time (on all processors): 00:00:18
 
 
