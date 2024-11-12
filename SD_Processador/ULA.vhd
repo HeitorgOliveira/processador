@@ -15,15 +15,19 @@ ENTITY ULA IS
 END ULA;
 
 ARCHITECTURE behavior OF ULA IS
-    SIGNAL temp_result   : SIGNED(8 DOWNTO 0) := (OTHERS => '0'); -- 9 bits para detectar carry/overflow
+   SIGNAL sig_A       : SIGNED(7 DOWNTO 0);
+	SIGNAL sig_B       : SIGNED(7 DOWNTO 0); 
+	SIGNAL resultado : SIGNED(8 DOWNTO 0);
 	 
 BEGIN
-    PROCESS (A, B, opcode)
-    BEGIN
-
-        CASE opcode IS
+   PROCESS (A, B, opcode)
+   BEGIN
+		sig_A <= A;
+		sig_B <= B;
+      CASE opcode IS
             WHEN "0000" =>  -- Soma
-					 
+					resultado <= (sig_A(7) & sig_A) + (sig_B(7) & sig_B); 
+					result <= resultado (7 DOWNTO 0);
             WHEN "0001" =>  -- Subtração
 					 
             WHEN "0010" =>  -- Operação AND
