@@ -4,9 +4,9 @@ USE ieee.numeric_std.ALL;
 
 ENTITY ULA IS
     PORT (
-        A, B        : IN  SIGNED(7 DOWNTO 0);            -- Operandos A e B
+        A, B        : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);  -- Operandos A e B
         opcode      : IN  STD_LOGIC_VECTOR(3 DOWNTO 0);  -- Código da operação
-        result      : OUT SIGNED(7 DOWNTO 0);            -- Resultado da operação
+        result      : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);  -- Resultado da operação
         Zero        : OUT STD_LOGIC;                     -- Flag Zero
         Sign        : OUT STD_LOGIC;                     -- Flag de sinal (1 se resultado é "negativo")
         Carry       : OUT STD_LOGIC;                     -- Flag Carry (para soma/subtração)
@@ -15,31 +15,77 @@ ENTITY ULA IS
 END ULA;
 
 ARCHITECTURE behavior OF ULA IS
-   SIGNAL sig_A       : SIGNED(7 DOWNTO 0);
-	SIGNAL sig_B       : SIGNED(7 DOWNTO 0); 
-	SIGNAL resultado : SIGNED(8 DOWNTO 0);
-	 
+
 BEGIN
    PROCESS (A, B, opcode)
+	VARIABLE sig_A       : STD_LOGIC_VECTOR(7 DOWNTO 0);
+	VARIABLE sig_B       : STD_LOGIC_VECTOR(7 DOWNTO 0); 
+   VARIABLE resultado   : STD_LOGIC_VECTOR(8 DOWNTO 0) := (OTHERS => '0');  
    BEGIN
-		sig_A <= A;
-		sig_B <= B;
+      sig_A := A;
+      sig_B := B;
+		Carry <= '0';
+		Overflow <= '0';
       CASE opcode IS
-            WHEN "0000" =>  -- Soma
-					resultado <= (sig_A(7) & sig_A) + (sig_B(7) & sig_B); 
-					result <= resultado (7 DOWNTO 0);
-            WHEN "0001" =>  -- Subtração
-					 
-            WHEN "0010" =>  -- Operação AND
-                
-            WHEN "0011" =>  -- Operação OR
-                
-				WHEN "0100" =>  -- CMP 
-                
-            -- Outros opcodes podem ser adicionados conforme necessário
-            WHEN OTHERS =>
-                
-        END CASE;
+			
+         WHEN "0000" =>  -- Soma
+            resultado (8 DOWNTO 0) := STD_LOGIC_VECTOR(SIGNED(sig_A(7) & sig_A) + SIGNED(sig_B(7) & sig_B));  
+            result <= resultado(7 DOWNTO 0);  
+				
+				IF(sig_A(7) = sig_B(7) AND resultado(7) /= sig_A(7)) THEN
+					Overflow <= '1';
+				END IF;
+				
+				IF (resultado(8) = '1') THEN
+					Carry <= '1';
+				END IF;
+				
+         WHEN "0001" =>  -- Subtração
+            resultado (8 DOWNTO 0) := STD_LOGIC_VECTOR(SIGNED(sig_A(7) & sig_A) - SIGNED(sig_B(7) & sig_B));
+            result <= resultado(7 DOWNTO 0);  
+				
+				IF(sig_A(7) /= sig_B(7) AND resultado(7) /= sig_A(7)) THEN
+					Overflow <= '1';
+				END IF;
+				
+				IF (resultado(8) = '1') THEN
+					Carry <= '1';
+				END IF;
+				
+         WHEN "0010" =>  -- Operação AND
+            resultado(7 DOWNTO 0) := sig_A AND sig_B;
+            result <= resultado(7 DOWNTO 0);
+				
 
-    END PROCESS;
+         WHEN "0011" =>  -- Operação OR
+            resultado(7 DOWNTO 0) := sig_A OR sig_B;
+            result <= resultado(7 DOWNTO 0);
+				
+
+         WHEN "0100" =>  -- Operação NOT
+				resultado(7 DOWNTO 0) := NOT(sig_A);
+				result <= resultado(7 DOWNTO 0);
+			
+			WHEN "0101" => -- CMP (Compare)
+				resultado (8 DOWNTO 0) :=  STD_LOGIC_VECTOR(SIGNED(sig_A(7) & sig_A) - SIGNED(sig_B(7) & sig_B)); 
+				result <= resultado(7 DOWNTO 0);
+				
+         WHEN OTHERS => 
+            result <= (others => '0');  
+      END CASE;
+		
+		IF resultado(7 DOWNTO 0) = "00000000" THEN 
+			Zero <= '1';
+		ELSE
+			Zero <= '0';
+		END IF;
+		
+		IF SIGNED(resultado) < 0 THEN
+			Sign <= '1';
+		ELSE
+			Sign <= '0';
+		END IF;
+
+   END PROCESS;
 END behavior;
+

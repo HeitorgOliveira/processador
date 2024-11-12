@@ -14,7 +14,7 @@ END CPU;
 ARCHITECTURE Behavioral OF CPU IS
     -- Sinais internos
     SIGNAL pc_out, instrucao : std_logic_vector(7 DOWNTO 0); -- `pc_out` e `instrucao` como std_logic_vector
-    SIGNAL data_in, data_out, alu_result : signed(7 DOWNTO 0);  -- Alterado para signed
+    SIGNAL data_in, data_out, alu_result : std_logic_vector(7 DOWNTO 0);  -- Alterado para signed
     SIGNAL zero_flag, sign_flag, carry_flag, overflow_flag : std_logic;
     SIGNAL mem_enable, read_enable, write_enable : std_logic;
     SIGNAL input_enable, output_enable, pc_enable, alu_enable : std_logic;
@@ -91,6 +91,6 @@ BEGIN
     );
 
     -- Conversão de data_out_intermediate para signed
-    data_out <= signed(data_out_intermediate);
+    data_out <= data_out_intermediate;
 
 END Behavioral;
