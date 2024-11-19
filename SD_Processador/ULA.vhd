@@ -1,6 +1,6 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
+LIBRARY ieee ;
+USE ieee.std_logic_1164.all ;
+USE ieee.std_logic_unsigned.all ;
 
 ENTITY ULA IS
     PORT (
@@ -29,19 +29,17 @@ BEGIN
       CASE opcode IS
 			
          WHEN "0000" =>  -- Soma
-            resultado (8 DOWNTO 0) := STD_LOGIC_VECTOR(SIGNED(sig_A(7) & sig_A) + SIGNED(sig_B(7) & sig_B));  
+            resultado (8 DOWNTO 0) := std_logic_vector(('0' & sig_A) + ('0' & sig_B));  
             result <= resultado(7 DOWNTO 0);  
 				
 				IF(sig_A(7) = sig_B(7) AND resultado(7) /= sig_A(7)) THEN
 					Overflow <= '1';
-				END IF;
-				
-				IF (resultado(8) = '1') THEN
-					Carry <= '1';
-				END IF;
+				END IF; 
+					
+				Carry <= resultado(8);
 				
          WHEN "0001" =>  -- Subtração
-            resultado (8 DOWNTO 0) := STD_LOGIC_VECTOR(SIGNED(sig_A(7) & sig_A) - SIGNED(sig_B(7) & sig_B));
+            resultado (8 DOWNTO 0) := std_logic_vector(('0' & sig_A) - ('0' & sig_B));  
             result <= resultado(7 DOWNTO 0);  
 				
 				IF(sig_A(7) /= sig_B(7) AND resultado(7) /= sig_A(7)) THEN
@@ -67,7 +65,7 @@ BEGIN
 				result <= resultado(7 DOWNTO 0);
 			
 			WHEN "0101" => -- CMP (Compare)
-				resultado (8 DOWNTO 0) :=  STD_LOGIC_VECTOR(SIGNED(sig_A(7) & sig_A) - SIGNED(sig_B(7) & sig_B)); 
+				resultado (8 DOWNTO 0) :=  std_logic_vector(('0' & sig_A) + ('0' & sig_B));  
 				result <= resultado(7 DOWNTO 0);
 				
          WHEN OTHERS => 
@@ -80,12 +78,8 @@ BEGIN
 			Zero <= '0';
 		END IF;
 		
-		IF SIGNED(resultado) < 0 THEN
-			Sign <= '1';
-		ELSE
-			Sign <= '0';
-		END IF;
-
+		Sign <= resultado(7);
+		
    END PROCESS;
 END behavior;
 
