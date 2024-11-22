@@ -36,6 +36,42 @@
 					"strict" : false
 				},
 				{
+					"name" : "debug1",
+					"strict" : false
+				},
+				{
+					"name" : "debugvec[0]",
+					"strict" : false
+				},
+				{
+					"name" : "debugvec[1]",
+					"strict" : false
+				},
+				{
+					"name" : "debugvec[2]",
+					"strict" : false
+				},
+				{
+					"name" : "debugvec[3]",
+					"strict" : false
+				},
+				{
+					"name" : "debugvec[4]",
+					"strict" : false
+				},
+				{
+					"name" : "debugvec[5]",
+					"strict" : false
+				},
+				{
+					"name" : "debugvec[6]",
+					"strict" : false
+				},
+				{
+					"name" : "debugvec[7]",
+					"strict" : false
+				},
+				{
 					"name" : "clock",
 					"strict" : false
 				},

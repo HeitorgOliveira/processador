@@ -1,16 +1,16 @@
-Fitter Status : Successful - Tue Nov 19 13:58:38 2024
+Fitter Status : Successful - Fri Nov 22 14:36:43 2024
 Quartus Prime Version : 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 Revision Name : CPU
 Top-level Entity Name : CPU
 Family : Cyclone V
 Device : 5CEBA4F23C7
 Timing Models : Final
-Logic utilization (in ALMs) : 1 / 18,480 ( < 1 % )
-Total registers : 0
-Total pins : 18 / 224 ( 8 % )
+Logic utilization (in ALMs) : 16 / 18,480 ( < 1 % )
+Total registers : 39
+Total pins : 27 / 224 ( 12 % )
 Total virtual pins : 0
-Total block memory bits : 0 / 3,153,920 ( 0 % )
-Total RAM Blocks : 0 / 308 ( 0 % )
+Total block memory bits : 1,024 / 3,153,920 ( < 1 % )
+Total RAM Blocks : 1 / 308 ( < 1 % )
 Total DSP Blocks : 0 / 66 ( 0 % )
 Total HSSI RX PCSs : 0
 Total HSSI PMA RX Deserializers : 0

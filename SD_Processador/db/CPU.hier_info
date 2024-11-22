@@ -61,14 +61,23 @@ switches[4] => input_unit:Entrada.switches[4]
 switches[5] => input_unit:Entrada.switches[5]
 switches[6] => input_unit:Entrada.switches[6]
 switches[7] => input_unit:Entrada.switches[7]
-leds[0] << output_unit:Saida.leds[0]
-leds[1] << output_unit:Saida.leds[1]
-leds[2] << output_unit:Saida.leds[2]
-leds[3] << output_unit:Saida.leds[3]
-leds[4] << output_unit:Saida.leds[4]
-leds[5] << output_unit:Saida.leds[5]
-leds[6] << output_unit:Saida.leds[6]
-leds[7] << output_unit:Saida.leds[7]
+leds[0] <= output_unit:Saida.leds[0]
+leds[1] <= output_unit:Saida.leds[1]
+leds[2] <= output_unit:Saida.leds[2]
+leds[3] <= output_unit:Saida.leds[3]
+leds[4] <= output_unit:Saida.leds[4]
+leds[5] <= output_unit:Saida.leds[5]
+leds[6] <= output_unit:Saida.leds[6]
+leds[7] <= output_unit:Saida.leds[7]
+debug1 <= unidadecontrole:Controle.pc_enable
+debugvec[0] <= program_counter:PC.pc_out[0]
+debugvec[1] <= program_counter:PC.pc_out[1]
+debugvec[2] <= program_counter:PC.pc_out[2]
+debugvec[3] <= program_counter:PC.pc_out[3]
+debugvec[4] <= program_counter:PC.pc_out[4]
+debugvec[5] <= program_counter:PC.pc_out[5]
+debugvec[6] <= program_counter:PC.pc_out[6]
+debugvec[7] <= program_counter:PC.pc_out[7]
 
 
 |CPU|program_counter:PC
@@ -88,22 +97,14 @@ reset => pc[4].ACLR
 reset => pc[5].ACLR
 reset => pc[6].ACLR
 reset => pc[7].ACLR
-load => pc.OUTPUTSELECT
-load => pc.OUTPUTSELECT
-load => pc.OUTPUTSELECT
-load => pc.OUTPUTSELECT
-load => pc.OUTPUTSELECT
-load => pc.OUTPUTSELECT
-load => pc.OUTPUTSELECT
-load => pc.OUTPUTSELECT
-increment => pc.OUTPUTSELECT
-increment => pc.OUTPUTSELECT
-increment => pc.OUTPUTSELECT
-increment => pc.OUTPUTSELECT
-increment => pc.OUTPUTSELECT
-increment => pc.OUTPUTSELECT
-increment => pc.OUTPUTSELECT
-increment => pc.OUTPUTSELECT
+enable => pc[7].ENA
+enable => pc[6].ENA
+enable => pc[5].ENA
+enable => pc[4].ENA
+enable => pc[3].ENA
+enable => pc[2].ENA
+enable => pc[1].ENA
+enable => pc[0].ENA
 new_address[0] => pc.DATAB
 new_address[1] => pc.DATAB
 new_address[2] => pc.DATAB
@@ -112,6 +113,14 @@ new_address[4] => pc.DATAB
 new_address[5] => pc.DATAB
 new_address[6] => pc.DATAB
 new_address[7] => pc.DATAB
+load => pc.OUTPUTSELECT
+load => pc.OUTPUTSELECT
+load => pc.OUTPUTSELECT
+load => pc.OUTPUTSELECT
+load => pc.OUTPUTSELECT
+load => pc.OUTPUTSELECT
+load => pc.OUTPUTSELECT
+load => pc.OUTPUTSELECT
 pc_out[0] <= pc[0].DB_MAX_OUTPUT_PORT_TYPE
 pc_out[1] <= pc[1].DB_MAX_OUTPUT_PORT_TYPE
 pc_out[2] <= pc[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -124,8 +133,8 @@ pc_out[7] <= pc[7].DB_MAX_OUTPUT_PORT_TYPE
 
 |CPU|UnidadeControle:Controle
 clk => estado~1.DATAIN
+reset => Selector0.IN4
 reset => proximo_estado.ESPERA.DATAB
-reset => Selector0.IN2
 reset => estado~3.DATAIN
 instrucao[0] => ~NO_FANOUT~
 instrucao[1] => ~NO_FANOUT~

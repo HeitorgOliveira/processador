@@ -68,7 +68,7 @@ begin
         case estado is
             -- Estado de espera
             when ESPERA =>
-                if reset = '0' then
+                if reset = '1' then
                     proximo_estado <= BUSCA;
                 else
                     proximo_estado <= ESPERA;
