@@ -8,8 +8,12 @@ ENTITY CPU IS
         reset         : IN  STD_LOGIC;                   -- Sinal de reset
         switches      : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);-- Entrada (switches)
         leds          : OUT STD_LOGIC_VECTOR(7 DOWNTO 0); -- Saída (LEDs)
-		  debug1        : OUT STD_LOGIC;
-		  debugvec		 : OUT STD_LOGIC_VECTOR(7 DOWNTO 0)
+		  hex0          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+		  hex1          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+		  hex2          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+		  hex3          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+		  hex4          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+		  debug1        : OUT STD_LOGIC
     );
 END CPU;
 
@@ -24,6 +28,7 @@ ARCHITECTURE Behavioral OF CPU IS
     SIGNAL reg_a, reg_b, reg_r : std_logic_vector(7 DOWNTO 0);
     SIGNAL output_mux_select : std_logic_vector(1 DOWNTO 0);
     SIGNAL data_out_intermediate : std_logic_vector(7 DOWNTO 0);
+	 SIGNAL debugvec : std_logic_vector(7 DOWNTO 0);
 
 BEGIN
     -- Instância do Program Counter (PC)
@@ -38,7 +43,7 @@ BEGIN
 
     -- Debug para saída de PC
     debug1 <= pc_enable;
-    debugvec <= pc_out;
+    debugvec <= pc_out (7 DOWNTO 0);
 
     -- Instância da Unidade de Controle
     Controle : ENTITY work.UnidadeControle PORT MAP (
@@ -109,6 +114,74 @@ BEGIN
                 reg_r <= alu_result;
             end if;
         end if;
+    end process;
+    process (reg_a, reg_b)
+    begin
+        case reg_a is
+            when "00000000" => hex0 <= "1000000"; -- 0
+            when "00000001" => hex0 <= "1111001"; -- 1
+            when "00000010" => hex0 <= "0100100"; -- 2
+            when "00000011" => hex0 <= "0110000"; -- 3
+            when "00000100" => hex0 <= "0011001"; -- 4
+            when "00000101" => hex0 <= "0010010"; -- 5
+            when "00000110" => hex0 <= "0000010"; -- 6
+            when "00000111" => hex0 <= "1111000"; -- 7
+            when "00001000" => hex0 <= "0000000"; -- 8
+            when "00001001" => hex0 <= "0010000"; -- 9
+            when others => hex0 <= "1111111"; -- Display apagado em caso de erro
+        end case;
+		  case reg_b is
+            when "00000000" => hex1 <= "1000000"; -- 0
+            when "00000001" => hex1 <= "1111001"; -- 1
+            when "00000010" => hex1 <= "0100100"; -- 2
+            when "00000011" => hex1 <= "0110000"; -- 3
+            when "00000100" => hex1 <= "0011001"; -- 4
+            when "00000101" => hex1 <= "0010010"; -- 5
+            when "00000110" => hex1 <= "0000010"; -- 6
+            when "00000111" => hex1 <= "1111000"; -- 7
+            when "00001000" => hex1 <= "0000000"; -- 8
+            when "00001001" => hex1 <= "0010000"; -- 9
+            when others => hex1 <= "1111111"; -- Display apagado em caso de erro
+        end case;
+		  case reg_r is
+            when "00000000" => hex2 <= "1000000"; -- 0
+            when "00000001" => hex2 <= "1111001"; -- 1
+            when "00000010" => hex2 <= "0100100"; -- 2
+            when "00000011" => hex2 <= "0110000"; -- 3
+            when "00000100" => hex2 <= "0011001"; -- 4
+            when "00000101" => hex2 <= "0010010"; -- 5
+            when "00000110" => hex2 <= "0000010"; -- 6
+            when "00000111" => hex2 <= "1111000"; -- 7
+            when "00001000" => hex2 <= "0000000"; -- 8
+            when "00001001" => hex2 <= "0010000"; -- 9
+            when others => hex2 <= "1111111"; -- Display apagado em caso de erro
+        end case;
+		  case alu_result is
+            when "00000000" => hex3 <= "1000000"; -- 0
+            when "00000001" => hex3 <= "1111001"; -- 1
+            when "00000010" => hex3 <= "0100100"; -- 2
+            when "00000011" => hex3 <= "0110000"; -- 3
+            when "00000100" => hex3 <= "0011001"; -- 4
+            when "00000101" => hex3 <= "0010010"; -- 5
+            when "00000110" => hex3 <= "0000010"; -- 6
+            when "00000111" => hex3 <= "1111000"; -- 7
+            when "00001000" => hex3 <= "0000000"; -- 8
+            when "00001001" => hex3 <= "0010000"; -- 9
+            when others => hex3 <= "1111111"; -- Display apagado em caso de erro
+        end case;
+		  case debugvec is
+            when "00000000" => hex4 <= "1000000"; -- 0
+            when "00000001" => hex4 <= "1111001"; -- 1
+            when "00000010" => hex4 <= "0100100"; -- 2
+            when "00000011" => hex4 <= "0110000"; -- 3
+            when "00000100" => hex4 <= "0011001"; -- 4
+            when "00000101" => hex4 <= "0010010"; -- 5
+            when "00000110" => hex4 <= "0000010"; -- 6
+            when "00000111" => hex4 <= "1111000"; -- 7
+            when "00001000" => hex4 <= "0000000"; -- 8
+            when "00001001" => hex4 <= "0010000"; -- 9
+            when others => hex4 <= "1111111"; -- Display apagado em caso de erro
+        end case;
     end process;
 
     -- Multiplexador de Saída
