@@ -1,6 +1,6 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
-USE IEEE.NUMERIC_STD.ALL; -- Usar apenas esta biblioteca para operações aritméticas com SIGNED e UNSIGNED
+USE IEEE.NUMERIC_STD.ALL;
 
 ENTITY CPU IS
     PORT (
@@ -8,12 +8,12 @@ ENTITY CPU IS
         reset         : IN  STD_LOGIC;                   -- Sinal de reset
         switches      : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);-- Entrada (switches)
         leds          : OUT STD_LOGIC_VECTOR(7 DOWNTO 0); -- Saída (LEDs)
-		  hex0          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
-		  hex1          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
-		  hex2          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
-		  hex3          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
-		  hex4          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
-		  debug1        : OUT STD_LOGIC
+        hex0          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+        hex1          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+        hex2          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+        hex3          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+        hex4          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+        debug1        : OUT STD_LOGIC
     );
 END CPU;
 
@@ -25,19 +25,23 @@ ARCHITECTURE Behavioral OF CPU IS
     SIGNAL mem_enable, read_enable, write_enable : std_logic;
     SIGNAL input_enable, output_enable, pc_enable, alu_enable : std_logic;
     SIGNAL reg_a_enable, reg_b_enable, reg_r_enable : std_logic;
-    SIGNAL reg_a, reg_b, reg_r : std_logic_vector(7 DOWNTO 0);
+    SIGNAL reg_a, reg_b, reg_r, reg_literal : std_logic_vector(7 DOWNTO 0);
     SIGNAL output_mux_select : std_logic_vector(1 DOWNTO 0);
     SIGNAL data_out_intermediate : std_logic_vector(7 DOWNTO 0);
-	 SIGNAL debugvec : std_logic_vector(7 DOWNTO 0);
+    SIGNAL debugvec : std_logic_vector(7 DOWNTO 0);
+	 SIGNAL out_reg, in_reg : std_logic_vector(7 DOWNTO 0);
+    
+    -- Sinais para seleção de registradores
+    SIGNAL reg_select_a, reg_select_b : std_logic_vector(1 DOWNTO 0);
 
 BEGIN
     -- Instância do Program Counter (PC)
     PC : ENTITY work.program_counter PORT MAP (
         clock       => clock,
         reset       => reset,
-        enable      => pc_enable,       -- Apenas usa pc_enable para controle do contador
-        load        => '0',             -- Não estamos usando salto (sempre 0 neste caso)
-        new_address => (others => '0'), -- Endereço fixo para salto não utilizado
+        enable      => pc_enable,       
+        load        => '0',             
+        new_address => (others => '0'), 
         pc_out      => pc_out
     );
 
@@ -61,15 +65,31 @@ BEGIN
         output_enable     => output_enable,
         pc_enable         => pc_enable,
         alu_enable        => alu_enable,
-        reg_a_enable      => reg_a_enable,
-        reg_b_enable      => reg_b_enable,
-        reg_r_enable      => reg_r_enable,
-        output_mux_select => output_mux_select
+        reg_select_a      => reg_select_a,    -- Novo sinal para seleção do registrador A
+        reg_select_b      => reg_select_b     -- Novo sinal para seleção do registrador B
     );
+
+    -- Processo de seleção de registradores para a ULA
+    PROCESS(reg_select_a, reg_select_b, reg_a, reg_b, reg_r, reg_literal)
+    BEGIN
+        -- Seleção do primeiro operando (A)
+        CASE reg_select_a IS
+            WHEN "00" => 
+                data_out_intermediate <= reg_a;
+            WHEN "01" => 
+                data_out_intermediate <= reg_b;
+            WHEN "10" => 
+                data_out_intermediate <= reg_r;
+            WHEN "11" => 
+                data_out_intermediate <= reg_literal;
+            WHEN OTHERS => 
+                data_out_intermediate <= (OTHERS => '0');
+        END CASE;
+    END PROCESS;
 
     -- Instância da ULA (ALU)
     ULA : ENTITY work.ULA PORT MAP (
-        A        => reg_a,
+        A        => data_out_intermediate,
         B        => reg_b,
         opcode   => instrucao(7 DOWNTO 4),
         result   => alu_result,
@@ -92,7 +112,7 @@ BEGIN
     -- Instância da Unidade de Entrada
     Entrada : ENTITY work.Input_Unit PORT MAP (
         switches      => switches,
-        data_out      => data_out_intermediate,
+        data_out      => in_reg,
         input_enable  => input_enable
     );
 
@@ -103,109 +123,59 @@ BEGIN
             reg_a <= (others => '0');
             reg_b <= (others => '0');
             reg_r <= (others => '0');
+            reg_literal <= (others => '0');
         elsif rising_edge(clock) then
-            if reg_a_enable = '1' then
-                reg_a <= data_out_intermediate;
-            end if;
-            if reg_b_enable = '1' then
-                reg_b <= data_out_intermediate;
-            end if;
-            if reg_r_enable = '1' then
-                reg_r <= alu_result;
-            end if;
+            -- Atualização dos registradores baseada na seleção
+            CASE reg_select_a IS
+                WHEN "00" => 
+                    reg_a <= data_out_intermediate;
+                WHEN "01" => 
+                    reg_b <= data_out_intermediate;
+                WHEN "10" => 
+                    reg_r <= data_out_intermediate;
+                WHEN "11" => 
+                    reg_literal <= data_out_intermediate;
+                WHEN OTHERS => 
+                    NULL;
+            END CASE;
         end if;
-    end process;
-    process (reg_a, reg_b)
-    begin
-        case reg_a is
-            when "00000000" => hex0 <= "1000000"; -- 0
-            when "00000001" => hex0 <= "1111001"; -- 1
-            when "00000010" => hex0 <= "0100100"; -- 2
-            when "00000011" => hex0 <= "0110000"; -- 3
-            when "00000100" => hex0 <= "0011001"; -- 4
-            when "00000101" => hex0 <= "0010010"; -- 5
-            when "00000110" => hex0 <= "0000010"; -- 6
-            when "00000111" => hex0 <= "1111000"; -- 7
-            when "00001000" => hex0 <= "0000000"; -- 8
-            when "00001001" => hex0 <= "0010000"; -- 9
-            when others => hex0 <= "1111111"; -- Display apagado em caso de erro
-        end case;
-		  case reg_b is
-            when "00000000" => hex1 <= "1000000"; -- 0
-            when "00000001" => hex1 <= "1111001"; -- 1
-            when "00000010" => hex1 <= "0100100"; -- 2
-            when "00000011" => hex1 <= "0110000"; -- 3
-            when "00000100" => hex1 <= "0011001"; -- 4
-            when "00000101" => hex1 <= "0010010"; -- 5
-            when "00000110" => hex1 <= "0000010"; -- 6
-            when "00000111" => hex1 <= "1111000"; -- 7
-            when "00001000" => hex1 <= "0000000"; -- 8
-            when "00001001" => hex1 <= "0010000"; -- 9
-            when others => hex1 <= "1111111"; -- Display apagado em caso de erro
-        end case;
-		  case reg_r is
-            when "00000000" => hex2 <= "1000000"; -- 0
-            when "00000001" => hex2 <= "1111001"; -- 1
-            when "00000010" => hex2 <= "0100100"; -- 2
-            when "00000011" => hex2 <= "0110000"; -- 3
-            when "00000100" => hex2 <= "0011001"; -- 4
-            when "00000101" => hex2 <= "0010010"; -- 5
-            when "00000110" => hex2 <= "0000010"; -- 6
-            when "00000111" => hex2 <= "1111000"; -- 7
-            when "00001000" => hex2 <= "0000000"; -- 8
-            when "00001001" => hex2 <= "0010000"; -- 9
-            when others => hex2 <= "1111111"; -- Display apagado em caso de erro
-        end case;
-		  case alu_result is
-            when "00000000" => hex3 <= "1000000"; -- 0
-            when "00000001" => hex3 <= "1111001"; -- 1
-            when "00000010" => hex3 <= "0100100"; -- 2
-            when "00000011" => hex3 <= "0110000"; -- 3
-            when "00000100" => hex3 <= "0011001"; -- 4
-            when "00000101" => hex3 <= "0010010"; -- 5
-            when "00000110" => hex3 <= "0000010"; -- 6
-            when "00000111" => hex3 <= "1111000"; -- 7
-            when "00001000" => hex3 <= "0000000"; -- 8
-            when "00001001" => hex3 <= "0010000"; -- 9
-            when others => hex3 <= "1111111"; -- Display apagado em caso de erro
-        end case;
-		  case debugvec is
-            when "00000000" => hex4 <= "1000000"; -- 0
-            when "00000001" => hex4 <= "1111001"; -- 1
-            when "00000010" => hex4 <= "0100100"; -- 2
-            when "00000011" => hex4 <= "0110000"; -- 3
-            when "00000100" => hex4 <= "0011001"; -- 4
-            when "00000101" => hex4 <= "0010010"; -- 5
-            when "00000110" => hex4 <= "0000010"; -- 6
-            when "00000111" => hex4 <= "1111000"; -- 7
-            when "00001000" => hex4 <= "0000000"; -- 8
-            when "00001001" => hex4 <= "0010000"; -- 9
-            when others => hex4 <= "1111111"; -- Display apagado em caso de erro
-        end case;
-    end process;
-
-    -- Multiplexador de Saída
-    process(output_mux_select, reg_a, reg_b, reg_r, alu_result)
-    begin
-        case output_mux_select is
-            when "00" =>
-                data_out <= reg_a;
-            when "01" =>
-                data_out <= reg_b;
-            when "10" =>
-                data_out <= reg_r;
-            when "11" =>
-                data_out <= alu_result;
-            when others =>
-                data_out <= (others => '0');
-        end case;
     end process;
 
     -- Unidade de Saída
     Saida : ENTITY work.Output_Unit PORT MAP (
-        data_in       => data_out,
+        data_in       => out_reg,
         leds          => leds,
         output_enable => output_enable,
         clock         => clock
     );
+	 
+	 
+	 
+	 -- Instâncias do DisplayDriver para os displays HEX0 a HEX4
+    HEX0_Driver : ENTITY work.DisplayDriver PORT MAP (
+        value_in => reg_a(3 DOWNTO 0), -- Apenas 4 bits relevantes
+        hex_out  => hex0
+    );
+
+    HEX1_Driver : ENTITY work.DisplayDriver PORT MAP (
+        value_in => reg_b(3 DOWNTO 0),
+        hex_out  => hex1
+    );
+
+    HEX2_Driver : ENTITY work.DisplayDriver PORT MAP (
+        value_in => reg_r(3 DOWNTO 0),
+        hex_out  => hex2
+    );
+
+    HEX3_Driver : ENTITY work.DisplayDriver PORT MAP (
+        value_in => alu_result(3 DOWNTO 0),
+        hex_out  => hex3
+    );
+
+    HEX4_Driver : ENTITY work.DisplayDriver PORT MAP (
+        value_in => debugvec(3 DOWNTO 0),
+        hex_out  => hex4
+    );
+	 
 END Behavioral;
+    

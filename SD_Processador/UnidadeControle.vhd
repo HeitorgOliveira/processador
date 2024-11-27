@@ -19,10 +19,8 @@ entity UnidadeControle is
         output_enable : out std_logic; -- Enable para saída
         pc_enable     : out std_logic; -- Enable para contador de programa
         alu_enable    : out std_logic; -- Enable para ULA
-        reg_a_enable  : out std_logic; -- Enable específico para registrador A
-        reg_b_enable  : out std_logic; -- Enable específico para registrador B
-        reg_r_enable  : out std_logic; -- Enable específico para registrador de resultado (R)
-        output_mux_select : out std_logic_vector(1 downto 0) -- Seleção de saída
+        reg_select_a  : out std_logic_vector(1 downto 0); -- Seleção do primeiro registrador
+        reg_select_b  : out std_logic_vector(1 downto 0)  -- Seleção do segundo registrador
     );
 end UnidadeControle;
 
@@ -60,10 +58,8 @@ begin
         output_enable <= '0';
         pc_enable <= '0';
         alu_enable <= '0';
-        reg_a_enable <= '0';
-        reg_b_enable <= '0';
-        reg_r_enable <= '0';
-        output_mux_select <= "00";
+        reg_select_a <= "00"; -- Padrão: seleciona registrador A
+        reg_select_b <= "00"; -- Padrão: seleciona registrador A
 
         case estado is
             -- Estado de espera
@@ -81,6 +77,24 @@ begin
 
             -- Decodifica a instrução
             when DECODIFICA =>
+                -- Decodificação da seleção de registradores
+                case reg_select(1 downto 0) is
+                    when "00" => reg_select_a <= "00"; -- Registrador A
+                    when "01" => reg_select_a <= "01"; -- Registrador B
+                    when "10" => reg_select_a <= "10"; -- Registrador R
+                    when "11" => reg_select_a <= "11"; -- Literal
+                    when others => reg_select_a <= "00";
+                end case;
+
+                case reg_select(3 downto 2) is
+                    when "00" => reg_select_b <= "00"; -- Registrador A
+                    when "01" => reg_select_b <= "01"; -- Registrador B
+                    when "10" => reg_select_b <= "10"; -- Registrador R
+                    when "11" => reg_select_b <= "11"; -- Literal
+                    when others => reg_select_b <= "00";
+                end case;
+
+                -- Decodificação do opcode
                 case opcode is
                     when "0000" => proximo_estado <= EXECUTA; -- ADD
                     when "0001" => proximo_estado <= EXECUTA; -- SUB
@@ -95,8 +109,6 @@ begin
             -- Executa operações da ULA
             when EXECUTA =>
                 alu_enable <= '1'; -- Ativa a ULA
-                reg_r_enable <= '1'; -- Habilita o registrador de resultado
-                output_mux_select <= "11"; -- Saída direta da ULA
                 proximo_estado <= BUSCA;
 
             -- Acessa memória ou dispositivos de I/O
@@ -104,11 +116,8 @@ begin
                 case opcode is
                     when "1001" => -- IN
                         input_enable <= '1';
-                        reg_a_enable <= '1'; -- Carrega no registrador A
-                        output_mux_select <= "00"; -- Saída do registrador A
                     when "1010" => -- OUT
                         output_enable <= '1';
-                        output_mux_select <= "10"; -- Seleciona o registrador R como saída
                     when others =>
                         -- Não faz nada
                 end case;
