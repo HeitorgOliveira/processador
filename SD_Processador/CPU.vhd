@@ -13,6 +13,7 @@ ENTITY CPU IS
         hex2          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         hex3          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         hex4          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+		  hex5          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         debug1        : OUT STD_LOGIC
     );
 END CPU;
@@ -25,7 +26,7 @@ ARCHITECTURE Behavioral OF CPU IS
     SIGNAL mem_enable, read_enable, write_enable : std_logic;
     SIGNAL input_enable, output_enable, pc_enable, alu_enable, literal_enable : std_logic;
     SIGNAL reg_a_enable, reg_b_enable, reg_r_enable : std_logic;
-    SIGNAL reg_a, reg_b, reg_r, reg_literal : std_logic_vector(7 DOWNTO 0);
+    SIGNAL reg_a, reg_b, reg_r, reg_literal : std_logic_vector(7 DOWNTO 0) := "00000000";
 	 SIGNAL reg_inter_1, reg_inter_2 : std_logic_vector(7 DOWNTO 0);
     SIGNAL output_mux_select : std_logic_vector(1 DOWNTO 0);
     SIGNAL data_out_intermediate : std_logic_vector(7 DOWNTO 0);
@@ -37,6 +38,7 @@ ARCHITECTURE Behavioral OF CPU IS
     SIGNAL reg_select_a, reg_select_b : std_logic_vector(1 DOWNTO 0);
 
 BEGIN
+
     -- Instância do Program Counter (PC)
     PC : ENTITY work.program_counter PORT MAP (
         clock       => clock,
@@ -74,52 +76,64 @@ BEGIN
     );
 
     -- Processo de seleção de registradores para a ULA
-    PROCESS(reg_select_a, reg_select_b, reg_a, reg_b, reg_r, reg_literal, in_reg)
+    PROCESS(reg_select_a, reg_select_b, reg_a, reg_b, reg_r, reg_literal, in_reg, reset, clock)
     BEGIN
-        -- Seleção do primeiro operando (A)
-        CASE reg_select_a IS
-            WHEN "00" => 
-                reg_inter_1 <= reg_a;
-            WHEN "01" => 
-                reg_inter_1 <= reg_b;
-            WHEN "10" => 
-                reg_inter_1 <= reg_r;
-            WHEN "11" => 
-                reg_inter_1 <= reg_literal;
-            WHEN OTHERS => 
-                reg_inter_1 <= (OTHERS => '0');
-        END CASE;
-		  
-		  -- Seleção do segundo operando (B)
-        CASE reg_select_b IS
-            WHEN "00" => 
-                reg_inter_2 <= reg_a;
-            WHEN "01" => 
-                reg_inter_2 <= reg_b;
-            WHEN "10" => 
-                reg_inter_2 <= reg_r;
-            WHEN "11" => 
-                reg_inter_2 <= reg_literal;
-            WHEN OTHERS => 
-                reg_inter_2 <= (OTHERS => '0');
-			END CASE;
-			
-			--Para caso do input
-			IF input_enable = '1' THEN
-				CASE reg_select_a IS
+		  if reset = '0' then
+            reg_a <= (others => '0');
+				reg_b <= (others => '0');
+				reg_r <= (others => '0');
+				reg_literal <= (others => '0');
+        elsif rising_edge(clock) then
+			  -- Seleção do primeiro operando (A)
+			  CASE reg_select_a IS
 					WHEN "00" => 
-						 reg_a <= in_reg;
+						 reg_inter_1 <= reg_a;
 					WHEN "01" => 
-						 reg_b <= in_reg;
+						 reg_inter_1 <= reg_b;
 					WHEN "10" => 
-						 reg_r <= in_reg;
+						 reg_inter_1 <= reg_r;
 					WHEN "11" => 
-						 reg_literal <= in_reg;
+						 reg_inter_1 <= reg_literal;
 					WHEN OTHERS => 
-						 reg_a <= (OTHERS => '0');
+						 reg_inter_1 <= (OTHERS => '0');
 			  END CASE;
-			
-			END IF;
+			  
+			  -- Seleção do segundo operando (B)
+			  CASE reg_select_b IS
+					WHEN "00" => 
+						 reg_inter_2 <= reg_a;
+					WHEN "01" => 
+						 reg_inter_2 <= reg_b;
+					WHEN "10" => 
+						 reg_inter_2 <= reg_r;
+					WHEN "11" => 
+						 reg_inter_2 <= reg_literal;
+					WHEN OTHERS => 
+						 reg_inter_2 <= (OTHERS => '0');
+				END CASE;
+				
+				--Para caso do input
+				IF input_enable = '1' THEN
+					CASE reg_select_a IS
+						WHEN "00" => 
+							 reg_a <= in_reg;
+						WHEN "01" => 
+							 reg_b <= in_reg;
+						WHEN "10" => 
+							 reg_r <= in_reg;
+						WHEN "11" => 
+							 reg_a <= in_reg;
+						WHEN OTHERS => 
+							 reg_a <= (OTHERS => '0');
+				   END CASE;
+				ELSIF literal_enable = '1' then
+					reg_literal <= instrucao;
+	
+				ELSIF alu_enable = '1' THEN
+					reg_r <= alu_result;
+				END IF;
+				
+			end if;
     END PROCESS;
 
 
@@ -185,8 +199,13 @@ BEGIN
     );
 
     HEX4_Driver : ENTITY work.DisplayDriver PORT MAP (
-        value_in => debugvec(3 DOWNTO 0),
+        value_in => reg_literal(3 DOWNTO 0),
         hex_out  => hex4
+    );
+	 
+	 HEX5_Driver : ENTITY work.DisplayDriver PORT MAP (
+        value_in => debugvec(3 DOWNTO 0),
+        hex_out  => hex5
     );
 	 
 END Behavioral;

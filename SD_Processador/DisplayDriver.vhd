@@ -23,6 +23,12 @@ BEGIN
             WHEN "0111" => hex_out <= "1111000"; -- 7
             WHEN "1000" => hex_out <= "0000000"; -- 8
             WHEN "1001" => hex_out <= "0010000"; -- 9
+            WHEN "1010" => hex_out <= "0001000"; -- A
+            WHEN "1011" => hex_out <= "0000011"; -- B
+            WHEN "1100" => hex_out <= "1000110"; -- C
+            WHEN "1101" => hex_out <= "0100001"; -- D
+            WHEN "1110" => hex_out <= "0000110"; -- E
+            WHEN "1111" => hex_out <= "0001110"; -- F
             WHEN OTHERS => hex_out <= "1111111"; -- Display apagado
         END CASE;
     END PROCESS;
