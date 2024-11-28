@@ -23,9 +23,9 @@ DATA_RADIX=BINARY;
 
 CONTENT BEGIN
     0 : 10010000;  -- IN A
-    1 : 10010001;  -- IN B
+    1 : 10010100;  -- IN B
     2 : 00000010;  -- ADD A, B
-    3 : 10100011;  -- OUT R
+    3 : 10101000;  -- OUT R
     4 : 11110000;  -- WAIT
     [5..255] : 00000000;  -- Preenche os endereços restantes com 0 (NOP)
 END;

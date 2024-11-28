@@ -31,7 +31,7 @@ ARCHITECTURE Behavioral OF CPU IS
     SIGNAL data_out_intermediate : std_logic_vector(7 DOWNTO 0);
 	 SIGNAL ula_code : std_logic_vector(3 DOWNTO 0);
     SIGNAL debugvec : std_logic_vector(7 DOWNTO 0);
-	 SIGNAL out_reg, in_reg : std_logic_vector(7 DOWNTO 0);
+	 SIGNAL in_reg : std_logic_vector(7 DOWNTO 0);
     
     -- Sinais para seleção de registradores
     SIGNAL reg_select_a, reg_select_b : std_logic_vector(1 DOWNTO 0);
@@ -74,7 +74,7 @@ BEGIN
     );
 
     -- Processo de seleção de registradores para a ULA
-    PROCESS(reg_select_a, reg_select_b, reg_a, reg_b, reg_r, reg_literal)
+    PROCESS(reg_select_a, reg_select_b, reg_a, reg_b, reg_r, reg_literal, in_reg)
     BEGIN
         -- Seleção do primeiro operando (A)
         CASE reg_select_a IS
@@ -103,6 +103,23 @@ BEGIN
             WHEN OTHERS => 
                 reg_inter_2 <= (OTHERS => '0');
 			END CASE;
+			
+			--Para caso do input
+			IF input_enable = '1' THEN
+				CASE reg_select_a IS
+					WHEN "00" => 
+						 reg_a <= in_reg;
+					WHEN "01" => 
+						 reg_b <= in_reg;
+					WHEN "10" => 
+						 reg_r <= in_reg;
+					WHEN "11" => 
+						 reg_literal <= in_reg;
+					WHEN OTHERS => 
+						 reg_a <= (OTHERS => '0');
+			  END CASE;
+			
+			END IF;
     END PROCESS;
 
 
@@ -110,7 +127,7 @@ BEGIN
     ULA : ENTITY work.ULA PORT MAP (
         A        => reg_inter_1,
         B        => reg_inter_2,
-        opcode   => instrucao(7 DOWNTO 4),
+        opcode   => ula_code,
         result   => alu_result,
         Zero     => zero_flag,
         Sign     => sign_flag,
@@ -135,38 +152,14 @@ BEGIN
         input_enable  => input_enable
     );
 
-    -- Lógica dos Registradores
-    process(clock, reset)
-    begin
-        if reset = '0' then
-            reg_a <= (others => '0');
-            reg_b <= (others => '0');
-            reg_r <= (others => '0');
-            reg_literal <= (others => '0');
-        elsif rising_edge(clock) then
-            -- Atualização dos registradores baseada na seleção
-            CASE reg_select_a IS
-                WHEN "00" => 
-                    reg_a <= data_out_intermediate;
-                WHEN "01" => 
-                    reg_b <= data_out_intermediate;
-                WHEN "10" => 
-                    reg_r <= data_out_intermediate;
-                WHEN "11" => 
-                    reg_literal <= data_out_intermediate;
-                WHEN OTHERS => 
-                    NULL;
-            END CASE;
-        end if;
-    end process;
-
     -- Unidade de Saída
     Saida : ENTITY work.Output_Unit PORT MAP (
-        data_in       => out_reg,
+        data_in       => reg_inter_1,
         leds          => leds,
         output_enable => output_enable,
         clock         => clock
     );
+	 
 	 
 	 
 	 
