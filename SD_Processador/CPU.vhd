@@ -23,11 +23,13 @@ ARCHITECTURE Behavioral OF CPU IS
     SIGNAL data_in, data_out, alu_result : std_logic_vector(7 DOWNTO 0);
     SIGNAL zero_flag, sign_flag, carry_flag, overflow_flag : std_logic;
     SIGNAL mem_enable, read_enable, write_enable : std_logic;
-    SIGNAL input_enable, output_enable, pc_enable, alu_enable : std_logic;
+    SIGNAL input_enable, output_enable, pc_enable, alu_enable, literal_enable : std_logic;
     SIGNAL reg_a_enable, reg_b_enable, reg_r_enable : std_logic;
     SIGNAL reg_a, reg_b, reg_r, reg_literal : std_logic_vector(7 DOWNTO 0);
+	 SIGNAL reg_inter_1, reg_inter_2 : std_logic_vector(7 DOWNTO 0);
     SIGNAL output_mux_select : std_logic_vector(1 DOWNTO 0);
     SIGNAL data_out_intermediate : std_logic_vector(7 DOWNTO 0);
+	 SIGNAL ula_code : std_logic_vector(3 DOWNTO 0);
     SIGNAL debugvec : std_logic_vector(7 DOWNTO 0);
 	 SIGNAL out_reg, in_reg : std_logic_vector(7 DOWNTO 0);
     
@@ -65,8 +67,10 @@ BEGIN
         output_enable     => output_enable,
         pc_enable         => pc_enable,
         alu_enable        => alu_enable,
+		  literal_enable	  => literal_enable,
         reg_select_a      => reg_select_a,    -- Novo sinal para seleção do registrador A
-        reg_select_b      => reg_select_b     -- Novo sinal para seleção do registrador B
+        reg_select_b      => reg_select_b,     -- Novo sinal para seleção do registrador B
+		  ula_code 			  => ula_code
     );
 
     -- Processo de seleção de registradores para a ULA
@@ -75,22 +79,37 @@ BEGIN
         -- Seleção do primeiro operando (A)
         CASE reg_select_a IS
             WHEN "00" => 
-                data_out_intermediate <= reg_a;
+                reg_inter_1 <= reg_a;
             WHEN "01" => 
-                data_out_intermediate <= reg_b;
+                reg_inter_1 <= reg_b;
             WHEN "10" => 
-                data_out_intermediate <= reg_r;
+                reg_inter_1 <= reg_r;
             WHEN "11" => 
-                data_out_intermediate <= reg_literal;
+                reg_inter_1 <= reg_literal;
             WHEN OTHERS => 
-                data_out_intermediate <= (OTHERS => '0');
+                reg_inter_1 <= (OTHERS => '0');
         END CASE;
+		  
+		  -- Seleção do segundo operando (B)
+        CASE reg_select_b IS
+            WHEN "00" => 
+                reg_inter_2 <= reg_a;
+            WHEN "01" => 
+                reg_inter_2 <= reg_b;
+            WHEN "10" => 
+                reg_inter_2 <= reg_r;
+            WHEN "11" => 
+                reg_inter_2 <= reg_literal;
+            WHEN OTHERS => 
+                reg_inter_2 <= (OTHERS => '0');
+			END CASE;
     END PROCESS;
+
 
     -- Instância da ULA (ALU)
     ULA : ENTITY work.ULA PORT MAP (
-        A        => data_out_intermediate,
-        B        => reg_b,
+        A        => reg_inter_1,
+        B        => reg_inter_2,
         opcode   => instrucao(7 DOWNTO 4),
         result   => alu_result,
         Zero     => zero_flag,
@@ -102,7 +121,7 @@ BEGIN
     -- Instância da Memória
     Memoria : ENTITY work.memoria_unidade PORT MAP (
         clock     => clock,
-        data_in   => reg_r,
+        data_in   => reg_inter_1,
         rdaddress => pc_out,
         wraddress => pc_out,
         wren      => write_enable,

@@ -54,26 +54,9 @@ set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_symbol
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_signal_integrity
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST OFF -section_id eda_board_design_boundary_scan
-set_global_assignment -name VHDL_FILE CPU.vhd
-set_global_assignment -name VHDL_FILE ULAvhd.vhd
-set_global_assignment -name VHDL_FILE ULA.vhd
-set_global_assignment -name VHDL_FILE UnidadeControle.vhd
-set_global_assignment -name VHDL_FILE registrador.vhd
-set_global_assignment -name VHDL_FILE Input_Unit.vhd
-set_global_assignment -name VHDL_FILE Output_Unit.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VHDL_FILE Decodificador.vhd
-set_global_assignment -name VHDL_FILE address_bus.vhd
-set_global_assignment -name VHDL_FILE data_bus.vhd
-set_global_assignment -name VHDL_FILE control_bus.vhd
-set_global_assignment -name VHDL_FILE register.vhd
-set_global_assignment -name VHDL_FILE program_counter.vhd
-set_global_assignment -name VHDL_FILE register8.vhd
-set_global_assignment -name VHDL_FILE memoria_unidade.vhd
-set_global_assignment -name QIP_FILE ram256x8.qip
-set_global_assignment -name MIF_FILE ram256x8.mif
 set_location_assignment PIN_U7 -to reset
 set_location_assignment PIN_AA2 -to leds[0]
 set_location_assignment PIN_AA1 -to leds[1]
@@ -92,7 +75,6 @@ set_location_assignment PIN_AB15 -to switches[5]
 set_location_assignment PIN_AA14 -to switches[6]
 set_location_assignment PIN_AA13 -to switches[7]
 set_location_assignment PIN_U13 -to switches[0]
-set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform.vwf
 set_location_assignment PIN_L1 -to debug1
 set_location_assignment PIN_U20 -to hex0[0]
 set_location_assignment PIN_Y20 -to hex0[1]
@@ -129,5 +111,25 @@ set_location_assignment PIN_Y22 -to hex4[4]
 set_location_assignment PIN_Y21 -to hex4[5]
 set_location_assignment PIN_AA22 -to hex4[6]
 set_location_assignment PIN_Y16 -to hex2[0]
-set_global_assignment -name VHDL_FILE output_files/DisplayDriver.vhd
+set_global_assignment -name VHDL_FILE DisplayDriver.vhd
+set_global_assignment -name VHDL_FILE CPU.vhd
+set_global_assignment -name VHDL_FILE ULAvhd.vhd
+set_global_assignment -name VHDL_FILE ULA.vhd
+set_global_assignment -name VHDL_FILE UnidadeControle.vhd
+set_global_assignment -name VHDL_FILE registrador.vhd
+set_global_assignment -name VHDL_FILE Input_Unit.vhd
+set_global_assignment -name VHDL_FILE Output_Unit.vhd
+set_global_assignment -name VHDL_FILE Decodificador.vhd
+set_global_assignment -name VHDL_FILE address_bus.vhd
+set_global_assignment -name VHDL_FILE data_bus.vhd
+set_global_assignment -name VHDL_FILE control_bus.vhd
+set_global_assignment -name VHDL_FILE register.vhd
+set_global_assignment -name VHDL_FILE program_counter.vhd
+set_global_assignment -name VHDL_FILE register8.vhd
+set_global_assignment -name VHDL_FILE memoria_unidade.vhd
+set_global_assignment -name QIP_FILE ram256x8.qip
+set_global_assignment -name MIF_FILE ram256x8.mif
+set_global_assignment -name VECTOR_WAVEFORM_FILE output_files/Waveform.vwf
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
