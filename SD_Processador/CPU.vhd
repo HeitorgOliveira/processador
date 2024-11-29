@@ -175,8 +175,6 @@ BEGIN
     );
 	 
 	 
-	 
-	 
 	 -- Instâncias do DisplayDriver para os displays HEX0 a HEX4
     HEX0_Driver : ENTITY work.DisplayDriver PORT MAP (
         value_in => reg_a(3 DOWNTO 0), -- Apenas 4 bits relevantes

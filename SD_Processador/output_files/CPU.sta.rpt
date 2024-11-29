@@ -1,5 +1,5 @@
 Timing Analyzer report for CPU
-Thu Nov 28 12:38:11 2024
+Fri Nov 29 15:45:19 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -100,14 +100,14 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.16        ;
+; Average used               ; 1.12        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   5.3%      ;
-;     Processor 3            ;   5.2%      ;
-;     Processor 4            ;   5.2%      ;
+;     Processor 2            ;   3.9%      ;
+;     Processor 3            ;   3.8%      ;
+;     Processor 4            ;   3.8%      ;
 +----------------------------+-------------+
 
 
@@ -117,18 +117,18 @@ https://fpgasoftware.intel.com/eula.
 ; Clock Name                                 ; Type ; Period ; Frequency  ; Rise  ; Fall  ; Duty Cycle ; Divide by ; Multiply by ; Phase ; Offset ; Edge List ; Edge Shift ; Inverted ; Master ; Source ; Targets                                        ;
 +--------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------------------------------------------+
 ; clock                                      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { clock }                                      ;
+; UnidadeControle:Controle|estado.BUSCA      ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { UnidadeControle:Controle|estado.BUSCA }      ;
 ; UnidadeControle:Controle|estado.DECODIFICA ; Base ; 1.000  ; 1000.0 MHz ; 0.000 ; 0.500 ;            ;           ;             ;       ;        ;           ;            ;          ;        ;        ; { UnidadeControle:Controle|estado.DECODIFICA } ;
 +--------------------------------------------+------+--------+------------+-------+-------+------------+-----------+-------------+-------+--------+-----------+------------+----------+--------+--------+------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------+
-; Slow 1100mV 85C Model Fmax Summary                                               ;
-+------------+-----------------+--------------------------------------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name                                 ; Note ;
-+------------+-----------------+--------------------------------------------+------+
-; 67.54 MHz  ; 67.54 MHz       ; clock                                      ;      ;
-; 242.01 MHz ; 242.01 MHz      ; UnidadeControle:Controle|estado.DECODIFICA ;      ;
-+------------+-----------------+--------------------------------------------+------+
++--------------------------------------------------+
+; Slow 1100mV 85C Model Fmax Summary               ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 119.83 MHz ; 119.83 MHz      ; clock      ;      ;
++------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -143,8 +143,9 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------+---------+---------------+
 ; Clock                                      ; Slack   ; End Point TNS ;
 +--------------------------------------------+---------+---------------+
-; clock                                      ; -13.805 ; -417.218      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -10.175 ; -115.371      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; -10.354 ; -39.880       ;
+; UnidadeControle:Controle|estado.BUSCA      ; -9.203  ; -67.576       ;
+; clock                                      ; -7.345  ; -269.387      ;
 +--------------------------------------------+---------+---------------+
 
 
@@ -153,8 +154,9 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -5.473 ; -113.688      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.781  ; 0.000         ;
+; clock                                      ; -7.128 ; -311.389      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.997  ; 0.000         ;
+; UnidadeControle:Controle|estado.BUSCA      ; 4.655  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -175,8 +177,9 @@ No paths to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -2.636 ; -194.998      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.127  ; 0.000         ;
+; clock                                      ; -2.636 ; -191.902      ;
+; UnidadeControle:Controle|estado.BUSCA      ; 0.186  ; 0.000         ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.429  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -186,14 +189,13 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+----------------------------------------------------------------------------------+
-; Slow 1100mV 0C Model Fmax Summary                                                ;
-+------------+-----------------+--------------------------------------------+------+
-; Fmax       ; Restricted Fmax ; Clock Name                                 ; Note ;
-+------------+-----------------+--------------------------------------------+------+
-; 69.33 MHz  ; 69.33 MHz       ; clock                                      ;      ;
-; 242.42 MHz ; 242.42 MHz      ; UnidadeControle:Controle|estado.DECODIFICA ;      ;
-+------------+-----------------+--------------------------------------------+------+
++--------------------------------------------------+
+; Slow 1100mV 0C Model Fmax Summary                ;
++------------+-----------------+------------+------+
+; Fmax       ; Restricted Fmax ; Clock Name ; Note ;
++------------+-----------------+------------+------+
+; 122.14 MHz ; 122.14 MHz      ; clock      ;      ;
++------------+-----------------+------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
 
@@ -202,8 +204,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------------------------+---------+---------------+
 ; Clock                                      ; Slack   ; End Point TNS ;
 +--------------------------------------------+---------+---------------+
-; clock                                      ; -13.424 ; -397.186      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -10.136 ; -115.423      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; -10.395 ; -39.520       ;
+; UnidadeControle:Controle|estado.BUSCA      ; -9.180  ; -67.779       ;
+; clock                                      ; -7.187  ; -254.094      ;
 +--------------------------------------------+---------+---------------+
 
 
@@ -212,8 +215,9 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -5.481 ; -117.135      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.765  ; 0.000         ;
+; clock                                      ; -7.025 ; -308.900      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.838  ; 0.000         ;
+; UnidadeControle:Controle|estado.BUSCA      ; 4.637  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -234,8 +238,9 @@ No paths to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -2.636 ; -192.693      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.198  ; 0.000         ;
+; clock                                      ; -2.636 ; -189.433      ;
+; UnidadeControle:Controle|estado.BUSCA      ; 0.172  ; 0.000         ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.418  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -250,8 +255,9 @@ No synchronizer chains to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -8.349 ; -229.804      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -4.976 ; -54.784       ;
+; clock                                      ; -5.067 ; -141.254      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; -4.673 ; -18.357       ;
+; UnidadeControle:Controle|estado.BUSCA      ; -4.356 ; -30.999       ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -260,8 +266,9 @@ No synchronizer chains to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -2.474 ; -47.462       ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.346  ; 0.000         ;
+; clock                                      ; -3.527 ; -146.708      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.510  ; 0.000         ;
+; UnidadeControle:Controle|estado.BUSCA      ; 2.584  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -282,8 +289,9 @@ No paths to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -2.174 ; -129.901      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.296  ; 0.000         ;
+; clock                                      ; -2.174 ; -127.248      ;
+; UnidadeControle:Controle|estado.BUSCA      ; 0.205  ; 0.000         ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.424  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -298,8 +306,9 @@ No synchronizer chains to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -7.204 ; -187.070      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -4.747 ; -52.782       ;
+; UnidadeControle:Controle|estado.DECODIFICA ; -4.485 ; -17.518       ;
+; UnidadeControle:Controle|estado.BUSCA      ; -4.217 ; -30.322       ;
+; clock                                      ; -4.051 ; -109.738      ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -308,8 +317,9 @@ No synchronizer chains to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -2.458 ; -50.566       ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.327  ; 0.000         ;
+; clock                                      ; -3.443 ; -144.852      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.431  ; 0.000         ;
+; UnidadeControle:Controle|estado.BUSCA      ; 2.595  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -330,8 +340,9 @@ No paths to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -2.174 ; -129.082      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.341  ; 0.000         ;
+; clock                                      ; -2.174 ; -126.086      ;
+; UnidadeControle:Controle|estado.BUSCA      ; 0.261  ; 0.000         ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.436  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -346,12 +357,14 @@ No synchronizer chains to report.
 +---------------------------------------------+----------+----------+----------+---------+---------------------+
 ; Clock                                       ; Setup    ; Hold     ; Recovery ; Removal ; Minimum Pulse Width ;
 +---------------------------------------------+----------+----------+----------+---------+---------------------+
-; Worst-case Slack                            ; -13.805  ; -5.481   ; N/A      ; N/A     ; -2.636              ;
-;  UnidadeControle:Controle|estado.DECODIFICA ; -10.175  ; 0.327    ; N/A      ; N/A     ; 0.127               ;
-;  clock                                      ; -13.805  ; -5.481   ; N/A      ; N/A     ; -2.636              ;
-; Design-wide TNS                             ; -532.589 ; -117.135 ; 0.0      ; 0.0     ; -194.998            ;
-;  UnidadeControle:Controle|estado.DECODIFICA ; -115.423 ; 0.000    ; N/A      ; N/A     ; 0.000               ;
-;  clock                                      ; -417.218 ; -117.135 ; N/A      ; N/A     ; -194.998            ;
+; Worst-case Slack                            ; -10.395  ; -7.128   ; N/A      ; N/A     ; -2.636              ;
+;  UnidadeControle:Controle|estado.BUSCA      ; -9.203   ; 2.584    ; N/A      ; N/A     ; 0.172               ;
+;  UnidadeControle:Controle|estado.DECODIFICA ; -10.395  ; 0.431    ; N/A      ; N/A     ; 0.418               ;
+;  clock                                      ; -7.345   ; -7.128   ; N/A      ; N/A     ; -2.636              ;
+; Design-wide TNS                             ; -376.843 ; -311.389 ; 0.0      ; 0.0     ; -191.902            ;
+;  UnidadeControle:Controle|estado.BUSCA      ; -67.779  ; 0.000    ; N/A      ; N/A     ; 0.000               ;
+;  UnidadeControle:Controle|estado.DECODIFICA ; -39.880  ; 0.000    ; N/A      ; N/A     ; 0.000               ;
+;  clock                                      ; -269.387 ; -311.389 ; N/A      ; N/A     ; -191.902            ;
 +---------------------------------------------+----------+----------+----------+---------+---------------------+
 
 
@@ -673,10 +686,12 @@ No synchronizer chains to report.
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                 ; To Clock                                   ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
-; clock                                      ; clock                                      ; 770      ; 16       ; 16       ; 36       ;
-; UnidadeControle:Controle|estado.DECODIFICA ; clock                                      ; 84       ; 374      ; 0        ; 0        ;
-; clock                                      ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 39       ; 0        ;
-; UnidadeControle:Controle|estado.DECODIFICA ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 0        ; 12       ;
+; clock                                      ; clock                                      ; 289      ; 0        ; 0        ; 0        ;
+; UnidadeControle:Controle|estado.BUSCA      ; clock                                      ; 18       ; 254      ; 0        ; 0        ;
+; UnidadeControle:Controle|estado.DECODIFICA ; clock                                      ; 19       ; 195      ; 0        ; 0        ;
+; clock                                      ; UnidadeControle:Controle|estado.BUSCA      ; 0        ; 0        ; 8        ; 0        ;
+; clock                                      ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 20       ; 0        ;
+; UnidadeControle:Controle|estado.BUSCA      ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 0        ; 4        ;
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -686,10 +701,12 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                 ; To Clock                                   ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
-; clock                                      ; clock                                      ; 770      ; 16       ; 16       ; 36       ;
-; UnidadeControle:Controle|estado.DECODIFICA ; clock                                      ; 84       ; 374      ; 0        ; 0        ;
-; clock                                      ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 39       ; 0        ;
-; UnidadeControle:Controle|estado.DECODIFICA ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 0        ; 12       ;
+; clock                                      ; clock                                      ; 289      ; 0        ; 0        ; 0        ;
+; UnidadeControle:Controle|estado.BUSCA      ; clock                                      ; 18       ; 254      ; 0        ; 0        ;
+; UnidadeControle:Controle|estado.DECODIFICA ; clock                                      ; 19       ; 195      ; 0        ; 0        ;
+; clock                                      ; UnidadeControle:Controle|estado.BUSCA      ; 0        ; 0        ; 8        ; 0        ;
+; clock                                      ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 20       ; 0        ;
+; UnidadeControle:Controle|estado.BUSCA      ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 0        ; 4        ;
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
 Entries labeled "false path" only account for clock-to-clock false paths and not path-based false paths. As a result, actual path counts may be lower than reported.
 
@@ -714,9 +731,9 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 9     ; 9    ;
-; Unconstrained Input Port Paths  ; 89    ; 89   ;
-; Unconstrained Output Ports      ; 51    ; 51   ;
-; Unconstrained Output Port Paths ; 234   ; 234  ;
+; Unconstrained Input Port Paths  ; 74    ; 74   ;
+; Unconstrained Output Ports      ; 44    ; 44   ;
+; Unconstrained Output Port Paths ; 205   ; 205  ;
 +---------------------------------+-------+------+
 
 
@@ -725,6 +742,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 +--------------------------------------------+--------------------------------------------+------+-------------+
 ; Target                                     ; Clock                                      ; Type ; Status      ;
 +--------------------------------------------+--------------------------------------------+------+-------------+
+; UnidadeControle:Controle|estado.BUSCA      ; UnidadeControle:Controle|estado.BUSCA      ; Base ; Constrained ;
 ; UnidadeControle:Controle|estado.DECODIFICA ; UnidadeControle:Controle|estado.DECODIFICA ; Base ; Constrained ;
 ; clock                                      ; clock                                      ; Base ; Constrained ;
 +--------------------------------------------+--------------------------------------------+------+-------------+
@@ -760,13 +778,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; hex0[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; hex0[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; hex0[6]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[6]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; hex2[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; hex2[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; hex2[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -836,13 +847,6 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; hex0[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; hex0[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; hex0[6]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[3]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[4]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[5]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
-; hex1[6]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; hex2[0]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; hex2[1]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
 ; hex2[2]     ; No output delay, min/max delays, false-path exceptions, or max skew assignments found ;
@@ -888,7 +892,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Thu Nov 28 12:38:06 2024
+    Info: Processing started: Fri Nov 29 15:45:14 2024
 Info: Command: quartus_sta CPU -c CPU
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -900,6 +904,7 @@ Critical Warning (332012): Synopsys Design Constraints File file not found: 'CPU
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name clock clock
+    Info (332105): create_clock -period 1.000 -name UnidadeControle:Controle|estado.BUSCA UnidadeControle:Controle|estado.BUSCA
     Info (332105): create_clock -period 1.000 -name UnidadeControle:Controle|estado.DECODIFICA UnidadeControle:Controle|estado.DECODIFICA
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
@@ -907,95 +912,107 @@ Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -13.805
+Info (332146): Worst-case setup slack is -10.354
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -13.805            -417.218 clock 
-    Info (332119):   -10.175            -115.371 UnidadeControle:Controle|estado.DECODIFICA 
-Info (332146): Worst-case hold slack is -5.473
+    Info (332119):   -10.354             -39.880 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -9.203             -67.576 UnidadeControle:Controle|estado.BUSCA 
+    Info (332119):    -7.345            -269.387 clock 
+Info (332146): Worst-case hold slack is -7.128
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.473            -113.688 clock 
-    Info (332119):     0.781               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -7.128            -311.389 clock 
+    Info (332119):     0.997               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     4.655               0.000 UnidadeControle:Controle|estado.BUSCA 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.636
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.636            -194.998 clock 
-    Info (332119):     0.127               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -2.636            -191.902 clock 
+    Info (332119):     0.186               0.000 UnidadeControle:Controle|estado.BUSCA 
+    Info (332119):     0.429               0.000 UnidadeControle:Controle|estado.DECODIFICA 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -13.424
+Info (332146): Worst-case setup slack is -10.395
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -13.424            -397.186 clock 
-    Info (332119):   -10.136            -115.423 UnidadeControle:Controle|estado.DECODIFICA 
-Info (332146): Worst-case hold slack is -5.481
+    Info (332119):   -10.395             -39.520 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -9.180             -67.779 UnidadeControle:Controle|estado.BUSCA 
+    Info (332119):    -7.187            -254.094 clock 
+Info (332146): Worst-case hold slack is -7.025
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.481            -117.135 clock 
-    Info (332119):     0.765               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -7.025            -308.900 clock 
+    Info (332119):     0.838               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     4.637               0.000 UnidadeControle:Controle|estado.BUSCA 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.636
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.636            -192.693 clock 
-    Info (332119):     0.198               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -2.636            -189.433 clock 
+    Info (332119):     0.172               0.000 UnidadeControle:Controle|estado.BUSCA 
+    Info (332119):     0.418               0.000 UnidadeControle:Controle|estado.DECODIFICA 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -8.349
+Info (332146): Worst-case setup slack is -5.067
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -8.349            -229.804 clock 
-    Info (332119):    -4.976             -54.784 UnidadeControle:Controle|estado.DECODIFICA 
-Info (332146): Worst-case hold slack is -2.474
+    Info (332119):    -5.067            -141.254 clock 
+    Info (332119):    -4.673             -18.357 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -4.356             -30.999 UnidadeControle:Controle|estado.BUSCA 
+Info (332146): Worst-case hold slack is -3.527
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.474             -47.462 clock 
-    Info (332119):     0.346               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -3.527            -146.708 clock 
+    Info (332119):     0.510               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     2.584               0.000 UnidadeControle:Controle|estado.BUSCA 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.174
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.174            -129.901 clock 
-    Info (332119):     0.296               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -2.174            -127.248 clock 
+    Info (332119):     0.205               0.000 UnidadeControle:Controle|estado.BUSCA 
+    Info (332119):     0.424               0.000 UnidadeControle:Controle|estado.DECODIFICA 
 Info: Analyzing Fast 1100mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -7.204
+Info (332146): Worst-case setup slack is -4.485
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -7.204            -187.070 clock 
-    Info (332119):    -4.747             -52.782 UnidadeControle:Controle|estado.DECODIFICA 
-Info (332146): Worst-case hold slack is -2.458
+    Info (332119):    -4.485             -17.518 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -4.217             -30.322 UnidadeControle:Controle|estado.BUSCA 
+    Info (332119):    -4.051            -109.738 clock 
+Info (332146): Worst-case hold slack is -3.443
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.458             -50.566 clock 
-    Info (332119):     0.327               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -3.443            -144.852 clock 
+    Info (332119):     0.431               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     2.595               0.000 UnidadeControle:Controle|estado.BUSCA 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.174
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.174            -129.082 clock 
-    Info (332119):     0.341               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -2.174            -126.086 clock 
+    Info (332119):     0.261               0.000 UnidadeControle:Controle|estado.BUSCA 
+    Info (332119):     0.436               0.000 UnidadeControle:Controle|estado.DECODIFICA 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 7 warnings
-    Info: Peak virtual memory: 5103 megabytes
-    Info: Processing ended: Thu Nov 28 12:38:11 2024
+    Info: Peak virtual memory: 5100 megabytes
+    Info: Processing ended: Fri Nov 29 15:45:19 2024
     Info: Elapsed time: 00:00:05
     Info: Total CPU time (on all processors): 00:00:06
 

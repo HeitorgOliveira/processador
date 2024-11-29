@@ -5,7 +5,8 @@ entity Output_Unit is
     Port (
         data_in       : in  std_logic_vector(7 downto 0);  -- Dados do barramento de dados
         leds          : out std_logic_vector(7 downto 0);  
-        output_enable : in  std_logic;                     
+        output_enable : in  std_logic;                 
+		  
         clock         : in  std_logic                      -- Clock do sistema
     );
 end Output_Unit;

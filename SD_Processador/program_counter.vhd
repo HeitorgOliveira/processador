@@ -21,7 +21,7 @@ begin
     begin
         if reset = '0' then
             pc <= (others => '0');  -- Reseta o PC para 0
-        elsif falling_edge(clock) then
+        elsif rising_edge(clock) then
             if enable = '1' then
                 if load = '1' then
                     pc <= new_address; -- Carrega o novo endereço (salto)
