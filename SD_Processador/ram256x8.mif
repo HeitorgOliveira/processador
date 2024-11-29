@@ -26,7 +26,14 @@ CONTENT BEGIN
     1 : 10010001;  -- IN B
     2 : 00001101;  -- ADD B, 5
     3 : 00000101;  -- 
-    4 : 10101000;  -- OUT R
-    5 : 11110000;  -- WAIT
-    [5..255] : 11110000;  -- Preenche os endereços restantes com wait
+    4 : 00010100;  --  SUB A, B
+    5 : 00000001;  -- ADD A, B
+    6 : 00000101;  -- ADD B, B
+    7 : 00001100;  -- ADD A, 5
+    8 : 00000101;  -- 
+    9 : 10101000;  -- OUT R
+    10 : 00000000;  -- ADD A, A
+    11 : 10101000;  -- OUT R
+    12 : 11110000;  -- WAIT
+    [13..255] : 11110000;  -- Preenche os endereços restantes com wait
 END;

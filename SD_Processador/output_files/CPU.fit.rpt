@@ -1,5 +1,5 @@
 Fitter report for CPU
-Fri Nov 29 17:25:39 2024
+Fri Nov 29 17:53:08 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -64,7 +64,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Fri Nov 29 17:25:39 2024       ;
+; Fitter Status                   ; Successful - Fri Nov 29 17:53:08 2024       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; CPU                                         ;
 ; Top-level Entity Name           ; CPU                                         ;
@@ -1590,17 +1590,17 @@ Info (188005): Design requires adding a large amount of routing delay for some s
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (170194): Fitter routing operations ending: elapsed time is 00:00:21
-Info (11888): Total time spent on timing analysis during the Fitter is 0.70 seconds.
+Info (11888): Total time spent on timing analysis during the Fitter is 0.71 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
-Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:03
+Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:04
 Info (144001): Generated suppressed messages file C:/Users/15678578/Documents/GitHub/processador/SD_Processador/output_files/CPU.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 6316 megabytes
-    Info: Processing ended: Fri Nov 29 17:25:40 2024
-    Info: Elapsed time: 00:00:42
+    Info: Peak virtual memory: 6308 megabytes
+    Info: Processing ended: Fri Nov 29 17:53:08 2024
+    Info: Elapsed time: 00:00:40
     Info: Total CPU time (on all processors): 00:00:56
 
 
