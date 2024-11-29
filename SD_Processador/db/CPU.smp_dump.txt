@@ -1,13 +1,14 @@
 
 State Machine - |CPU|UnidadeControle:Controle|estado
-Name estado.PEGA_LITERAL estado.ESCRITA estado.ACESSO_IO estado.EXECUTA estado.DECODIFICA_2 estado.DECODIFICA estado.BUSCA_2 estado.BUSCA estado.INICIO estado.ESPERA 
-estado.ESPERA 0 0 0 0 0 0 0 0 0 0 
-estado.INICIO 0 0 0 0 0 0 0 0 1 1 
-estado.BUSCA 0 0 0 0 0 0 0 1 0 1 
-estado.BUSCA_2 0 0 0 0 0 0 1 0 0 1 
-estado.DECODIFICA 0 0 0 0 0 1 0 0 0 1 
-estado.DECODIFICA_2 0 0 0 0 1 0 0 0 0 1 
-estado.EXECUTA 0 0 0 1 0 0 0 0 0 1 
-estado.ACESSO_IO 0 0 1 0 0 0 0 0 0 1 
-estado.ESCRITA 0 1 0 0 0 0 0 0 0 1 
-estado.PEGA_LITERAL 1 0 0 0 0 0 0 0 0 1 
+Name estado.ESPERA_LITERAL estado.PEGA_LITERAL estado.ESCRITA estado.ACESSO_IO estado.EXECUTA estado.DECODIFICA_2 estado.DECODIFICA estado.BUSCA_2 estado.BUSCA estado.INICIO estado.ESPERA 
+estado.ESPERA 0 0 0 0 0 0 0 0 0 0 0 
+estado.INICIO 0 0 0 0 0 0 0 0 0 1 1 
+estado.BUSCA 0 0 0 0 0 0 0 0 1 0 1 
+estado.BUSCA_2 0 0 0 0 0 0 0 1 0 0 1 
+estado.DECODIFICA 0 0 0 0 0 0 1 0 0 0 1 
+estado.DECODIFICA_2 0 0 0 0 0 1 0 0 0 0 1 
+estado.EXECUTA 0 0 0 0 1 0 0 0 0 0 1 
+estado.ACESSO_IO 0 0 0 1 0 0 0 0 0 0 1 
+estado.ESCRITA 0 0 1 0 0 0 0 0 0 0 1 
+estado.PEGA_LITERAL 0 1 0 0 0 0 0 0 0 0 1 
+estado.ESPERA_LITERAL 1 0 0 0 0 0 0 0 0 0 1 

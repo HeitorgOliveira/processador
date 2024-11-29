@@ -28,7 +28,7 @@ end UnidadeControle;
 
 architecture Behavioral of UnidadeControle is
     -- Definindo os estados
-    type state_type is (INICIO, ESPERA, BUSCA, BUSCA_2, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL);
+    type state_type is (INICIO, ESPERA, BUSCA, BUSCA_2, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL);
     signal estado, proximo_estado : state_type;
     
     signal opcode    : std_logic_vector(3 downto 0); -- OpCode extraído
@@ -128,12 +128,15 @@ begin
 
             when PEGA_LITERAL =>
 					 pc_enable <= '1';
-					 proximo_estado <= DECODIFICA_2;
+					 proximo_estado <= ESPERA_LITERAL;
 					 --literal_enable <= '1';
+					 
+				when ESPERA_LITERAL =>
+					 literal_enable <= '1';
+					 proximo_estado <= DECODIFICA_2;
 					 
 				-- Decodifica a instrução
             when DECODIFICA_2 =>
-					 literal_enable <= '1';
 					 -- Decodificação do opcode
                 case opcode_memory is
                     when "0000" => proximo_estado <= EXECUTA; -- ADD

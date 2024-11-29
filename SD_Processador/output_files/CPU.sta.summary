@@ -2,100 +2,100 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1100mV 85C Model Setup 'clock'
-Slack : -13.805
-TNS   : -417.218
-
 Type  : Slow 1100mV 85C Model Setup 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : -10.175
-TNS   : -115.371
+Slack : -10.633
+TNS   : -116.442
+
+Type  : Slow 1100mV 85C Model Setup 'clock'
+Slack : -8.542
+TNS   : -306.279
 
 Type  : Slow 1100mV 85C Model Hold 'clock'
-Slack : -5.473
-TNS   : -113.688
+Slack : -7.194
+TNS   : -255.444
 
 Type  : Slow 1100mV 85C Model Hold 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.781
+Slack : 0.790
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clock'
 Slack : -2.636
-TNS   : -194.998
+TNS   : -192.954
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.127
+Slack : 0.144
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Setup 'clock'
-Slack : -13.424
-TNS   : -397.186
-
 Type  : Slow 1100mV 0C Model Setup 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : -10.136
-TNS   : -115.423
+Slack : -10.651
+TNS   : -115.941
+
+Type  : Slow 1100mV 0C Model Setup 'clock'
+Slack : -8.436
+TNS   : -296.873
 
 Type  : Slow 1100mV 0C Model Hold 'clock'
-Slack : -5.481
-TNS   : -117.135
+Slack : -7.060
+TNS   : -254.245
 
 Type  : Slow 1100mV 0C Model Hold 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.765
+Slack : 0.783
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clock'
 Slack : -2.636
-TNS   : -192.693
+TNS   : -190.128
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.198
+Slack : 0.152
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Setup 'clock'
-Slack : -8.349
-TNS   : -229.804
-
 Type  : Fast 1100mV 85C Model Setup 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : -4.976
-TNS   : -54.784
+Slack : -5.061
+TNS   : -55.008
+
+Type  : Fast 1100mV 85C Model Setup 'clock'
+Slack : -4.635
+TNS   : -129.786
 
 Type  : Fast 1100mV 85C Model Hold 'clock'
-Slack : -2.474
-TNS   : -47.462
+Slack : -3.626
+TNS   : -125.899
 
 Type  : Fast 1100mV 85C Model Hold 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.346
+Slack : 0.367
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clock'
 Slack : -2.174
-TNS   : -129.901
+TNS   : -129.447
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.296
+Slack : 0.235
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Setup 'clock'
-Slack : -7.204
-TNS   : -187.070
-
 Type  : Fast 1100mV 0C Model Setup 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : -4.747
-TNS   : -52.782
+Slack : -4.841
+TNS   : -52.716
+
+Type  : Fast 1100mV 0C Model Setup 'clock'
+Slack : -3.840
+TNS   : -107.469
 
 Type  : Fast 1100mV 0C Model Hold 'clock'
-Slack : -2.458
-TNS   : -50.566
+Slack : -3.514
+TNS   : -124.648
 
 Type  : Fast 1100mV 0C Model Hold 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.327
+Slack : 0.346
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clock'
 Slack : -2.174
-TNS   : -129.082
+TNS   : -129.240
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.341
+Slack : 0.277
 TNS   : 0.000
 
 ------------------------------------------------------------

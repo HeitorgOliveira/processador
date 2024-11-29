@@ -112,6 +112,10 @@ BEGIN
 						 reg_inter_2 <= (OTHERS => '0');
 				END CASE;
 				
+				IF literal_enable = '1' then
+					reg_literal <= instrucao;
+				END IF;
+				
 				--Para caso do input
 				IF input_enable = '1' THEN
 					CASE reg_select_a IS
@@ -126,9 +130,6 @@ BEGIN
 						WHEN OTHERS => 
 							 reg_a <= (OTHERS => '0');
 				   END CASE;
-				ELSIF literal_enable = '1' then
-					reg_literal <= instrucao;
-	
 				ELSIF alu_enable = '1' THEN
 					reg_r <= alu_result;
 				END IF;
