@@ -10,8 +10,8 @@ ENTITY ULA IS
         Zero        : OUT STD_LOGIC;                     -- Flag Zero
         Sign        : OUT STD_LOGIC;                     -- Flag de sinal (1 se resultado é "negativo")
         Carry       : OUT STD_LOGIC;                     -- Flag Carry (para soma/subtração)
-        Overflow    : OUT STD_LOGIC;                     -- Flag Overflow (para soma/subtração)
-		  result_enable : OUT STD_LOGIC                    -- Enable que permite a CPU a guardar o resultado em R
+        Overflow    : OUT STD_LOGIC                     -- Flag Overflow (para soma/subtração)
+		  --result_enable : OUT STD_LOGIC                    -- Enable que permite a CPU a guardar o resultado em R
     );
 END ULA;
 
