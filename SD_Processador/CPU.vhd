@@ -24,9 +24,9 @@ ARCHITECTURE Behavioral OF CPU IS
     -- Sinais internos
     SIGNAL pc_out, instrucao : std_logic_vector(7 DOWNTO 0);
     SIGNAL data_in, data_out, alu_result : std_logic_vector(7 DOWNTO 0);
-    SIGNAL zero_flag, sign_flag, carry_flag, overflow_flag, result_enable : std_logic;
+    SIGNAL zero_flag, sign_flag, carry_flag, overflow_flag : std_logic;
 	 SIGNAL zero_flag_aux, sign_flag_aux, carry_flag_aux, overflow_flag_aux : std_logic;
-    SIGNAL mem_enable, read_enable, write_enable : std_logic;
+    SIGNAL mem_enable, read_enable, write_enable, mov_enable, using_pc : std_logic;
     SIGNAL input_enable, output_enable, pc_enable, alu_enable, literal_enable : std_logic;
     SIGNAL reg_a_enable, reg_b_enable, reg_r_enable : std_logic;
     SIGNAL reg_a, reg_b, reg_r, reg_literal : std_logic_vector(7 DOWNTO 0) := "00000000";
@@ -36,14 +36,12 @@ ARCHITECTURE Behavioral OF CPU IS
 	 SIGNAL ula_code : std_logic_vector(3 DOWNTO 0);
     SIGNAL debugvec : std_logic_vector(7 DOWNTO 0);
 	 SIGNAL in_reg : std_logic_vector(7 DOWNTO 0);
-	 SIGNAL mov_enable : std_logic;
     
     -- Sinais para seleção de registradores
     SIGNAL reg_select_a, reg_select_b : std_logic_vector(1 DOWNTO 0);
 	 
 	 -- Sinais auxiliares para endereços e dados
-	SIGNAL mem_address : std_logic_vector(7 DOWNTO 0);
-	SIGNAL mem_data_out : std_logic_vector(7 DOWNTO 0);
+	 SIGNAL mem_address : std_logic_vector(7 DOWNTO 0);
 
 
 BEGIN
@@ -61,6 +59,7 @@ BEGIN
 	-- Debug para saída de PC
 	debug1 <= pc_enable;
 	debugvec <= pc_out (7 DOWNTO 0);
+	
 
 	-- Instância da Unidade de Controle
 	Controle : ENTITY work.UnidadeControle PORT MAP (
@@ -81,7 +80,9 @@ BEGIN
 	  literal_enable	  => literal_enable,
 	  reg_select_a      => reg_select_a,    -- Novo sinal para seleção do registrador A
 	  reg_select_b      => reg_select_b,     -- Novo sinal para seleção do registrador B
-	  ula_code 			  => ula_code
+	  ula_code 			  => ula_code,
+	  mov_enable 		  => mov_enable,
+	  using_pc			  => using_pc
 	);
 
 	-- Processo de seleção de registradores para a ULA
@@ -93,7 +94,6 @@ BEGIN
 			reg_r <= (others => '0');
 			reg_literal <= (others => '0');
 			mem_address <= (OTHERS => '0');
-			mem_data_out <= (OTHERS => '0');
 	  elsif rising_edge(clock) then
 		  -- Seleção do primeiro operando (A)
 		  CASE reg_select_a IS
@@ -124,7 +124,7 @@ BEGIN
 			END CASE;
 			
 			IF literal_enable = '1' THEN
-				reg_literal <= instrucao;
+				reg_literal <= data_out;
 			END IF;
 			
 			IF alu_enable = '1' THEN
@@ -133,7 +133,7 @@ BEGIN
 				carry_flag <= carry_flag_aux;
 				overflow_flag <= overflow_flag_aux;
 				
-				IF result_enable = '1' THEN
+				IF ula_code /= "0101" THEN
 					reg_r <= alu_result;
 				END IF;
 			END IF;
@@ -157,7 +157,7 @@ BEGIN
 			-- Para operações que dependem de memória
 			IF mem_enable = '1' THEN
 				-- Se o acesso for controlado pelo PC
-				IF pc_enable = '1' THEN
+				IF using_pc = '1' THEN
 					 mem_address <= pc_out;
 				ELSE
 					 -- Se o acesso for baseado no registrador
@@ -166,11 +166,10 @@ BEGIN
 
 				-- Operações de leitura/escrita
 				IF read_enable = '1' THEN
-					 mem_data_out <= data_out; -- Dados lidos da memória
 					 CASE reg_select_a IS
-						  WHEN "00" => reg_a <= mem_data_out; -- Registrador A
-						  WHEN "01" => reg_b <= mem_data_out; -- Registrador B
-						  WHEN "10" => reg_r <= mem_data_out; -- Registrador R
+						  WHEN "00" => reg_a <= instrucao; -- Registrador A
+						  WHEN "01" => reg_b <= instrucao; -- Registrador B
+						  WHEN "10" => reg_r <= instrucao; -- Registrador R
 						  WHEN OTHERS => NULL;
 					 END CASE;
 				END IF;
@@ -188,8 +187,8 @@ BEGIN
 	  Zero     => zero_flag_aux,
 	  Sign     => sign_flag_aux,
 	  Carry    => carry_flag_aux,
-	  Overflow => overflow_flag_aux,
-	  result_enable => result_enable
+	  Overflow => overflow_flag_aux
+	  --result_enable => result_enable
 	);
 
 	PROCESS(zero_flag, sign_flag)
@@ -206,7 +205,7 @@ BEGIN
 		 rdaddress => mem_address,
 		 wraddress => mem_address,
 		 wren      => write_enable,
-		 data_out  => data_out
+		 data_out  => instrucao
 	);
 
 	-- Instância da Unidade de Entrada

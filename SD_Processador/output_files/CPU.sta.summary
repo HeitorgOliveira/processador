@@ -2,148 +2,148 @@
 Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1100mV 85C Model Setup 'UnidadeControle:Controle|ula_code[1]'
-Slack : -11.111
-TNS   : -111.629
-
 Type  : Slow 1100mV 85C Model Setup 'clock'
-Slack : -11.050
-TNS   : -375.709
+Slack : -12.434
+TNS   : -534.477
+
+Type  : Slow 1100mV 85C Model Setup 'UnidadeControle:Controle|ula_code[1]'
+Slack : -11.287
+TNS   : -162.393
 
 Type  : Slow 1100mV 85C Model Setup 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : -9.627
-TNS   : -109.723
+Slack : -10.661
+TNS   : -112.938
 
 Type  : Slow 1100mV 85C Model Hold 'clock'
-Slack : -6.453
-TNS   : -139.660
+Slack : -7.256
+TNS   : -184.693
 
 Type  : Slow 1100mV 85C Model Hold 'UnidadeControle:Controle|ula_code[1]'
-Slack : -2.234
-TNS   : -6.143
+Slack : -1.475
+TNS   : -11.748
 
 Type  : Slow 1100mV 85C Model Hold 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.931
+Slack : 0.632
 TNS   : 0.000
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clock'
 Slack : -2.636
-TNS   : -196.630
+TNS   : -203.920
 
 Type  : Slow 1100mV 85C Model Minimum Pulse Width 'UnidadeControle:Controle|ula_code[1]'
-Slack : -0.079
-TNS   : -0.154
-
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.136
+Slack : 0.152
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Setup 'UnidadeControle:Controle|ula_code[1]'
-Slack : -11.226
-TNS   : -112.151
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'UnidadeControle:Controle|estado.DECODIFICA'
+Slack : 0.205
+TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Setup 'clock'
-Slack : -10.667
-TNS   : -362.744
+Slack : -11.870
+TNS   : -517.083
+
+Type  : Slow 1100mV 0C Model Setup 'UnidadeControle:Controle|ula_code[1]'
+Slack : -11.250
+TNS   : -161.788
 
 Type  : Slow 1100mV 0C Model Setup 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : -9.587
-TNS   : -109.781
+Slack : -10.549
+TNS   : -113.355
 
 Type  : Slow 1100mV 0C Model Hold 'clock'
-Slack : -6.312
-TNS   : -144.039
+Slack : -7.197
+TNS   : -190.374
 
 Type  : Slow 1100mV 0C Model Hold 'UnidadeControle:Controle|ula_code[1]'
-Slack : -2.151
-TNS   : -6.069
+Slack : -1.563
+TNS   : -12.373
 
 Type  : Slow 1100mV 0C Model Hold 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.922
+Slack : 0.587
 TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clock'
 Slack : -2.636
-TNS   : -194.892
+TNS   : -200.181
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'UnidadeControle:Controle|ula_code[1]'
-Slack : -0.096
-TNS   : -0.201
+Slack : 0.112
+TNS   : 0.000
 
 Type  : Slow 1100mV 0C Model Minimum Pulse Width 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.149
+Slack : 0.182
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Setup 'clock'
-Slack : -6.292
-TNS   : -183.781
+Slack : -7.888
+TNS   : -264.743
 
 Type  : Fast 1100mV 85C Model Setup 'UnidadeControle:Controle|ula_code[1]'
-Slack : -5.186
-TNS   : -49.760
+Slack : -5.299
+TNS   : -73.423
 
 Type  : Fast 1100mV 85C Model Setup 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : -4.593
-TNS   : -50.986
+Slack : -5.270
+TNS   : -52.545
 
 Type  : Fast 1100mV 85C Model Hold 'clock'
-Slack : -3.210
-TNS   : -60.109
+Slack : -3.583
+TNS   : -80.369
 
 Type  : Fast 1100mV 85C Model Hold 'UnidadeControle:Controle|ula_code[1]'
-Slack : -1.098
-TNS   : -3.074
+Slack : -0.788
+TNS   : -5.938
 
 Type  : Fast 1100mV 85C Model Hold 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.415
+Slack : 0.324
 TNS   : 0.000
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clock'
 Slack : -2.174
-TNS   : -128.713
-
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'UnidadeControle:Controle|ula_code[1]'
-Slack : -0.008
-TNS   : -0.008
+TNS   : -134.807
 
 Type  : Fast 1100mV 85C Model Minimum Pulse Width 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.166
+Slack : 0.209
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'UnidadeControle:Controle|ula_code[1]'
+Slack : 0.237
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Setup 'clock'
-Slack : -5.452
-TNS   : -148.841
+Slack : -6.622
+TNS   : -224.519
 
 Type  : Fast 1100mV 0C Model Setup 'UnidadeControle:Controle|ula_code[1]'
-Slack : -4.943
-TNS   : -47.414
+Slack : -5.003
+TNS   : -69.545
 
 Type  : Fast 1100mV 0C Model Setup 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : -4.423
-TNS   : -49.410
+Slack : -4.999
+TNS   : -50.818
 
 Type  : Fast 1100mV 0C Model Hold 'clock'
-Slack : -3.135
-TNS   : -64.757
+Slack : -3.490
+TNS   : -85.153
 
 Type  : Fast 1100mV 0C Model Hold 'UnidadeControle:Controle|ula_code[1]'
-Slack : -0.984
-TNS   : -2.727
+Slack : -0.710
+TNS   : -5.420
 
 Type  : Fast 1100mV 0C Model Hold 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.397
+Slack : 0.290
 TNS   : 0.000
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clock'
 Slack : -2.174
-TNS   : -127.569
-
-Type  : Fast 1100mV 0C Model Minimum Pulse Width 'UnidadeControle:Controle|ula_code[1]'
-Slack : 0.060
-TNS   : 0.000
+TNS   : -134.725
 
 Type  : Fast 1100mV 0C Model Minimum Pulse Width 'UnidadeControle:Controle|estado.DECODIFICA'
-Slack : 0.236
+Slack : 0.258
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'UnidadeControle:Controle|ula_code[1]'
+Slack : 0.263
 TNS   : 0.000
 
 ------------------------------------------------------------

@@ -23,13 +23,14 @@ entity UnidadeControle is
         reg_select_a  : out std_logic_vector(1 downto 0); -- Seleção do primeiro registrador
         reg_select_b  : out std_logic_vector(1 downto 0);  -- Seleção do segundo registrador
 		  ula_code      : out std_logic_vector(3 downto 0);
-		  mov_enable    : out std_logic
+		  mov_enable    : out std_logic;
+		  using_pc   : out std_logic
     );
 end UnidadeControle;
 
 architecture Behavioral of UnidadeControle is
     -- Definindo os estados
-    type state_type is (INICIO, ESPERA, BUSCA, BUSCA_2, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL,
+    type state_type is (INICIO, ESPERA, BUSCA, ESPERA_PC, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL,
 			               SALTO_ADR, ACESSO_MEMORIA, MOVER);
     signal estado, proximo_estado : state_type;
     
@@ -37,6 +38,7 @@ architecture Behavioral of UnidadeControle is
 	 signal opcode_memory    : std_logic_vector(3 downto 0); -- Caso seja necessario pegar literal
     signal reg_select: std_logic_vector(3 downto 0); -- Bits de seleção de registrador
 	 signal reg_select_memory: std_logic_vector(3 downto 0); 
+
 
 begin
     -- Processo de clock e reset
@@ -67,16 +69,18 @@ begin
 		  literal_enable <= '0';
         reg_select_a <= "00"; -- Padrão: seleciona registrador A
         reg_select_b <= "00"; -- Padrão: seleciona registrador A
+		  using_pc <= '1';
 
         case estado is
 				--Estado incial
 				when INICIO=>
 					 proximo_estado <= DECODIFICA;
+					 mem_enable <= '1';
 					
             -- Estado de espera
             when ESPERA =>
                 if reset = '1' then
-                    proximo_estado <= BUSCA;
+                    proximo_estado <= INICIO;
                 else
                     proximo_estado <= ESPERA;
                 end if;
@@ -84,8 +88,11 @@ begin
             -- Busca a próxima instrução na memória
             when BUSCA =>
                 pc_enable <= '1'; -- Incrementa o PC
+                proximo_estado <= ESPERA_PC;
+				
+				when ESPERA_PC =>
+					 proximo_estado <= DECODIFICA;
 					 mem_enable <= '1';
-                proximo_estado <= DECODIFICA;
 
             -- Decodifica a instrução
             when DECODIFICA =>
@@ -190,6 +197,7 @@ begin
             -- Executa operações da ULA
             when EXECUTA =>
                 alu_enable <= '1'; -- Ativa a ULA
+					 
                 proximo_estado <= BUSCA;
 
             -- Acessa memória ou dispositivos de I/O
@@ -206,10 +214,8 @@ begin
                 case opcode is
                     when "1100" => -- IN
                         input_enable <= '1';
-								mem_enable <= '1';
                     when "1101" => -- OUT
                         output_enable <= '1';
-								mem_enable <= '1';
                     when others =>
                         -- Não faz nada
                 end case;
