@@ -22,14 +22,15 @@ entity UnidadeControle is
         alu_enable    : out std_logic; -- Enable para ULA
         reg_select_a  : out std_logic_vector(1 downto 0); -- Seleção do primeiro registrador
         reg_select_b  : out std_logic_vector(1 downto 0);  -- Seleção do segundo registrador
-		  ula_code      : out std_logic_vector(3 downto 0)
+		  ula_code      : out std_logic_vector(3 downto 0);
+		  mov_enable    : out std_logic
     );
 end UnidadeControle;
 
 architecture Behavioral of UnidadeControle is
     -- Definindo os estados
     type state_type is (INICIO, ESPERA, BUSCA, BUSCA_2, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL,
-			               SALTO_ADR);
+			               SALTO_ADR, ACESSO_MEMORIA, MOVER);
     signal estado, proximo_estado : state_type;
     
     signal opcode    : std_logic_vector(3 downto 0); -- OpCode extraído
@@ -83,6 +84,7 @@ begin
             -- Busca a próxima instrução na memória
             when BUSCA =>
                 pc_enable <= '1'; -- Incrementa o PC
+					 mem_enable <= '1';
                 proximo_estado <= DECODIFICA;
 
             -- Decodifica a instrução
@@ -94,9 +96,17 @@ begin
                     when "0010" => proximo_estado <= EXECUTA; -- AND
                     when "0011" => proximo_estado <= EXECUTA; -- OR
                     when "0100" => proximo_estado <= EXECUTA; -- NOT
-                    when "1001" => proximo_estado <= ACESSO_IO; -- IN
-                    when "1010" => proximo_estado <= ACESSO_IO; -- OUT
-                    when others => proximo_estado <= BUSCA;
+                    when "0101" => proximo_estado <= EXECUTA; -- CMP
+						  when "0110" => proximo_estado <= SALTO_ADR; -- JMP
+                    when "0111" => proximo_estado <= SALTO_ADR; -- JEQ
+						  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
+                    when "1001" => proximo_estado <= ACESSO_MEMORIA; -- LOAD
+                    when "1010" => proximo_estado <= ACESSO_MEMORIA; -- STORE
+                    when "1011" => proximo_estado <= MOVER; -- MOV
+                    when "1100" => proximo_estado <= ACESSO_IO; -- IN
+                    when "1101" => proximo_estado <= ACESSO_IO; -- OUT
+						  when "1110" => proximo_estado <= ESPERA; -- WAIT
+                    when others => proximo_estado <= ESPERA;
                 end case;
 				
                 -- Decodificação da seleção de registradores
@@ -129,6 +139,7 @@ begin
 
             when PEGA_LITERAL =>
 					 pc_enable <= '1';
+					 mem_enable <= '1';
 					 proximo_estado <= ESPERA_LITERAL;
 					 --literal_enable <= '1';
 					 
@@ -146,13 +157,13 @@ begin
                     when "0011" => proximo_estado <= EXECUTA; -- OR
                     when "0100" => proximo_estado <= EXECUTA; -- NOT
                     when "0101" => proximo_estado <= EXECUTA; -- CMP
-						  when "0110" => proximo_estado <= ACESSO_IO; -- JMP
-                    when "0111" => proximo_estado <= ACESSO_IO; -- JEQ
-						  when "1000" => proximo_estado <= EXECUTA; -- JGR
-                    when "1001" => proximo_estado <= EXECUTA; -- LOAD
-                    when "1010" => proximo_estado <= EXECUTA; -- STORE
-                    when "1011" => proximo_estado <= EXECUTA; -- MOV
-                    when "1100" => proximo_estado <= EXECUTA; -- IN
+						  when "0110" => proximo_estado <= SALTO_ADR; -- JMP
+                    when "0111" => proximo_estado <= SALTO_ADR; -- JEQ
+						  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
+                    when "1001" => proximo_estado <= ACESSO_MEMORIA; -- LOAD
+                    when "1010" => proximo_estado <= ACESSO_MEMORIA; -- STORE
+                    when "1011" => proximo_estado <= MOVER; -- MOV
+                    when "1100" => proximo_estado <= ACESSO_IO; -- IN
                     when "1101" => proximo_estado <= ACESSO_IO; -- OUT
 						  when "1110" => proximo_estado <= ESPERA; -- WAIT
                     when others => proximo_estado <= ESPERA;
@@ -193,19 +204,60 @@ begin
                 end case;
 					 
                 case opcode is
-                    when "1001" => -- IN
+                    when "1100" => -- IN
                         input_enable <= '1';
-                    when "1010" => -- OUT
+								mem_enable <= '1';
+                    when "1101" => -- OUT
                         output_enable <= '1';
+								mem_enable <= '1';
                     when others =>
                         -- Não faz nada
                 end case;
                 proximo_estado <= BUSCA;
 
+				when SALTO_ADR =>
+					 case opcode is
+						  when "0110" => -- JMP (salto incondicional)
+								mem_enable <= '1';
+								pc_enable <= '1';
+						  when "0111" => -- JEQ (salto condicional se zero_flag = 1)
+								if zero_flag = '1' then
+									 pc_enable <= '1';
+									 mem_enable <= '1';
+								end if;
+						  when "1000" => -- JGR (salto condicional se sign_flag = 0 e zero_flag = 0)
+								if zero_flag = '0' and sign_flag = '0' then
+									 pc_enable <= '1';
+									 mem_enable <= '1';
+								end if;
+						  when others =>
+								-- Não faz nada
+					 end case;
+					 proximo_estado <= BUSCA;
+				
+				when ACESSO_MEMORIA =>
+					 case opcode is
+						  when "1001" => -- LOAD (carregar da memória)
+								read_enable <= '1';
+								reg_select_a <= reg_select(1 downto 0); -- Seleciona o registrador de destino
+						  when "1010" => -- STORE (armazenar na memória)
+								write_enable <= '1';
+								reg_select_a <= reg_select(1 downto 0); -- Seleciona o registrador de origem
+						  when others =>
+								-- Não faz nada
+					 end case;
+					 proximo_estado <= BUSCA;
+					 
             -- Estado de escrita, se necessário
             when ESCRITA =>
                 write_enable <= '1';
                 proximo_estado <= BUSCA;
+					 
+				when MOVER =>
+					 -- MOV: transfere dados entre registradores
+					 reg_select_a <= reg_select(1 downto 0); -- Registrador de destino
+					 reg_select_b <= reg_select(3 downto 2); -- Registrador de origem
+					 proximo_estado <= BUSCA;
 
             when others =>
                 proximo_estado <= ESPERA;
