@@ -208,6 +208,14 @@
 					"strict" : false
 				},
 				{
+					"name" : "zero",
+					"strict" : false
+				},
+				{
+					"name" : "sign",
+					"strict" : false
+				},
+				{
 					"name" : "clock",
 					"strict" : false
 				},

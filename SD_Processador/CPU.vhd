@@ -14,7 +14,9 @@ ENTITY CPU IS
         hex3          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         hex4          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
 		  hex5          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
-        debug1        : OUT STD_LOGIC
+        debug1        : OUT STD_LOGIC;
+		  zero          : OUT STD_LOGIC;
+		  sign          : OUT STD_LOGIC
     );
 END CPU;
 
@@ -22,7 +24,8 @@ ARCHITECTURE Behavioral OF CPU IS
     -- Sinais internos
     SIGNAL pc_out, instrucao : std_logic_vector(7 DOWNTO 0);
     SIGNAL data_in, data_out, alu_result : std_logic_vector(7 DOWNTO 0);
-    SIGNAL zero_flag, sign_flag, carry_flag, overflow_flag : std_logic;
+    SIGNAL zero_flag, sign_flag, carry_flag, overflow_flag, result_enable : std_logic;
+	 SIGNAL zero_flag_aux, sign_flag_aux, carry_flag_aux, overflow_flag_aux : std_logic;
     SIGNAL mem_enable, read_enable, write_enable : std_logic;
     SIGNAL input_enable, output_enable, pc_enable, alu_enable, literal_enable : std_logic;
     SIGNAL reg_a_enable, reg_b_enable, reg_r_enable : std_logic;
@@ -112,8 +115,19 @@ BEGIN
 						 reg_inter_2 <= (OTHERS => '0');
 				END CASE;
 				
-				IF literal_enable = '1' then
+				IF literal_enable = '1' THEN
 					reg_literal <= instrucao;
+				END IF;
+				
+				IF alu_enable = '1' THEN
+					zero_flag <= zero_flag_aux;
+				   sign_flag <= sign_flag_aux;
+				   carry_flag <= carry_flag_aux;
+				   overflow_flag <= overflow_flag_aux;
+					
+					IF result_enable = '1' THEN
+						reg_r <= alu_result;
+					END IF;
 				END IF;
 				
 				--Para caso do input
@@ -130,10 +144,7 @@ BEGIN
 						WHEN OTHERS => 
 							 reg_a <= (OTHERS => '0');
 				   END CASE;
-				ELSIF alu_enable = '1' THEN
-					reg_r <= alu_result;
 				END IF;
-				
 			end if;
     END PROCESS;
 
@@ -144,12 +155,18 @@ BEGIN
         B        => reg_inter_2,
         opcode   => ula_code,
         result   => alu_result,
-        Zero     => zero_flag,
-        Sign     => sign_flag,
-        Carry    => carry_flag,
-        Overflow => overflow_flag
+        Zero     => zero_flag_aux,
+        Sign     => sign_flag_aux,
+        Carry    => carry_flag_aux,
+        Overflow => overflow_flag_aux,
+		  result_enable => result_enable
     );
-
+	 
+	PROCESS(zero_flag, sign_flag)
+		BEGIN
+		zero <= zero_flag;
+		sign <= sign_flag;
+	END PROCESS;
     -- Instância da Memória
     Memoria : ENTITY work.memoria_unidade PORT MAP (
         clock     => clock,

@@ -28,7 +28,8 @@ end UnidadeControle;
 
 architecture Behavioral of UnidadeControle is
     -- Definindo os estados
-    type state_type is (INICIO, ESPERA, BUSCA, BUSCA_2, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL);
+    type state_type is (INICIO, ESPERA, BUSCA, BUSCA_2, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL,
+			               SALTO_ADR);
     signal estado, proximo_estado : state_type;
     
     signal opcode    : std_logic_vector(3 downto 0); -- OpCode extraído
@@ -144,9 +145,17 @@ begin
                     when "0010" => proximo_estado <= EXECUTA; -- AND
                     when "0011" => proximo_estado <= EXECUTA; -- OR
                     when "0100" => proximo_estado <= EXECUTA; -- NOT
-                    when "1001" => proximo_estado <= ACESSO_IO; -- IN
-                    when "1010" => proximo_estado <= ACESSO_IO; -- OUT
-                    when others => proximo_estado <= BUSCA;
+                    when "0101" => proximo_estado <= EXECUTA; -- CMP
+						  when "0110" => proximo_estado <= ACESSO_IO; -- JMP
+                    when "0111" => proximo_estado <= ACESSO_IO; -- JEQ
+						  when "1000" => proximo_estado <= EXECUTA; -- JGR
+                    when "1001" => proximo_estado <= EXECUTA; -- LOAD
+                    when "1010" => proximo_estado <= EXECUTA; -- STORE
+                    when "1011" => proximo_estado <= EXECUTA; -- MOV
+                    when "1100" => proximo_estado <= EXECUTA; -- IN
+                    when "1101" => proximo_estado <= ACESSO_IO; -- OUT
+						  when "1110" => proximo_estado <= ESPERA; -- WAIT
+                    when others => proximo_estado <= ESPERA;
                 end case;
 					 
 					  -- Decodificação da seleção de registradores

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Fri Nov 29 17:52:27 2024
+Sat Nov 30 12:09:47 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -17,17 +17,18 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
   9. Analysis & Synthesis IP Cores Summary
  10. State Machine - |CPU|UnidadeControle:Controle|estado
  11. User-Specified and Inferred Latches
- 12. Registers Removed During Synthesis
- 13. General Register Statistics
- 14. Multiplexer Restructuring Statistics (Restructuring Performed)
- 15. Source assignments for memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated
- 16. Parameter Settings for User Entity Instance: memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component
- 17. altsyncram Parameter Settings by Entity Instance
- 18. Port Connectivity Checks: "UnidadeControle:Controle"
- 19. Port Connectivity Checks: "program_counter:PC"
- 20. Post-Synthesis Netlist Statistics for Top Partition
- 21. Elapsed Time Per Partition
- 22. Analysis & Synthesis Messages
+ 12. Logic Cells Representing Combinational Loops
+ 13. Registers Removed During Synthesis
+ 14. General Register Statistics
+ 15. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 16. Source assignments for memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated
+ 17. Parameter Settings for User Entity Instance: memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component
+ 18. altsyncram Parameter Settings by Entity Instance
+ 19. Port Connectivity Checks: "UnidadeControle:Controle"
+ 20. Port Connectivity Checks: "program_counter:PC"
+ 21. Post-Synthesis Netlist Statistics for Top Partition
+ 22. Elapsed Time Per Partition
+ 23. Analysis & Synthesis Messages
 
 
 
@@ -54,14 +55,14 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Fri Nov 29 17:52:27 2024       ;
+; Analysis & Synthesis Status     ; Successful - Sat Nov 30 12:09:47 2024       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; CPU                                         ;
 ; Top-level Entity Name           ; CPU                                         ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 72                                          ;
-; Total pins                      ; 61                                          ;
+; Total registers                 ; 74                                          ;
+; Total pins                      ; 63                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 2,048                                       ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -174,7 +175,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processors 2-4         ;   0.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
@@ -211,27 +213,27 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-------------+
 ; Resource                                    ; Usage       ;
 +---------------------------------------------+-------------+
-; Estimate of Logic utilization (ALMs needed) ; 100         ;
+; Estimate of Logic utilization (ALMs needed) ; 106         ;
 ;                                             ;             ;
-; Combinational ALUT usage for logic          ; 158         ;
+; Combinational ALUT usage for logic          ; 173         ;
 ;     -- 7 input functions                    ; 0           ;
-;     -- 6 input functions                    ; 37          ;
-;     -- 5 input functions                    ; 22          ;
-;     -- 4 input functions                    ; 65          ;
-;     -- <=3 input functions                  ; 34          ;
+;     -- 6 input functions                    ; 33          ;
+;     -- 5 input functions                    ; 25          ;
+;     -- 4 input functions                    ; 55          ;
+;     -- <=3 input functions                  ; 60          ;
 ;                                             ;             ;
-; Dedicated logic registers                   ; 72          ;
+; Dedicated logic registers                   ; 74          ;
 ;                                             ;             ;
-; I/O pins                                    ; 61          ;
+; I/O pins                                    ; 63          ;
 ; Total MLAB memory bits                      ; 0           ;
 ; Total block memory bits                     ; 2048        ;
 ;                                             ;             ;
 ; Total DSP Blocks                            ; 0           ;
 ;                                             ;             ;
 ; Maximum fan-out node                        ; clock~input ;
-; Maximum fan-out                             ; 80          ;
-; Total fan-out                               ; 1137        ;
-; Average fan-out                             ; 3.16        ;
+; Maximum fan-out                             ; 82          ;
+; Total fan-out                               ; 1167        ;
+; Average fan-out                             ; 3.06        ;
 +---------------------------------------------+-------------+
 
 
@@ -240,7 +242,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 ; Compilation Hierarchy Node                   ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                               ; Entity Name     ; Library Name ;
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
-; |CPU                                         ; 158 (43)            ; 72 (48)                   ; 2048              ; 0          ; 61   ; 0            ; |CPU                                                                                                              ; CPU             ; work         ;
+; |CPU                                         ; 173 (20)            ; 74 (50)                   ; 2048              ; 0          ; 63   ; 0            ; |CPU                                                                                                              ; CPU             ; work         ;
 ;    |DisplayDriver:HEX0_Driver|               ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|DisplayDriver:HEX0_Driver                                                                                    ; DisplayDriver   ; work         ;
 ;    |DisplayDriver:HEX1_Driver|               ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|DisplayDriver:HEX1_Driver                                                                                    ; DisplayDriver   ; work         ;
 ;    |DisplayDriver:HEX2_Driver|               ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|DisplayDriver:HEX2_Driver                                                                                    ; DisplayDriver   ; work         ;
@@ -248,8 +250,8 @@ https://fpgasoftware.intel.com/eula.
 ;    |DisplayDriver:HEX4_Driver|               ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|DisplayDriver:HEX4_Driver                                                                                    ; DisplayDriver   ; work         ;
 ;    |DisplayDriver:HEX5_Driver|               ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|DisplayDriver:HEX5_Driver                                                                                    ; DisplayDriver   ; work         ;
 ;    |Output_Unit:Saida|                       ; 0 (0)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|Output_Unit:Saida                                                                                            ; Output_Unit     ; work         ;
-;    |ULA:ULA|                                 ; 21 (21)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|ULA:ULA                                                                                                      ; ULA             ; work         ;
-;    |UnidadeControle:Controle|                ; 44 (44)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|UnidadeControle:Controle                                                                                     ; UnidadeControle ; work         ;
+;    |ULA:ULA|                                 ; 60 (60)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|ULA:ULA                                                                                                      ; ULA             ; work         ;
+;    |UnidadeControle:Controle|                ; 43 (43)             ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|UnidadeControle:Controle                                                                                     ; UnidadeControle ; work         ;
 ;    |memoria_unidade:Memoria|                 ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |CPU|memoria_unidade:Memoria                                                                                      ; memoria_unidade ; work         ;
 ;       |ram256x8:ram_instance|                ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |CPU|memoria_unidade:Memoria|ram256x8:ram_instance                                                                ; ram256x8        ; work         ;
 ;          |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |CPU|memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
@@ -278,23 +280,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 
 
 Encoding Type:  One-Hot
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; State Machine - |CPU|UnidadeControle:Controle|estado                                                                                                                                                                               ;
-+-----------------------+-----------------------+---------------------+----------------+------------------+----------------+---------------------+-------------------+----------------+--------------+---------------+---------------+
-; Name                  ; estado.ESPERA_LITERAL ; estado.PEGA_LITERAL ; estado.ESCRITA ; estado.ACESSO_IO ; estado.EXECUTA ; estado.DECODIFICA_2 ; estado.DECODIFICA ; estado.BUSCA_2 ; estado.BUSCA ; estado.INICIO ; estado.ESPERA ;
-+-----------------------+-----------------------+---------------------+----------------+------------------+----------------+---------------------+-------------------+----------------+--------------+---------------+---------------+
-; estado.ESPERA         ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 0             ;
-; estado.INICIO         ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 1             ; 1             ;
-; estado.BUSCA          ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 1            ; 0             ; 1             ;
-; estado.BUSCA_2        ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 1              ; 0            ; 0             ; 1             ;
-; estado.DECODIFICA     ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 1                 ; 0              ; 0            ; 0             ; 1             ;
-; estado.DECODIFICA_2   ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 1                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
-; estado.EXECUTA        ; 0                     ; 0                   ; 0              ; 0                ; 1              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
-; estado.ACESSO_IO      ; 0                     ; 0                   ; 0              ; 1                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
-; estado.ESCRITA        ; 0                     ; 0                   ; 1              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
-; estado.PEGA_LITERAL   ; 0                     ; 1                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
-; estado.ESPERA_LITERAL ; 1                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
-+-----------------------+-----------------------+---------------------+----------------+------------------+----------------+---------------------+-------------------+----------------+--------------+---------------+---------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |CPU|UnidadeControle:Controle|estado                                                                                                                                                                                                  ;
++-----------------------+------------------+-----------------------+---------------------+----------------+------------------+----------------+---------------------+-------------------+----------------+--------------+---------------+---------------+
+; Name                  ; estado.SALTO_ADR ; estado.ESPERA_LITERAL ; estado.PEGA_LITERAL ; estado.ESCRITA ; estado.ACESSO_IO ; estado.EXECUTA ; estado.DECODIFICA_2 ; estado.DECODIFICA ; estado.BUSCA_2 ; estado.BUSCA ; estado.INICIO ; estado.ESPERA ;
++-----------------------+------------------+-----------------------+---------------------+----------------+------------------+----------------+---------------------+-------------------+----------------+--------------+---------------+---------------+
+; estado.ESPERA         ; 0                ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 0             ;
+; estado.INICIO         ; 0                ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 1             ; 1             ;
+; estado.BUSCA          ; 0                ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 1            ; 0             ; 1             ;
+; estado.BUSCA_2        ; 0                ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 1              ; 0            ; 0             ; 1             ;
+; estado.DECODIFICA     ; 0                ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 1                 ; 0              ; 0            ; 0             ; 1             ;
+; estado.DECODIFICA_2   ; 0                ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 1                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
+; estado.EXECUTA        ; 0                ; 0                     ; 0                   ; 0              ; 0                ; 1              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
+; estado.ACESSO_IO      ; 0                ; 0                     ; 0                   ; 0              ; 1                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
+; estado.ESCRITA        ; 0                ; 0                     ; 0                   ; 1              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
+; estado.PEGA_LITERAL   ; 0                ; 0                     ; 1                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
+; estado.ESPERA_LITERAL ; 0                ; 1                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
+; estado.SALTO_ADR      ; 1                ; 0                     ; 0                   ; 0              ; 0                ; 0              ; 0                   ; 0                 ; 0              ; 0            ; 0             ; 1             ;
++-----------------------+------------------+-----------------------+---------------------+----------------+------------------+----------------+---------------------+-------------------+----------------+--------------+---------------+---------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------+
@@ -302,33 +305,56 @@ Encoding Type:  One-Hot
 +-----------------------------------------------------+------------------------------------------------------+------------------------+
 ; Latch Name                                          ; Latch Enable Signal                                  ; Free of Timing Hazards ;
 +-----------------------------------------------------+------------------------------------------------------+------------------------+
-; UnidadeControle:Controle|ula_code[3]                ; UnidadeControle:Controle|WideOr4                     ; yes                    ;
-; UnidadeControle:Controle|ula_code[2]                ; UnidadeControle:Controle|WideOr4                     ; yes                    ;
-; UnidadeControle:Controle|ula_code[1]                ; UnidadeControle:Controle|WideOr4                     ; yes                    ;
-; UnidadeControle:Controle|ula_code[0]                ; UnidadeControle:Controle|WideOr4                     ; yes                    ;
+; ULA:ULA|result[0]                                   ; ULA:ULA|Mux18                                        ; yes                    ;
+; ULA:ULA|result[1]                                   ; ULA:ULA|Mux18                                        ; yes                    ;
+; ULA:ULA|result[2]                                   ; ULA:ULA|Mux18                                        ; yes                    ;
+; ULA:ULA|result[3]                                   ; ULA:ULA|Mux18                                        ; yes                    ;
 ; UnidadeControle:Controle|reg_select_memory[1]       ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
 ; UnidadeControle:Controle|reg_select_memory[0]       ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
-; UnidadeControle:Controle|opcode_memory[3]           ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
-; UnidadeControle:Controle|opcode_memory[2]           ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
-; UnidadeControle:Controle|opcode_memory[1]           ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
+; UnidadeControle:Controle|ula_code[1]                ; UnidadeControle:Controle|WideOr5                     ; yes                    ;
+; UnidadeControle:Controle|ula_code[0]                ; UnidadeControle:Controle|WideOr5                     ; yes                    ;
+; UnidadeControle:Controle|ula_code[2]                ; UnidadeControle:Controle|WideOr5                     ; yes                    ;
+; UnidadeControle:Controle|ula_code[3]                ; UnidadeControle:Controle|WideOr5                     ; yes                    ;
+; ULA:ULA|resultado[6]                                ; ULA:ULA|Mux12                                        ; yes                    ;
+; ULA:ULA|resultado[0]                                ; ULA:ULA|Mux12                                        ; yes                    ;
+; ULA:ULA|resultado[1]                                ; ULA:ULA|Mux12                                        ; yes                    ;
+; ULA:ULA|resultado[2]                                ; ULA:ULA|Mux12                                        ; yes                    ;
+; ULA:ULA|resultado[3]                                ; ULA:ULA|Mux12                                        ; yes                    ;
+; ULA:ULA|resultado[4]                                ; ULA:ULA|Mux12                                        ; yes                    ;
+; ULA:ULA|resultado[5]                                ; ULA:ULA|Mux12                                        ; yes                    ;
 ; UnidadeControle:Controle|opcode_memory[0]           ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
+; UnidadeControle:Controle|opcode_memory[1]           ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
+; UnidadeControle:Controle|opcode_memory[2]           ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
+; UnidadeControle:Controle|opcode_memory[3]           ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
 ; UnidadeControle:Controle|reg_select_memory[2]       ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
 ; UnidadeControle:Controle|reg_select_memory[3]       ; UnidadeControle:Controle|proximo_estado.PEGA_LITERAL ; yes                    ;
-; Number of user-specified and inferred latches = 12  ;                                                      ;                        ;
+; Number of user-specified and inferred latches = 23  ;                                                      ;                        ;
 +-----------------------------------------------------+------------------------------------------------------+------------------------+
 Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
 
 
-+----------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                               ;
-+-----------------------------------------+----------------------------------------+
-; Register name                           ; Reason for Removal                     ;
-+-----------------------------------------+----------------------------------------+
-; UnidadeControle:Controle|estado.ESCRITA ; Lost fanout                            ;
-; UnidadeControle:Controle|estado.INICIO  ; Stuck at GND due to stuck port data_in ;
-; UnidadeControle:Controle|estado.BUSCA_2 ; Stuck at GND due to stuck port data_in ;
-; Total Number of Removed Registers = 3   ;                                        ;
-+-----------------------------------------+----------------------------------------+
++------------------------------------------------------------+
+; Logic Cells Representing Combinational Loops               ;
++--------------------------------------------------------+---+
+; Logic Cell Name                                        ;   ;
++--------------------------------------------------------+---+
+; ULA:ULA|Sign                                           ;   ;
+; Number of logic cells representing combinational loops ; 1 ;
++--------------------------------------------------------+---+
+Note: All cells listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                 ;
++-------------------------------------------+----------------------------------------+
+; Register name                             ; Reason for Removal                     ;
++-------------------------------------------+----------------------------------------+
+; UnidadeControle:Controle|estado.BUSCA_2   ; Lost fanout                            ;
+; UnidadeControle:Controle|estado.ESCRITA   ; Lost fanout                            ;
+; UnidadeControle:Controle|estado.SALTO_ADR ; Lost fanout                            ;
+; UnidadeControle:Controle|estado.INICIO    ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 4     ;                                        ;
++-------------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -336,12 +362,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 72    ;
+; Total registers                              ; 74    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 48    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 64    ;
+; Number of registers using Clock Enable       ; 66    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -351,18 +377,17 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output          ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
-; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |CPU|reg_a[7]                       ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |CPU|reg_inter_1[5]                 ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |CPU|reg_r[3]                       ;
-; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |CPU|reg_inter_2[5]                 ;
-; 18:1               ; 4 bits    ; 48 LEs        ; 16 LEs               ; 32 LEs                 ; Yes        ; |CPU|reg_r[5]                       ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |CPU|UnidadeControle:Controle|Mux18 ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; No         ; |CPU|ULA:ULA|Add0                   ;
-; 16:1               ; 4 bits    ; 40 LEs        ; 16 LEs               ; 24 LEs                 ; No         ; |CPU|ULA:ULA|Mux13                  ;
-; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; No         ; |CPU|ULA:ULA|Add0                   ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 0 LEs                ; 16 LEs                 ; Yes        ; |CPU|reg_a[1]                       ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |CPU|reg_inter_1[3]                 ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; Yes        ; |CPU|reg_inter_2[3]                 ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |CPU|UnidadeControle:Controle|Mux17 ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |CPU|ULA:ULA|Mux2                   ;
+; 5:1                ; 8 bits    ; 24 LEs        ; 16 LEs               ; 8 LEs                  ; No         ; |CPU|ULA:ULA|Mux12                  ;
+; 6:1                ; 8 bits    ; 32 LEs        ; 16 LEs               ; 16 LEs                 ; No         ; |CPU|ULA:ULA|Mux1                   ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |CPU|UnidadeControle:Controle|Mux27 ;
-; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |CPU|UnidadeControle:Controle|Mux29 ;
-; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |CPU|UnidadeControle:Controle|Mux33 ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |CPU|UnidadeControle:Controle|Mux31 ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; No         ; |CPU|UnidadeControle:Controle|Mux37 ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |CPU|ULA:ULA|Mux25                  ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------+
 
 
@@ -481,27 +506,28 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 72                          ;
+; arriav_ff             ; 74                          ;
 ;     CLR               ; 8                           ;
-;     ENA               ; 24                          ;
+;     ENA               ; 26                          ;
 ;     ENA CLR           ; 40                          ;
-; arriav_lcell_comb     ; 164                         ;
-;     arith             ; 16                          ;
+; arriav_lcell_comb     ; 179                         ;
+;     arith             ; 15                          ;
 ;         1 data inputs ; 6                           ;
-;         2 data inputs ; 2                           ;
-;         4 data inputs ; 8                           ;
-;     normal            ; 148                         ;
+;         2 data inputs ; 9                           ;
+;     normal            ; 156                         ;
 ;         1 data inputs ; 7                           ;
-;         2 data inputs ; 2                           ;
-;         3 data inputs ; 23                          ;
-;         4 data inputs ; 57                          ;
-;         5 data inputs ; 22                          ;
-;         6 data inputs ; 37                          ;
-; boundary_port         ; 61                          ;
+;         2 data inputs ; 3                           ;
+;         3 data inputs ; 33                          ;
+;         4 data inputs ; 55                          ;
+;         5 data inputs ; 25                          ;
+;         6 data inputs ; 33                          ;
+;     shared            ; 8                           ;
+;         2 data inputs ; 8                           ;
+; boundary_port         ; 63                          ;
 ; stratixv_ram_block    ; 8                           ;
 ;                       ;                             ;
-; Max LUT depth         ; 4.40                        ;
-; Average LUT depth     ; 2.21                        ;
+; Max LUT depth         ; 5.10                        ;
+; Average LUT depth     ; 2.38                        ;
 +-----------------------+-----------------------------+
 
 
@@ -520,7 +546,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Fri Nov 29 17:52:17 2024
+    Info: Processing started: Sat Nov 30 12:09:37 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -528,11 +554,11 @@ Info (12021): Found 2 design units, including 1 entities, in source file display
     Info (12022): Found design unit 1: DisplayDriver-Behavioral File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/DisplayDriver.vhd Line: 11
     Info (12023): Found entity 1: DisplayDriver File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/DisplayDriver.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file cpu.vhd
-    Info (12022): Found design unit 1: CPU-Behavioral File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 21
+    Info (12022): Found design unit 1: CPU-Behavioral File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 23
     Info (12023): Found entity 1: CPU File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 5
 Warning (12019): Can't analyze file -- file ULAvhd.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file ula.vhd
-    Info (12022): Found design unit 1: ULA-behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 17
+    Info (12022): Found design unit 1: ULA-behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 18
     Info (12023): Found entity 1: ULA File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file unidadecontrole.vhd
     Info (12022): Found design unit 1: UnidadeControle-Behavioral File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 29
@@ -566,40 +592,50 @@ Info (12021): Found 2 design units, including 1 entities, in source file ram256x
     Info (12022): Found design unit 1: ram256x8-SYN File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 56
     Info (12023): Found entity 1: ram256x8 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 43
 Info (12127): Elaborating entity "CPU" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(26): object "mem_enable" assigned a value but never read File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 26
-Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(26): object "read_enable" assigned a value but never read File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 26
-Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:PC" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 43
-Info (12128): Elaborating entity "UnidadeControle" for hierarchy "UnidadeControle:Controle" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 57
-Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(76): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 76
-Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(141): signal "opcode_memory" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 141
-Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(153): signal "reg_select_memory" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 153
-Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(161): signal "reg_select_memory" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 161
-Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(168): signal "opcode_memory" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 168
-Warning (10631): VHDL Process Statement warning at UnidadeControle.vhd(55): inferring latch(es) for signal or variable "opcode_memory", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Warning (10631): VHDL Process Statement warning at UnidadeControle.vhd(55): inferring latch(es) for signal or variable "reg_select_memory", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Warning (10631): VHDL Process Statement warning at UnidadeControle.vhd(55): inferring latch(es) for signal or variable "ula_code", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "ula_code[0]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "ula_code[1]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "ula_code[2]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "ula_code[3]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "reg_select_memory[0]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "reg_select_memory[1]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "reg_select_memory[2]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "reg_select_memory[3]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "opcode_memory[0]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "opcode_memory[1]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "opcode_memory[2]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (10041): Inferred latch for "opcode_memory[3]" at UnidadeControle.vhd(55) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-Info (12128): Elaborating entity "ULA" for hierarchy "ULA:ULA" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 142
-Warning (10631): VHDL Process Statement warning at ULA.vhd(20): inferring latch(es) for signal or variable "resultado", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "resultado[0]" at ULA.vhd(20) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "resultado[1]" at ULA.vhd(20) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "resultado[2]" at ULA.vhd(20) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "resultado[3]" at ULA.vhd(20) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "resultado[4]" at ULA.vhd(20) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "resultado[5]" at ULA.vhd(20) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (10041): Inferred latch for "resultado[6]" at ULA.vhd(20) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 20
-Info (12128): Elaborating entity "memoria_unidade" for hierarchy "memoria_unidade:Memoria" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 154
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(29): object "mem_enable" assigned a value but never read File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 29
+Warning (10036): Verilog HDL or VHDL warning at CPU.vhd(29): object "read_enable" assigned a value but never read File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 29
+Info (12128): Elaborating entity "program_counter" for hierarchy "program_counter:PC" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 46
+Info (12128): Elaborating entity "UnidadeControle" for hierarchy "UnidadeControle:Controle" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 60
+Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(77): signal "reset" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 77
+Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(142): signal "opcode_memory" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 142
+Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(162): signal "reg_select_memory" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 162
+Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(170): signal "reg_select_memory" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 170
+Warning (10492): VHDL Process Statement warning at UnidadeControle.vhd(177): signal "opcode_memory" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 177
+Warning (10631): VHDL Process Statement warning at UnidadeControle.vhd(56): inferring latch(es) for signal or variable "opcode_memory", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (10631): VHDL Process Statement warning at UnidadeControle.vhd(56): inferring latch(es) for signal or variable "reg_select_memory", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (10631): VHDL Process Statement warning at UnidadeControle.vhd(56): inferring latch(es) for signal or variable "ula_code", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "ula_code[0]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "ula_code[1]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "ula_code[2]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "ula_code[3]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "reg_select_memory[0]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "reg_select_memory[1]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "reg_select_memory[2]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "reg_select_memory[3]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "opcode_memory[0]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "opcode_memory[1]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "opcode_memory[2]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (10041): Inferred latch for "opcode_memory[3]" at UnidadeControle.vhd(56) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Info (12128): Elaborating entity "ULA" for hierarchy "ULA:ULA" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 153
+Warning (10541): VHDL Signal Declaration warning at ULA.vhd(14): used implicit default value for signal "result_enable" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations. File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 14
+Warning (10631): VHDL Process Statement warning at ULA.vhd(21): inferring latch(es) for signal or variable "resultado", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Warning (10631): VHDL Process Statement warning at ULA.vhd(21): inferring latch(es) for signal or variable "result", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "result[0]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "result[1]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "result[2]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "result[3]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "result[4]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "result[5]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "result[6]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "result[7]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "resultado[0]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "resultado[1]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "resultado[2]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "resultado[3]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "resultado[4]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "resultado[5]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (10041): Inferred latch for "resultado[6]" at ULA.vhd(21) File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+Info (12128): Elaborating entity "memoria_unidade" for hierarchy "memoria_unidade:Memoria" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 171
 Info (12128): Elaborating entity "ram256x8" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd Line: 35
 Info (12128): Elaborating entity "altsyncram" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 63
 Info (12130): Elaborated megafunction instantiation "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ram256x8.vhd Line: 63
@@ -657,9 +693,9 @@ Info (12133): Instantiated megafunction "memoria_unidade:Memoria|ram256x8:ram_in
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_e504.tdf
     Info (12023): Found entity 1: altsyncram_e504 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 28
 Info (12128): Elaborating entity "altsyncram_e504" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated" File: c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Info (12128): Elaborating entity "Input_Unit" for hierarchy "Input_Unit:Entrada" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 164
-Info (12128): Elaborating entity "Output_Unit" for hierarchy "Output_Unit:Saida" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 171
-Info (12128): Elaborating entity "DisplayDriver" for hierarchy "DisplayDriver:HEX0_Driver" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 182
+Info (12128): Elaborating entity "Input_Unit" for hierarchy "Input_Unit:Entrada" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 181
+Info (12128): Elaborating entity "Output_Unit" for hierarchy "Output_Unit:Saida" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 188
+Info (12128): Elaborating entity "DisplayDriver" for hierarchy "DisplayDriver:HEX0_Driver" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 199
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[0]" feeding internal logic into a wire File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
     Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[1]" feeding internal logic into a wire File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
@@ -669,42 +705,64 @@ Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[5]" feeding internal logic into a wire File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
     Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[6]" feeding internal logic into a wire File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
     Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[7]" feeding internal logic into a wire File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
-Warning (13012): Latch UnidadeControle:Controle|ula_code[3] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.DECODIFICA_2 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 32
-Warning (13012): Latch UnidadeControle:Controle|ula_code[2] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.DECODIFICA_2 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 32
-Warning (13012): Latch UnidadeControle:Controle|ula_code[1] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.DECODIFICA_2 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 32
-Warning (13012): Latch UnidadeControle:Controle|ula_code[0] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.DECODIFICA_2 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 32
-Warning (13012): Latch UnidadeControle:Controle|reg_select_memory[1] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
+Warning (13012): Latch ULA:ULA|result[0] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch ULA:ULA|result[1] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch ULA:ULA|result[2] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch ULA:ULA|result[3] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch UnidadeControle:Controle|reg_select_memory[1] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
     Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[1] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
-Warning (13012): Latch UnidadeControle:Controle|reg_select_memory[0] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
+Warning (13012): Latch UnidadeControle:Controle|reg_select_memory[0] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
     Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[0] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
-Warning (13012): Latch UnidadeControle:Controle|opcode_memory[3] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
+Warning (13012): Latch UnidadeControle:Controle|ula_code[1] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.DECODIFICA_2 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 33
+Warning (13012): Latch UnidadeControle:Controle|ula_code[0] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.DECODIFICA_2 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 33
+Warning (13012): Latch UnidadeControle:Controle|ula_code[2] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.DECODIFICA_2 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 33
+Warning (13012): Latch UnidadeControle:Controle|ula_code[3] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.DECODIFICA_2 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 33
+Warning (13012): Latch ULA:ULA|resultado[6] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch ULA:ULA|resultado[0] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch ULA:ULA|resultado[1] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch ULA:ULA|resultado[2] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch ULA:ULA|resultado[3] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch ULA:ULA|resultado[4] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch ULA:ULA|resultado[5] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
+Warning (13012): Latch UnidadeControle:Controle|opcode_memory[0] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
     Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[3] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
-Warning (13012): Latch UnidadeControle:Controle|opcode_memory[2] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
+Warning (13012): Latch UnidadeControle:Controle|opcode_memory[1] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
     Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[3] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
-Warning (13012): Latch UnidadeControle:Controle|opcode_memory[1] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
+Warning (13012): Latch UnidadeControle:Controle|opcode_memory[2] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
     Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[3] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
-Warning (13012): Latch UnidadeControle:Controle|opcode_memory[0] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
+Warning (13012): Latch UnidadeControle:Controle|opcode_memory[3] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
     Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[3] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
-Warning (13012): Latch UnidadeControle:Controle|reg_select_memory[2] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
+Warning (13012): Latch UnidadeControle:Controle|reg_select_memory[2] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
     Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
-Warning (13012): Latch UnidadeControle:Controle|reg_select_memory[3] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 55
+Warning (13012): Latch UnidadeControle:Controle|reg_select_memory[3] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 56
     Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[3] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 1 registers lost all their fanouts during netlist optimizations.
+Info (17049): 3 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 264 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 289 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 10 input pins
-    Info (21059): Implemented 51 output pins
-    Info (21061): Implemented 195 logic cells
+    Info (21059): Implemented 53 output pins
+    Info (21061): Implemented 218 logic cells
     Info (21064): Implemented 8 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 50 warnings
-    Info: Peak virtual memory: 4880 megabytes
-    Info: Processing ended: Fri Nov 29 17:52:27 2024
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 74 warnings
+    Info: Peak virtual memory: 4891 megabytes
+    Info: Processing ended: Sat Nov 30 12:09:47 2024
     Info: Elapsed time: 00:00:10
     Info: Total CPU time (on all processors): 00:00:19
 
