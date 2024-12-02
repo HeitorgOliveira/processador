@@ -109,8 +109,14 @@ begin
 						  when "0110" => proximo_estado <= SALTO_ADR; -- JMP
                     when "0111" => proximo_estado <= SALTO_ADR; -- JEQ
 						  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
-                    when "1001" => proximo_estado <= ACESSO_MEMORIA; -- LOAD
-                    when "1010" => proximo_estado <= ACESSO_MEMORIA; -- STORE
+                    when "1001" =>
+								proximo_estado <= ACESSO_MEMORIA; -- LOAD
+								using_pc <= '0';
+								mem_enable <= '1';
+                    when "1010" => 
+								proximo_estado <= ACESSO_MEMORIA; -- STORE
+								using_pc <= '0';
+								mem_enable <= '1';
                     when "1011" => proximo_estado <= MOVER; -- MOV
                     when "1100" => proximo_estado <= ACESSO_IO; -- IN
                     when "1101" => proximo_estado <= ACESSO_IO; -- OUT
@@ -119,32 +125,31 @@ begin
                 end case;
 				
                 -- Decodificação da seleção de registradores
-                case reg_select(1 downto 0) is
+                case reg_select(3 downto 2) is
                     when "00" => reg_select_a <= "00"; -- Registrador A
                     when "01" => reg_select_a <= "01"; -- Registrador B
                     when "10" => reg_select_a <= "10"; -- Registrador R
                     when "11" => 
 								reg_select_a <= "11"; -- Literal
-								opcode_memory <= opcode;
-								reg_select_memory <= reg_select;
 								proximo_estado <= PEGA_LITERAL;
 								--pc_enable <= '1';
                     when others => reg_select_a <= "00";
                 end case;
 
-                case reg_select(3 downto 2) is
+                case reg_select(1 downto 0) is
                     when "00" => reg_select_b <= "00"; -- Registrador A
                     when "01" => reg_select_b <= "01"; -- Registrador B
                     when "10" => reg_select_b <= "10"; -- Registrador R
                     when "11" => 
-								opcode_memory <= opcode;
+								
 								reg_select_b <= "11"; -- Literal
-								reg_select_memory <= reg_select;
 								proximo_estado <= PEGA_LITERAL;
 								--pc_enable <= '1';
                     when others => reg_select_b <= "00";
                 end case;
 					 ula_code <= opcode;
+					 reg_select_memory <= reg_select;
+					 opcode_memory <= opcode;
 
             when PEGA_LITERAL =>
 					 pc_enable <= '1';
@@ -169,8 +174,14 @@ begin
 						  when "0110" => proximo_estado <= SALTO_ADR; -- JMP
                     when "0111" => proximo_estado <= SALTO_ADR; -- JEQ
 						  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
-                    when "1001" => proximo_estado <= ACESSO_MEMORIA; -- LOAD
-                    when "1010" => proximo_estado <= ACESSO_MEMORIA; -- STORE
+                    when "1001" =>
+								proximo_estado <= ACESSO_MEMORIA; -- LOAD
+								using_pc <= '0';
+								mem_enable <= '1';
+                    when "1010" => 
+								proximo_estado <= ACESSO_MEMORIA; -- STORE
+								using_pc <= '0';
+								mem_enable <= '1';
                     when "1011" => proximo_estado <= MOVER; -- MOV
                     when "1100" => proximo_estado <= ACESSO_IO; -- IN
                     when "1101" => proximo_estado <= ACESSO_IO; -- OUT
@@ -179,7 +190,7 @@ begin
                 end case;
 					 
 					  -- Decodificação da seleção de registradores
-                case reg_select_memory(1 downto 0) is
+                case reg_select_memory(3 downto 2) is
                     when "00" => reg_select_a <= "00"; -- Registrador A
                     when "01" => reg_select_a <= "01"; -- Registrador B
                     when "10" => reg_select_a <= "10"; -- Registrador R
@@ -187,7 +198,7 @@ begin
                     when others => reg_select_a <= "00";
                 end case;
 
-                case reg_select_memory(3 downto 2) is
+                case reg_select_memory(1 downto 0) is
                     when "00" => reg_select_b <= "00"; -- Registrador A
                     when "01" => reg_select_b <= "01"; -- Registrador B
                     when "10" => reg_select_b <= "10"; -- Registrador R
@@ -205,7 +216,7 @@ begin
             -- Acessa memória ou dispositivos de I/O
             when ACESSO_IO =>
 					 -- Decodificação da seleção de registradores
-                case reg_select(1 downto 0) is
+                case reg_select(3 downto 2) is
                     when "00" => reg_select_a <= "00"; -- Registrador A
                     when "01" => reg_select_a <= "01"; -- Registrador B
                     when "10" => reg_select_a <= "10"; -- Registrador R
@@ -249,13 +260,16 @@ begin
 					proximo_estado <= BUSCA;
 				
 				when ACESSO_MEMORIA =>
-					 case opcode is
+					 reg_select_a <= reg_select_memory(3 downto 2); 
+					 reg_select_b <= reg_select_memory(1 downto 0); 
+					 using_pc <= '0';
+					 mem_enable <= '1';
+					 
+					 case opcode_memory is
 						  when "1001" => -- LOAD (carregar da memória)
 								read_enable <= '1';
-								reg_select_a <= reg_select(1 downto 0); -- Seleciona o registrador de destino
 						  when "1010" => -- STORE (armazenar na memória)
 								write_enable <= '1';
-								reg_select_a <= reg_select(1 downto 0); -- Seleciona o registrador de origem
 						  when others =>
 								-- Não faz nada
 					 end case;
@@ -268,8 +282,8 @@ begin
 					 
 				when MOVER =>
 					 -- MOV: transfere dados entre registradores
-					 reg_select_a <= reg_select(1 downto 0); -- Registrador de destino
-					 reg_select_b <= reg_select(3 downto 2); -- Registrador de origem
+					 reg_select_a <= reg_select(3 downto 2); -- Registrador de destino
+					 reg_select_b <= reg_select(1 downto 0); -- Registrador de origem
 					 proximo_estado <= BUSCA;
 
             when others =>

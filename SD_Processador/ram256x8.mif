@@ -23,10 +23,14 @@ DATA_RADIX=BINARY;
 
 CONTENT BEGIN
 	0 : 11000000;  -- IN A
-	1 : 11000001;  -- IN B
-	2 : 00000001;  -- ADD A, B
-	3 : 00001000;  -- ADD A, R
-	4 : 01100000;  -- JMP 0
-	5 : 11111111;  -- 0
-    [6..255] : 00000000;  -- Preenche os endereços restantes com wait
+	1 : 11000100;  -- IN B
+	2 : 10100011;  -- STORE A, L
+	3 : 10001111;  -- 
+	4 : 10100111;  -- STORE B, L
+	5 : 10011110;  -- 
+	6 : 10010011;  -- LOAD A, L
+	7 : 10011010;  -- 
+	8 : 10010111;  -- LOAD B, L
+	9 : 10011101;  -- 
+    [10..255] : 11110000;  -- Preenche os endereços restantes com wait
 END;

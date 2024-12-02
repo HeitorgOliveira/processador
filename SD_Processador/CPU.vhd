@@ -162,7 +162,7 @@ BEGIN
 					 mem_address <= pc_out;
 				ELSE
 					 -- Se o acesso for baseado no registrador
-					 mem_address <= reg_inter_1; -- Endereço fornecido pelo registrador
+					 mem_address <= reg_inter_2; -- Endereço fornecido pelo registrador
 				END IF;
 
 				-- Operações de leitura/escrita
