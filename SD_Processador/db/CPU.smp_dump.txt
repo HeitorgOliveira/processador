@@ -1,18 +1,19 @@
 
 State Machine - |CPU|UnidadeControle:Controle|estado
-Name estado.PULANDO estado.MOVER estado.ACESSO_MEMORIA estado.SALTO_ADR estado.ESPERA_LITERAL estado.PEGA_LITERAL estado.ESCRITA estado.ACESSO_IO estado.EXECUTA estado.DECODIFICA_2 estado.DECODIFICA estado.ESPERA_PC estado.INICIO estado.ESPERA estado.BUSCA 
-estado.BUSCA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
-estado.ESPERA 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
-estado.INICIO 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
-estado.ESPERA_PC 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
-estado.DECODIFICA 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
-estado.DECODIFICA_2 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
-estado.EXECUTA 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
-estado.ACESSO_IO 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
-estado.ESCRITA 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
-estado.PEGA_LITERAL 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
-estado.ESPERA_LITERAL 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
-estado.SALTO_ADR 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
-estado.ACESSO_MEMORIA 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
-estado.MOVER 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
-estado.PULANDO 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+Name estado.PULANDO estado.MOVER estado.ACESSO_MEMORIA estado.PRE_ACESSO_MEMORIA estado.SALTO_ADR estado.ESPERA_LITERAL estado.PEGA_LITERAL estado.ESCRITA estado.ACESSO_IO estado.EXECUTA estado.DECODIFICA_2 estado.DECODIFICA estado.ESPERA_PC estado.INICIO estado.ESPERA estado.BUSCA 
+estado.BUSCA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+estado.ESPERA 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+estado.INICIO 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+estado.ESPERA_PC 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+estado.DECODIFICA 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+estado.DECODIFICA_2 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+estado.EXECUTA 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+estado.ACESSO_IO 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+estado.ESCRITA 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+estado.PEGA_LITERAL 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+estado.ESPERA_LITERAL 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+estado.SALTO_ADR 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+estado.PRE_ACESSO_MEMORIA 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.ACESSO_MEMORIA 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.MOVER 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+estado.PULANDO 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 

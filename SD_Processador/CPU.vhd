@@ -171,9 +171,23 @@ BEGIN
 						  WHEN "00" => reg_a <= instrucao; -- Registrador A
 						  WHEN "01" => reg_b <= instrucao; -- Registrador B
 						  WHEN "10" => reg_r <= instrucao; -- Registrador R
+						  WHEN "11" => reg_literal <= instrucao;
 						  WHEN OTHERS => NULL;
 					 END CASE;
 				END IF;
+				
+				
+			END IF;
+			
+			-- Para mover o valor de uma variavel a outra
+			IF mov_enable = '1' THEN
+				CASE reg_select_a IS
+					  WHEN "00" => reg_a <= reg_inter_2 ; -- Registrador A
+					  WHEN "01" => reg_b <= reg_inter_2 ; -- Registrador B
+					  WHEN "10" => reg_r <= reg_inter_2 ; -- Registrador R
+					  WHEN "11" => reg_literal <= reg_inter_2 ;
+					  WHEN OTHERS => NULL;
+				 END CASE;
 			END IF;
 		end if;
 	END PROCESS;
@@ -206,8 +220,6 @@ BEGIN
 		zero <= zero_flag;
 		sign <= sign_flag;
 	END PROCESS;
-
-
 	
 
 	-- Instância da Unidade de Entrada

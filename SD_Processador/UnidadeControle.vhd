@@ -32,7 +32,7 @@ end UnidadeControle;
 architecture Behavioral of UnidadeControle is
     -- Definindo os estados
     type state_type is (INICIO, ESPERA, BUSCA, ESPERA_PC, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL,
-			               SALTO_ADR, ACESSO_MEMORIA, MOVER, PULANDO);
+			               SALTO_ADR, PRE_ACESSO_MEMORIA, ACESSO_MEMORIA, MOVER, PULANDO);
     signal estado, proximo_estado : state_type := BUSCA;
     
     signal opcode    : std_logic_vector(3 downto 0); -- OpCode extraído
@@ -67,6 +67,7 @@ begin
         input_enable <= '0';
         output_enable <= '0';
         pc_enable <= '0';
+		  mov_enable <= '0';
         alu_enable <= '0';
 		  literal_enable <= '0';
         reg_select_a <= "00"; -- Padrão: seleciona registrador A
@@ -110,11 +111,11 @@ begin
                     when "0111" => proximo_estado <= SALTO_ADR; -- JEQ
 						  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
                     when "1001" =>
-								proximo_estado <= ACESSO_MEMORIA; -- LOAD
+								proximo_estado <= PRE_ACESSO_MEMORIA; -- LOAD
 								using_pc <= '0';
 								mem_enable <= '1';
                     when "1010" => 
-								proximo_estado <= ACESSO_MEMORIA; -- STORE
+								proximo_estado <= PRE_ACESSO_MEMORIA; -- STORE
 								using_pc <= '0';
 								mem_enable <= '1';
                     when "1011" => proximo_estado <= MOVER; -- MOV
@@ -175,11 +176,11 @@ begin
                     when "0111" => proximo_estado <= SALTO_ADR; -- JEQ
 						  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
                     when "1001" =>
-								proximo_estado <= ACESSO_MEMORIA; -- LOAD
+								proximo_estado <= PRE_ACESSO_MEMORIA; -- LOAD
 								using_pc <= '0';
 								mem_enable <= '1';
                     when "1010" => 
-								proximo_estado <= ACESSO_MEMORIA; -- STORE
+								proximo_estado <= PRE_ACESSO_MEMORIA; -- STORE
 								using_pc <= '0';
 								mem_enable <= '1';
                     when "1011" => proximo_estado <= MOVER; -- MOV
@@ -259,9 +260,14 @@ begin
 					pc_enable <= '1';
 					proximo_estado <= BUSCA;
 				
-				when ACESSO_MEMORIA =>
+				when PRE_ACESSO_MEMORIA =>
+					 using_pc <= '0';
+					 mem_enable <= '1';
 					 reg_select_a <= reg_select_memory(3 downto 2); 
 					 reg_select_b <= reg_select_memory(1 downto 0); 
+					 proximo_estado <= ACESSO_MEMORIA;
+				
+				when ACESSO_MEMORIA =>
 					 using_pc <= '0';
 					 mem_enable <= '1';
 					 
