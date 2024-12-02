@@ -23,7 +23,7 @@ DATA_RADIX=BINARY;
 
 CONTENT BEGIN
 	0 : 11000000;  -- IN A
-	1 : 10100011;  -- STORE A, L
-	2 : 11111000;  -- adress
+	1 : 11000100;  -- IN B 
+	2 : 10110001; -- MOVE A, B 
     [3..255] : 11110000;  -- Preenche os endereços restantes com wait
 END;
