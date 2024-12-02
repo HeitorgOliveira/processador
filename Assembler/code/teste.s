@@ -1,0 +1,6 @@
+COMECO:
+IN A;
+IN B;
+ADD A, B;
+JMP COMECO;
+WAIT;

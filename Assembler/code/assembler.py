@@ -155,7 +155,7 @@ def assemble_line(line, num_linha, labels):
             address_label = tokens[1]
             if address_label in labels:
                 address = labels[address_label]
-                binary_output.append(binary_instruction + "1100")  # Literal
+                binary_output.append(binary_instruction + "0000")  # Literal
                 binary_output.append(format(address, "08b"))
                 num_linha += 1  # Literal ocupa uma linha extra
             else:
