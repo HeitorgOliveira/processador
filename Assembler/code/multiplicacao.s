@@ -8,7 +8,7 @@ LOOP_START:
     STORE R 255; -- Armazena o valor de R no endereco 255
     SUB B, 1; -- Decrementa o multiplicador B
     MOV B, R; -- Armazena o valor de R em B
-    LOAD R, 255; -- Carrega o valor do endereco 255 em R
+    LOAD R, 11111111; -- Carrega o valor do endereco 255 em R
     JMP LOOP_START; -- Repete o loop
 END_LOOP:
 OUT R
