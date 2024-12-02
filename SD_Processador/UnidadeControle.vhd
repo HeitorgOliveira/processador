@@ -288,8 +288,9 @@ begin
 					 
 				when MOVER =>
 					 -- MOV: transfere dados entre registradores
-					 reg_select_a <= reg_select(3 downto 2); -- Registrador de destino
-					 reg_select_b <= reg_select(1 downto 0); -- Registrador de origem
+					 mov_enable <= '1';
+					 reg_select_a <= reg_select_memory(3 downto 2); -- Registrador de destino
+					 reg_select_b <= reg_select_memory(1 downto 0); -- Registrador de origem
 					 proximo_estado <= BUSCA;
 
             when others =>

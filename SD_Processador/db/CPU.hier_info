@@ -355,7 +355,7 @@ ula_code[0] <= ula_code[0]$latch.DB_MAX_OUTPUT_PORT_TYPE
 ula_code[1] <= ula_code[1]$latch.DB_MAX_OUTPUT_PORT_TYPE
 ula_code[2] <= ula_code[2]$latch.DB_MAX_OUTPUT_PORT_TYPE
 ula_code[3] <= ula_code[3]$latch.DB_MAX_OUTPUT_PORT_TYPE
-mov_enable <= <GND>
+mov_enable <= mov_enable.DB_MAX_OUTPUT_PORT_TYPE
 using_pc <= Selector2.DB_MAX_OUTPUT_PORT_TYPE
 load_PC <= load_PC.DB_MAX_OUTPUT_PORT_TYPE
 
