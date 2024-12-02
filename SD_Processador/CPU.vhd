@@ -26,7 +26,7 @@ ARCHITECTURE Behavioral OF CPU IS
     SIGNAL data_in, data_out, alu_result : std_logic_vector(7 DOWNTO 0);
     SIGNAL zero_flag, sign_flag, carry_flag, overflow_flag : std_logic;
 	 SIGNAL zero_flag_aux, sign_flag_aux, carry_flag_aux, overflow_flag_aux : std_logic;
-    SIGNAL mem_enable, read_enable, write_enable, mov_enable, using_pc : std_logic;
+    SIGNAL mem_enable, read_enable, write_enable, mov_enable, using_pc, load_PC : std_logic;
     SIGNAL input_enable, output_enable, pc_enable, alu_enable, literal_enable : std_logic;
     SIGNAL reg_a_enable, reg_b_enable, reg_r_enable : std_logic;
     SIGNAL reg_a, reg_b, reg_r, reg_literal : std_logic_vector(7 DOWNTO 0) := "00000000";
@@ -51,8 +51,8 @@ BEGIN
 	  clock       => clock,
 	  reset       => reset,
 	  enable      => pc_enable,       
-	  load        => '0',             
-	  new_address => (others => '0'), 
+	  load        => load_PC,             
+	  new_address => instrucao, 
 	  pc_out      => pc_out
 	);
 
@@ -82,7 +82,8 @@ BEGIN
 	  reg_select_b      => reg_select_b,     -- Novo sinal para seleção do registrador B
 	  ula_code 			  => ula_code,
 	  mov_enable 		  => mov_enable,
-	  using_pc			  => using_pc
+	  using_pc			  => using_pc,
+	  load_PC			  => load_PC
 	);
 
 	-- Processo de seleção de registradores para a ULA
@@ -177,7 +178,16 @@ BEGIN
 		end if;
 	END PROCESS;
 
-
+	-- Instância da Memória
+	Memoria : ENTITY work.memoria_unidade PORT MAP (
+		 clock     => clock,
+		 data_in   => reg_inter_1,
+		 rdaddress => mem_address,
+		 wraddress => mem_address,
+		 wren      => write_enable,
+		 data_out  => instrucao
+	);
+	
 	-- Instância da ULA (ALU)
 	ULA : ENTITY work.ULA PORT MAP (
 	  A        => reg_inter_1,
@@ -198,15 +208,7 @@ BEGIN
 	END PROCESS;
 
 
-	-- Instância da Memória
-	Memoria : ENTITY work.memoria_unidade PORT MAP (
-		 clock     => clock,
-		 data_in   => reg_inter_1,
-		 rdaddress => mem_address,
-		 wraddress => mem_address,
-		 wren      => write_enable,
-		 data_out  => instrucao
-	);
+	
 
 	-- Instância da Unidade de Entrada
 	Entrada : ENTITY work.Input_Unit PORT MAP (

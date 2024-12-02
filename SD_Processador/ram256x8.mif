@@ -24,9 +24,9 @@ DATA_RADIX=BINARY;
 CONTENT BEGIN
 	0 : 11000000;  -- IN A
 	1 : 11000001;  -- IN B
-	2 : 00000001;  -- ADD B, 5
+	2 : 00000001;  -- ADD A, B
 	3 : 00001000;  -- ADD A, R
-	4 : 01110000;  -- JMP 0
-	5 : 00000000;  -- 0
-    [6..255] : 11110000;  -- Preenche os endereços restantes com wait
+	4 : 01100000;  -- JMP 0
+	5 : 11111111;  -- 0
+    [6..255] : 00000000;  -- Preenche os endereços restantes com wait
 END;

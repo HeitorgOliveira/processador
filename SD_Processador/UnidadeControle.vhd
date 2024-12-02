@@ -24,15 +24,16 @@ entity UnidadeControle is
         reg_select_b  : out std_logic_vector(1 downto 0);  -- Seleção do segundo registrador
 		  ula_code      : out std_logic_vector(3 downto 0);
 		  mov_enable    : out std_logic;
-		  using_pc   : out std_logic
+		  using_pc   	 : out std_logic;
+		  load_PC		 : out std_logic
     );
 end UnidadeControle;
 
 architecture Behavioral of UnidadeControle is
     -- Definindo os estados
     type state_type is (INICIO, ESPERA, BUSCA, ESPERA_PC, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL,
-			               SALTO_ADR, ACESSO_MEMORIA, MOVER);
-    signal estado, proximo_estado : state_type;
+			               SALTO_ADR, ACESSO_MEMORIA, MOVER, PULANDO);
+    signal estado, proximo_estado : state_type := BUSCA;
     
     signal opcode    : std_logic_vector(3 downto 0); -- OpCode extraído
 	 signal opcode_memory    : std_logic_vector(3 downto 0); -- Caso seja necessario pegar literal
@@ -45,7 +46,7 @@ begin
     process(clk, reset)
     begin
         if reset = '0' then
-            estado <= ESPERA;
+            estado <= BUSCA;
         elsif rising_edge(clk) then
             estado <= proximo_estado;
         end if;
@@ -59,6 +60,7 @@ begin
     process(estado, opcode, reg_select, zero_flag, sign_flag, carry_flag, overflow_flag)
     begin
         -- Valores padrão
+		  load_PC <= '0';
         mem_enable <= '0';
         read_enable <= '0';
         write_enable <= '0';
@@ -72,7 +74,7 @@ begin
 		  using_pc <= '1';
 
         case estado is
-				--Estado incial
+				--Estado incial, talvez o correto seja deixar a busca como inicial
 				when INICIO=>
 					 proximo_estado <= DECODIFICA;
 					 mem_enable <= '1';
@@ -222,24 +224,29 @@ begin
                 proximo_estado <= BUSCA;
 
 				when SALTO_ADR =>
+					 pc_enable <= '1';
 					 case opcode is
 						  when "0110" => -- JMP (salto incondicional)
 								mem_enable <= '1';
-								pc_enable <= '1';
+								proximo_estado <= PULANDO;
 						  when "0111" => -- JEQ (salto condicional se zero_flag = 1)
 								if zero_flag = '1' then
-									 pc_enable <= '1';
 									 mem_enable <= '1';
+									 proximo_estado <= PULANDO;
 								end if;
 						  when "1000" => -- JGR (salto condicional se sign_flag = 0 e zero_flag = 0)
 								if zero_flag = '0' and sign_flag = '0' then
-									 pc_enable <= '1';
 									 mem_enable <= '1';
+									 proximo_estado <= PULANDO;
 								end if;
 						  when others =>
-								-- Não faz nada
+								proximo_estado <= BUSCA;
 					 end case;
-					 proximo_estado <= BUSCA;
+					 
+				when PULANDO =>
+					load_PC <= '1';
+					pc_enable <= '1';
+					proximo_estado <= BUSCA;
 				
 				when ACESSO_MEMORIA =>
 					 case opcode is
@@ -253,8 +260,8 @@ begin
 								-- Não faz nada
 					 end case;
 					 proximo_estado <= BUSCA;
+				
 					 
-            -- Estado de escrita, se necessário
             when ESCRITA =>
                 write_enable <= '1';
                 proximo_estado <= BUSCA;
