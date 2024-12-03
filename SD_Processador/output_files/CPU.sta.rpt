@@ -1,5 +1,5 @@
 Timing Analyzer report for CPU
-Mon Dec  2 21:17:34 2024
+Mon Dec  2 22:15:57 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -100,14 +100,14 @@ https://fpgasoftware.intel.com/eula.
 ; Number detected on machine ; 4           ;
 ; Maximum allowed            ; 4           ;
 ;                            ;             ;
-; Average used               ; 1.20        ;
+; Average used               ; 1.21        ;
 ; Maximum used               ; 4           ;
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   6.7%      ;
-;     Processor 3            ;   6.5%      ;
-;     Processor 4            ;   6.5%      ;
+;     Processor 2            ;   7.1%      ;
+;     Processor 3            ;   7.0%      ;
+;     Processor 4            ;   6.9%      ;
 +----------------------------+-------------+
 
 
@@ -128,10 +128,10 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+--------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                 ; Note ;
 +------------+-----------------+--------------------------------------------+------+
-; 87.67 MHz  ; 87.67 MHz       ; clock                                      ;      ;
-; 160.93 MHz ; 160.93 MHz      ; UnidadeControle:Controle|estado.ACESSO_IO  ;      ;
-; 196.39 MHz ; 196.39 MHz      ; UnidadeControle:Controle|ula_code[1]       ;      ;
-; 254.39 MHz ; 254.39 MHz      ; UnidadeControle:Controle|estado.DECODIFICA ;      ;
+; 93.69 MHz  ; 93.69 MHz       ; clock                                      ;      ;
+; 135.14 MHz ; 135.14 MHz      ; UnidadeControle:Controle|ula_code[1]       ;      ;
+; 160.72 MHz ; 160.72 MHz      ; UnidadeControle:Controle|estado.ACESSO_IO  ;      ;
+; 263.37 MHz ; 263.37 MHz      ; UnidadeControle:Controle|estado.DECODIFICA ;      ;
 +------------+-----------------+--------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -147,10 +147,10 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------+---------+---------------+
 ; Clock                                      ; Slack   ; End Point TNS ;
 +--------------------------------------------+---------+---------------+
-; UnidadeControle:Controle|estado.ACESSO_IO  ; -12.001 ; -151.405      ;
-; UnidadeControle:Controle|ula_code[1]       ; -11.898 ; -170.797      ;
-; clock                                      ; -10.407 ; -522.077      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -10.226 ; -107.594      ;
+; UnidadeControle:Controle|ula_code[1]       ; -12.109 ; -170.612      ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; -10.720 ; -144.181      ;
+; clock                                      ; -9.704  ; -594.089      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; -9.540  ; -103.132      ;
 +--------------------------------------------+---------+---------------+
 
 
@@ -159,10 +159,10 @@ HTML report is unavailable in plain text report export.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -6.867 ; -394.530      ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; -0.322 ; -0.645        ;
-; UnidadeControle:Controle|ula_code[1]       ; -0.222 ; -1.039        ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -0.005 ; -0.005        ;
+; clock                                      ; -6.881 ; -300.210      ;
+; UnidadeControle:Controle|ula_code[1]       ; -1.073 ; -4.163        ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; -0.460 ; -0.729        ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.284  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -183,10 +183,10 @@ No paths to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -2.636 ; -214.332      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -0.030 ; -0.030        ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; 0.151  ; 0.000         ;
-; UnidadeControle:Controle|ula_code[1]       ; 0.212  ; 0.000         ;
+; clock                                      ; -2.636 ; -212.996      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.013  ; 0.000         ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; 0.040  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[1]       ; 0.124  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -201,10 +201,10 @@ No synchronizer chains to report.
 +------------+-----------------+--------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                 ; Note ;
 +------------+-----------------+--------------------------------------------+------+
-; 91.06 MHz  ; 91.06 MHz       ; clock                                      ;      ;
-; 166.89 MHz ; 166.89 MHz      ; UnidadeControle:Controle|estado.ACESSO_IO  ;      ;
-; 201.05 MHz ; 201.05 MHz      ; UnidadeControle:Controle|ula_code[1]       ;      ;
-; 257.67 MHz ; 257.67 MHz      ; UnidadeControle:Controle|estado.DECODIFICA ;      ;
+; 95.14 MHz  ; 95.14 MHz       ; clock                                      ;      ;
+; 136.35 MHz ; 136.35 MHz      ; UnidadeControle:Controle|ula_code[1]       ;      ;
+; 168.46 MHz ; 168.46 MHz      ; UnidadeControle:Controle|estado.ACESSO_IO  ;      ;
+; 272.11 MHz ; 272.11 MHz      ; UnidadeControle:Controle|estado.DECODIFICA ;      ;
 +------------+-----------------+--------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -214,10 +214,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------------------------+---------+---------------+
 ; Clock                                      ; Slack   ; End Point TNS ;
 +--------------------------------------------+---------+---------------+
-; UnidadeControle:Controle|estado.ACESSO_IO  ; -11.983 ; -150.107      ;
-; UnidadeControle:Controle|ula_code[1]       ; -11.908 ; -169.991      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -10.057 ; -107.285      ;
-; clock                                      ; -9.982  ; -498.707      ;
+; UnidadeControle:Controle|ula_code[1]       ; -11.954 ; -170.290      ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; -10.645 ; -143.617      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; -9.525  ; -103.362      ;
+; clock                                      ; -9.511  ; -574.225      ;
 +--------------------------------------------+---------+---------------+
 
 
@@ -226,10 +226,10 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -6.738 ; -389.590      ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; -0.390 ; -0.891        ;
-; UnidadeControle:Controle|ula_code[1]       ; -0.379 ; -1.664        ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -0.039 ; -0.039        ;
+; clock                                      ; -6.770 ; -298.432      ;
+; UnidadeControle:Controle|ula_code[1]       ; -1.046 ; -4.153        ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; -0.590 ; -0.889        ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.259  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -250,10 +250,10 @@ No paths to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -2.636 ; -211.444      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.001  ; 0.000         ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; 0.128  ; 0.000         ;
-; UnidadeControle:Controle|ula_code[1]       ; 0.176  ; 0.000         ;
+; clock                                      ; -2.636 ; -210.680      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.038  ; 0.000         ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; 0.085  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[1]       ; 0.119  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -268,10 +268,10 @@ No synchronizer chains to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -5.939 ; -262.879      ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; -5.665 ; -67.116       ;
-; UnidadeControle:Controle|ula_code[1]       ; -5.606 ; -77.870       ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -4.926 ; -50.176       ;
+; clock                                      ; -6.341 ; -325.341      ;
+; UnidadeControle:Controle|ula_code[1]       ; -5.777 ; -78.378       ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; -4.914 ; -63.232       ;
+; UnidadeControle:Controle|estado.DECODIFICA ; -4.484 ; -47.676       ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -280,10 +280,10 @@ No synchronizer chains to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -3.447 ; -189.662      ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; -0.098 ; -0.283        ;
-; UnidadeControle:Controle|ula_code[1]       ; -0.090 ; -0.111        ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.062  ; 0.000         ;
+; clock                                      ; -3.387 ; -146.711      ;
+; UnidadeControle:Controle|ula_code[1]       ; -0.531 ; -1.769        ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; -0.189 ; -0.296        ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.083  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -304,10 +304,10 @@ No paths to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -2.174 ; -138.849      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.069  ; 0.000         ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; 0.281  ; 0.000         ;
-; UnidadeControle:Controle|ula_code[1]       ; 0.307  ; 0.000         ;
+; clock                                      ; -2.174 ; -136.071      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.102  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[1]       ; 0.197  ; 0.000         ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; 0.273  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -322,10 +322,10 @@ No synchronizer chains to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; UnidadeControle:Controle|estado.ACESSO_IO  ; -5.294 ; -63.708       ;
-; UnidadeControle:Controle|ula_code[1]       ; -5.281 ; -73.669       ;
-; clock                                      ; -4.821 ; -218.070      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; -4.641 ; -48.483       ;
+; UnidadeControle:Controle|ula_code[1]       ; -5.374 ; -74.111       ;
+; clock                                      ; -5.190 ; -271.186      ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; -4.640 ; -60.366       ;
+; UnidadeControle:Controle|estado.DECODIFICA ; -4.309 ; -46.433       ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -334,10 +334,10 @@ No synchronizer chains to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -3.350 ; -186.930      ;
-; UnidadeControle:Controle|ula_code[1]       ; -0.084 ; -0.180        ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; -0.077 ; -0.253        ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.055  ; 0.000         ;
+; clock                                      ; -3.310 ; -146.289      ;
+; UnidadeControle:Controle|ula_code[1]       ; -0.474 ; -1.568        ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; -0.157 ; -0.301        ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.095  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -358,10 +358,10 @@ No paths to report.
 +--------------------------------------------+--------+---------------+
 ; Clock                                      ; Slack  ; End Point TNS ;
 +--------------------------------------------+--------+---------------+
-; clock                                      ; -2.174 ; -137.470      ;
-; UnidadeControle:Controle|estado.DECODIFICA ; 0.160  ; 0.000         ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; 0.314  ; 0.000         ;
-; UnidadeControle:Controle|ula_code[1]       ; 0.346  ; 0.000         ;
+; clock                                      ; -2.174 ; -134.631      ;
+; UnidadeControle:Controle|estado.DECODIFICA ; 0.172  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[1]       ; 0.243  ; 0.000         ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; 0.316  ; 0.000         ;
 +--------------------------------------------+--------+---------------+
 
 
@@ -371,22 +371,22 @@ No paths to report.
 No synchronizer chains to report.
 
 
-+--------------------------------------------------------------------------------------------------------------+
-; Multicorner Timing Analysis Summary                                                                          ;
-+---------------------------------------------+----------+----------+----------+---------+---------------------+
-; Clock                                       ; Setup    ; Hold     ; Recovery ; Removal ; Minimum Pulse Width ;
-+---------------------------------------------+----------+----------+----------+---------+---------------------+
-; Worst-case Slack                            ; -12.001  ; -6.867   ; N/A      ; N/A     ; -2.636              ;
-;  UnidadeControle:Controle|estado.ACESSO_IO  ; -12.001  ; -0.390   ; N/A      ; N/A     ; 0.128               ;
-;  UnidadeControle:Controle|estado.DECODIFICA ; -10.226  ; -0.039   ; N/A      ; N/A     ; -0.030              ;
-;  UnidadeControle:Controle|ula_code[1]       ; -11.908  ; -0.379   ; N/A      ; N/A     ; 0.176               ;
-;  clock                                      ; -10.407  ; -6.867   ; N/A      ; N/A     ; -2.636              ;
-; Design-wide TNS                             ; -951.873 ; -396.219 ; 0.0      ; 0.0     ; -214.362            ;
-;  UnidadeControle:Controle|estado.ACESSO_IO  ; -151.405 ; -0.891   ; N/A      ; N/A     ; 0.000               ;
-;  UnidadeControle:Controle|estado.DECODIFICA ; -107.594 ; -0.039   ; N/A      ; N/A     ; -0.030              ;
-;  UnidadeControle:Controle|ula_code[1]       ; -170.797 ; -1.664   ; N/A      ; N/A     ; 0.000               ;
-;  clock                                      ; -522.077 ; -394.530 ; N/A      ; N/A     ; -214.332            ;
-+---------------------------------------------+----------+----------+----------+---------+---------------------+
++---------------------------------------------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                                                           ;
++---------------------------------------------+-----------+----------+----------+---------+---------------------+
+; Clock                                       ; Setup     ; Hold     ; Recovery ; Removal ; Minimum Pulse Width ;
++---------------------------------------------+-----------+----------+----------+---------+---------------------+
+; Worst-case Slack                            ; -12.109   ; -6.881   ; N/A      ; N/A     ; -2.636              ;
+;  UnidadeControle:Controle|estado.ACESSO_IO  ; -10.720   ; -0.590   ; N/A      ; N/A     ; 0.040               ;
+;  UnidadeControle:Controle|estado.DECODIFICA ; -9.540    ; 0.083    ; N/A      ; N/A     ; 0.013               ;
+;  UnidadeControle:Controle|ula_code[1]       ; -12.109   ; -1.073   ; N/A      ; N/A     ; 0.119               ;
+;  clock                                      ; -9.704    ; -6.881   ; N/A      ; N/A     ; -2.636              ;
+; Design-wide TNS                             ; -1012.014 ; -305.102 ; 0.0      ; 0.0     ; -212.996            ;
+;  UnidadeControle:Controle|estado.ACESSO_IO  ; -144.181  ; -0.889   ; N/A      ; N/A     ; 0.000               ;
+;  UnidadeControle:Controle|estado.DECODIFICA ; -103.362  ; 0.000    ; N/A      ; N/A     ; 0.000               ;
+;  UnidadeControle:Controle|ula_code[1]       ; -170.612  ; -4.163   ; N/A      ; N/A     ; 0.000               ;
+;  clock                                      ; -594.089  ; -300.210 ; N/A      ; N/A     ; -212.996            ;
++---------------------------------------------+-----------+----------+----------+---------+---------------------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -523,7 +523,7 @@ No synchronizer chains to report.
 ; hex5[4] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.15e-07 V                   ; 2.41 V              ; -0.0495 V           ; 0.18 V                               ; 0.115 V                              ; 4.54e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.15e-07 V                  ; 2.41 V             ; -0.0495 V          ; 0.18 V                              ; 0.115 V                             ; 4.54e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; hex5[5] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.15e-07 V                   ; 2.41 V              ; -0.0492 V           ; 0.181 V                              ; 0.116 V                              ; 4.54e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.15e-07 V                  ; 2.41 V             ; -0.0492 V          ; 0.181 V                             ; 0.116 V                             ; 4.54e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; hex5[6] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.19e-07 V                   ; 2.4 V               ; -0.039 V            ; 0.21 V                               ; 0.145 V                              ; 4.67e-10 s                  ; 4.63e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.19e-07 V                  ; 2.4 V              ; -0.039 V           ; 0.21 V                              ; 0.145 V                             ; 4.67e-10 s                 ; 4.63e-10 s                 ; No                        ; Yes                       ;
-; debug1  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.15e-07 V                   ; 2.41 V              ; -0.0492 V           ; 0.181 V                              ; 0.116 V                              ; 4.54e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.15e-07 V                  ; 2.41 V             ; -0.0492 V          ; 0.181 V                             ; 0.116 V                             ; 4.54e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
+; debug1  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.15e-07 V                   ; 2.41 V              ; -0.0495 V           ; 0.18 V                               ; 0.115 V                              ; 4.54e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.15e-07 V                  ; 2.41 V             ; -0.0495 V          ; 0.18 V                              ; 0.115 V                             ; 4.54e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; zero    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.15e-07 V                   ; 2.41 V              ; -0.0495 V           ; 0.18 V                               ; 0.115 V                              ; 4.54e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.15e-07 V                  ; 2.41 V             ; -0.0495 V          ; 0.18 V                              ; 0.115 V                             ; 4.54e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 ; sign    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.15e-07 V                   ; 2.41 V              ; -0.0492 V           ; 0.181 V                              ; 0.116 V                              ; 4.54e-10 s                  ; 4.44e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.15e-07 V                  ; 2.41 V             ; -0.0492 V          ; 0.181 V                             ; 0.116 V                             ; 4.54e-10 s                 ; 4.44e-10 s                 ; No                        ; Yes                       ;
 +---------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
@@ -584,7 +584,7 @@ No synchronizer chains to report.
 ; hex5[4] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.52e-05 V                   ; 2.38 V              ; -0.0315 V           ; 0.205 V                              ; 0.182 V                              ; 4.74e-10 s                  ; 4.85e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.52e-05 V                  ; 2.38 V             ; -0.0315 V          ; 0.205 V                             ; 0.182 V                             ; 4.74e-10 s                 ; 4.85e-10 s                 ; No                        ; Yes                       ;
 ; hex5[5] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.52e-05 V                   ; 2.38 V              ; -0.032 V            ; 0.204 V                              ; 0.181 V                              ; 4.74e-10 s                  ; 4.85e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.52e-05 V                  ; 2.38 V             ; -0.032 V           ; 0.204 V                             ; 0.181 V                             ; 4.74e-10 s                 ; 4.85e-10 s                 ; No                        ; Yes                       ;
 ; hex5[6] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.56e-05 V                   ; 2.38 V              ; -0.026 V            ; 0.249 V                              ; 0.089 V                              ; 4.95e-10 s                  ; 6.01e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.56e-05 V                  ; 2.38 V             ; -0.026 V           ; 0.249 V                             ; 0.089 V                             ; 4.95e-10 s                 ; 6.01e-10 s                 ; No                        ; Yes                       ;
-; debug1  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.52e-05 V                   ; 2.38 V              ; -0.032 V            ; 0.204 V                              ; 0.181 V                              ; 4.74e-10 s                  ; 4.85e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.52e-05 V                  ; 2.38 V             ; -0.032 V           ; 0.204 V                             ; 0.181 V                             ; 4.74e-10 s                 ; 4.85e-10 s                 ; No                        ; Yes                       ;
+; debug1  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.52e-05 V                   ; 2.38 V              ; -0.0315 V           ; 0.205 V                              ; 0.182 V                              ; 4.74e-10 s                  ; 4.85e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.52e-05 V                  ; 2.38 V             ; -0.0315 V          ; 0.205 V                             ; 0.182 V                             ; 4.74e-10 s                 ; 4.85e-10 s                 ; No                        ; Yes                       ;
 ; zero    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.52e-05 V                   ; 2.38 V              ; -0.0315 V           ; 0.205 V                              ; 0.182 V                              ; 4.74e-10 s                  ; 4.85e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.52e-05 V                  ; 2.38 V             ; -0.0315 V          ; 0.205 V                             ; 0.182 V                             ; 4.74e-10 s                 ; 4.85e-10 s                 ; No                        ; Yes                       ;
 ; sign    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.32 V                       ; 2.52e-05 V                   ; 2.38 V              ; -0.032 V            ; 0.204 V                              ; 0.181 V                              ; 4.74e-10 s                  ; 4.85e-10 s                  ; No                         ; Yes                        ; 2.32 V                      ; 2.52e-05 V                  ; 2.38 V             ; -0.032 V           ; 0.204 V                             ; 0.181 V                             ; 4.74e-10 s                 ; 4.85e-10 s                 ; No                        ; Yes                       ;
 +---------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
@@ -645,7 +645,7 @@ No synchronizer chains to report.
 ; hex5[4] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; hex5[5] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; hex5[6] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.25e-06 V                   ; 2.9 V               ; -0.107 V            ; 0.378 V                              ; 0.16 V                               ; 2.87e-10 s                  ; 4.28e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 4.25e-06 V                  ; 2.9 V              ; -0.107 V           ; 0.378 V                             ; 0.16 V                              ; 2.87e-10 s                 ; 4.28e-10 s                 ; No                        ; No                        ;
-; debug1  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
+; debug1  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; zero    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.121 V            ; 0.326 V                              ; 0.297 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.121 V           ; 0.326 V                             ; 0.297 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 ; sign    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 4.14e-06 V                   ; 2.91 V              ; -0.119 V            ; 0.326 V                              ; 0.298 V                              ; 2.74e-10 s                  ; 2.8e-10 s                   ; No                         ; No                         ; 2.75 V                      ; 4.14e-06 V                  ; 2.91 V             ; -0.119 V           ; 0.326 V                             ; 0.298 V                             ; 2.74e-10 s                 ; 2.8e-10 s                  ; No                        ; No                        ;
 +---------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
@@ -706,7 +706,7 @@ No synchronizer chains to report.
 ; hex5[4] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
 ; hex5[5] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
 ; hex5[6] ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000247 V                   ; 2.85 V              ; -0.0711 V           ; 0.204 V                              ; 0.181 V                              ; 4.55e-10 s                  ; 4.49e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000247 V                  ; 2.85 V             ; -0.0711 V          ; 0.204 V                             ; 0.181 V                             ; 4.55e-10 s                 ; 4.49e-10 s                 ; No                        ; No                        ;
-; debug1  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
+; debug1  ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
 ; zero    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0814 V           ; 0.36 V                               ; 0.156 V                              ; 3e-10 s                     ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0814 V          ; 0.36 V                              ; 0.156 V                             ; 3e-10 s                    ; 4.34e-10 s                 ; No                        ; No                        ;
 ; sign    ; 2.5 V        ; 0 s                 ; 0 s                 ; 2.75 V                       ; 0.000242 V                   ; 2.86 V              ; -0.0805 V           ; 0.358 V                              ; 0.156 V                              ; 3.01e-10 s                  ; 4.34e-10 s                  ; No                         ; No                         ; 2.75 V                      ; 0.000242 V                  ; 2.86 V             ; -0.0805 V          ; 0.358 V                             ; 0.156 V                             ; 3.01e-10 s                 ; 4.34e-10 s                 ; No                        ; No                        ;
 +---------+--------------+---------------------+---------------------+------------------------------+------------------------------+---------------------+---------------------+--------------------------------------+--------------------------------------+-----------------------------+-----------------------------+----------------------------+----------------------------+-----------------------------+-----------------------------+--------------------+--------------------+-------------------------------------+-------------------------------------+----------------------------+----------------------------+---------------------------+---------------------------+
@@ -717,16 +717,16 @@ No synchronizer chains to report.
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                 ; To Clock                                   ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
-; clock                                      ; clock                                      ; 1411     ; 0        ; 0        ; 0        ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; clock                                      ; 128      ; 112      ; 0        ; 0        ;
-; UnidadeControle:Controle|estado.DECODIFICA ; clock                                      ; 112      ; 515      ; 0        ; 0        ;
+; clock                                      ; clock                                      ; 1943     ; 0        ; 0        ; 0        ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; clock                                      ; 192      ; 176      ; 0        ; 0        ;
+; UnidadeControle:Controle|estado.DECODIFICA ; clock                                      ; 176      ; 755      ; 0        ; 0        ;
 ; UnidadeControle:Controle|ula_code[1]       ; clock                                      ; 41       ; 42       ; 0        ; 0        ;
 ; clock                                      ; UnidadeControle:Controle|estado.ACESSO_IO  ; 84       ; 0        ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.ACESSO_IO  ; UnidadeControle:Controle|estado.ACESSO_IO  ; 6        ; 6        ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA ; UnidadeControle:Controle|estado.ACESSO_IO  ; 7        ; 28       ; 0        ; 0        ;
 ; clock                                      ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 16       ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 0        ; 4        ;
-; clock                                      ; UnidadeControle:Controle|ula_code[1]       ; 219      ; 0        ; 210      ; 0        ;
+; clock                                      ; UnidadeControle:Controle|ula_code[1]       ; 249      ; 0        ; 210      ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA ; UnidadeControle:Controle|ula_code[1]       ; 0        ; 21       ; 0        ; 40       ;
 ; UnidadeControle:Controle|ula_code[1]       ; UnidadeControle:Controle|ula_code[1]       ; 7        ; 7        ; 16       ; 16       ;
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
@@ -738,16 +738,16 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                 ; To Clock                                   ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
-; clock                                      ; clock                                      ; 1411     ; 0        ; 0        ; 0        ;
-; UnidadeControle:Controle|estado.ACESSO_IO  ; clock                                      ; 128      ; 112      ; 0        ; 0        ;
-; UnidadeControle:Controle|estado.DECODIFICA ; clock                                      ; 112      ; 515      ; 0        ; 0        ;
+; clock                                      ; clock                                      ; 1943     ; 0        ; 0        ; 0        ;
+; UnidadeControle:Controle|estado.ACESSO_IO  ; clock                                      ; 192      ; 176      ; 0        ; 0        ;
+; UnidadeControle:Controle|estado.DECODIFICA ; clock                                      ; 176      ; 755      ; 0        ; 0        ;
 ; UnidadeControle:Controle|ula_code[1]       ; clock                                      ; 41       ; 42       ; 0        ; 0        ;
 ; clock                                      ; UnidadeControle:Controle|estado.ACESSO_IO  ; 84       ; 0        ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.ACESSO_IO  ; UnidadeControle:Controle|estado.ACESSO_IO  ; 6        ; 6        ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA ; UnidadeControle:Controle|estado.ACESSO_IO  ; 7        ; 28       ; 0        ; 0        ;
 ; clock                                      ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 16       ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA ; UnidadeControle:Controle|estado.DECODIFICA ; 0        ; 0        ; 0        ; 4        ;
-; clock                                      ; UnidadeControle:Controle|ula_code[1]       ; 219      ; 0        ; 210      ; 0        ;
+; clock                                      ; UnidadeControle:Controle|ula_code[1]       ; 249      ; 0        ; 210      ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA ; UnidadeControle:Controle|ula_code[1]       ; 0        ; 21       ; 0        ; 40       ;
 ; UnidadeControle:Controle|ula_code[1]       ; UnidadeControle:Controle|ula_code[1]       ; 7        ; 7        ; 16       ; 16       ;
 +--------------------------------------------+--------------------------------------------+----------+----------+----------+----------+
@@ -954,7 +954,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Mon Dec  2 21:17:28 2024
+    Info: Processing started: Mon Dec  2 22:15:51 2024
 Info: Command: quartus_sta CPU -c CPU
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -970,128 +970,128 @@ Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name UnidadeControle:Controle|estado.ACESSO_IO UnidadeControle:Controle|estado.ACESSO_IO
     Info (332105): create_clock -period 1.000 -name UnidadeControle:Controle|ula_code[1] UnidadeControle:Controle|ula_code[1]
 Warning (332125): Found combinational loop of 2 nodes File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 30
-    Warning (332126): Node "ULA|Mux0~3|combout"
-    Warning (332126): Node "ULA|Mux0~3|datab"
+    Warning (332126): Node "ULA|Mux1~3|combout"
+    Warning (332126): Node "ULA|Mux1~3|dataa"
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -12.001
+Info (332146): Worst-case setup slack is -12.109
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -12.001            -151.405 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):   -11.898            -170.797 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):   -10.407            -522.077 clock 
-    Info (332119):   -10.226            -107.594 UnidadeControle:Controle|estado.DECODIFICA 
-Info (332146): Worst-case hold slack is -6.867
+    Info (332119):   -12.109            -170.612 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):   -10.720            -144.181 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -9.704            -594.089 clock 
+    Info (332119):    -9.540            -103.132 UnidadeControle:Controle|estado.DECODIFICA 
+Info (332146): Worst-case hold slack is -6.881
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -6.867            -394.530 clock 
-    Info (332119):    -0.322              -0.645 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):    -0.222              -1.039 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -0.005              -0.005 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -6.881            -300.210 clock 
+    Info (332119):    -1.073              -4.163 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -0.460              -0.729 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):     0.284               0.000 UnidadeControle:Controle|estado.DECODIFICA 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.636
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.636            -214.332 clock 
-    Info (332119):    -0.030              -0.030 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):     0.151               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):     0.212               0.000 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -2.636            -212.996 clock 
+    Info (332119):     0.013               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     0.040               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):     0.124               0.000 UnidadeControle:Controle|ula_code[1] 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -11.983
+Info (332146): Worst-case setup slack is -11.954
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -11.983            -150.107 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):   -11.908            -169.991 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):   -10.057            -107.285 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):    -9.982            -498.707 clock 
-Info (332146): Worst-case hold slack is -6.738
+    Info (332119):   -11.954            -170.290 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):   -10.645            -143.617 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -9.525            -103.362 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -9.511            -574.225 clock 
+Info (332146): Worst-case hold slack is -6.770
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -6.738            -389.590 clock 
-    Info (332119):    -0.390              -0.891 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):    -0.379              -1.664 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -0.039              -0.039 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -6.770            -298.432 clock 
+    Info (332119):    -1.046              -4.153 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -0.590              -0.889 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):     0.259               0.000 UnidadeControle:Controle|estado.DECODIFICA 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.636
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.636            -211.444 clock 
-    Info (332119):     0.001               0.000 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):     0.128               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):     0.176               0.000 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -2.636            -210.680 clock 
+    Info (332119):     0.038               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     0.085               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):     0.119               0.000 UnidadeControle:Controle|ula_code[1] 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -5.939
+Info (332146): Worst-case setup slack is -6.341
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.939            -262.879 clock 
-    Info (332119):    -5.665             -67.116 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):    -5.606             -77.870 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -4.926             -50.176 UnidadeControle:Controle|estado.DECODIFICA 
-Info (332146): Worst-case hold slack is -3.447
+    Info (332119):    -6.341            -325.341 clock 
+    Info (332119):    -5.777             -78.378 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -4.914             -63.232 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -4.484             -47.676 UnidadeControle:Controle|estado.DECODIFICA 
+Info (332146): Worst-case hold slack is -3.387
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.447            -189.662 clock 
-    Info (332119):    -0.098              -0.283 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):    -0.090              -0.111 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):     0.062               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -3.387            -146.711 clock 
+    Info (332119):    -0.531              -1.769 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -0.189              -0.296 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):     0.083               0.000 UnidadeControle:Controle|estado.DECODIFICA 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.174
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.174            -138.849 clock 
-    Info (332119):     0.069               0.000 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):     0.281               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):     0.307               0.000 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -2.174            -136.071 clock 
+    Info (332119):     0.102               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     0.197               0.000 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):     0.273               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
 Info: Analyzing Fast 1100mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -5.294
+Info (332146): Worst-case setup slack is -5.374
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.294             -63.708 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):    -5.281             -73.669 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -4.821            -218.070 clock 
-    Info (332119):    -4.641             -48.483 UnidadeControle:Controle|estado.DECODIFICA 
-Info (332146): Worst-case hold slack is -3.350
+    Info (332119):    -5.374             -74.111 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -5.190            -271.186 clock 
+    Info (332119):    -4.640             -60.366 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -4.309             -46.433 UnidadeControle:Controle|estado.DECODIFICA 
+Info (332146): Worst-case hold slack is -3.310
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.350            -186.930 clock 
-    Info (332119):    -0.084              -0.180 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -0.077              -0.253 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):     0.055               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -3.310            -146.289 clock 
+    Info (332119):    -0.474              -1.568 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -0.157              -0.301 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):     0.095               0.000 UnidadeControle:Controle|estado.DECODIFICA 
 Info (332140): No Recovery paths to report
 Info (332140): No Removal paths to report
 Info (332146): Worst-case minimum pulse width slack is -2.174
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.174            -137.470 clock 
-    Info (332119):     0.160               0.000 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):     0.314               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):     0.346               0.000 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -2.174            -134.631 clock 
+    Info (332119):     0.172               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     0.243               0.000 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):     0.316               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 10 warnings
-    Info: Peak virtual memory: 5106 megabytes
-    Info: Processing ended: Mon Dec  2 21:17:33 2024
-    Info: Elapsed time: 00:00:05
+    Info: Peak virtual memory: 5104 megabytes
+    Info: Processing ended: Mon Dec  2 22:15:57 2024
+    Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:06
 
 

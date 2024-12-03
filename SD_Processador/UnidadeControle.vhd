@@ -32,7 +32,7 @@ end UnidadeControle;
 architecture Behavioral of UnidadeControle is
     -- Definindo os estados
     type state_type is (INICIO, ESPERA, BUSCA, ESPERA_PC, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL,
-			               SALTO_ADR, PRE_ACESSO_MEMORIA, ACESSO_MEMORIA, MOVER, PULANDO, ESPERA_SAIDA);
+			               SALTO_ADR, PRE_ACESSO_MEMORIA, ACESSO_MEMORIA, MOVER, PULANDO, NAO_PULOU);
     signal estado, proximo_estado : state_type := BUSCA;
     
     signal opcode    : std_logic_vector(3 downto 0); -- OpCode extraído
@@ -112,8 +112,8 @@ begin
 						  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
                     when "1001" =>
 								proximo_estado <= PRE_ACESSO_MEMORIA; -- LOAD
-								using_pc <= '0';
-								mem_enable <= '1';
+								--using_pc <= '0';
+								--mem_enable <= '1';
                     when "1010" => 
 								proximo_estado <= PRE_ACESSO_MEMORIA; -- STORE
 								using_pc <= '0';
@@ -177,12 +177,12 @@ begin
 						  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
                     when "1001" =>
 								proximo_estado <= PRE_ACESSO_MEMORIA; -- LOAD
-								using_pc <= '0';
-								mem_enable <= '1';
+								--using_pc <= '0';
+								--mem_enable <= '1';
                     when "1010" => 
 								proximo_estado <= PRE_ACESSO_MEMORIA; -- STORE
-								using_pc <= '0';
-								mem_enable <= '1';
+								--using_pc <= '0';
+								--mem_enable <= '1';
                     when "1011" => proximo_estado <= MOVER; -- MOV
                     when "1100" => proximo_estado <= ACESSO_IO; -- IN
                     when "1101" => proximo_estado <= ACESSO_IO; -- OUT
@@ -236,6 +236,7 @@ begin
 					
 				when SALTO_ADR =>
 					 pc_enable <= '1';
+					 proximo_estado <= BUSCA;
 					 case opcode is
 						  when "0110" => -- JMP (salto incondicional)
 								mem_enable <= '1';
@@ -269,6 +270,8 @@ begin
 				when ACESSO_MEMORIA =>
 					 using_pc <= '0';
 					 mem_enable <= '1';
+					 reg_select_a <= reg_select_memory(3 downto 2); 
+					 reg_select_b <= reg_select_memory(1 downto 0); 
 					 
 					 case opcode_memory is
 						  when "1001" => -- LOAD (carregar da memória)

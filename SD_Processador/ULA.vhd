@@ -71,6 +71,7 @@ BEGIN
 				
          WHEN OTHERS => 
             result <= (others => '0');  
+
       END CASE;
 		
 		IF resultado(7 DOWNTO 0) = "00000000" THEN 
