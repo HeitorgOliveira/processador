@@ -99,71 +99,74 @@ begin
 
             -- Decodifica a instrução
             when DECODIFICA =>
-					 -- Decodificação do opcode
-                case opcode is
-                    when "0000" => proximo_estado <= EXECUTA; -- ADD
-                    when "0001" => proximo_estado <= EXECUTA; -- SUB
-                    when "0010" => proximo_estado <= EXECUTA; -- AND
-                    when "0011" => proximo_estado <= EXECUTA; -- OR
-                    when "0100" => proximo_estado <= EXECUTA; -- NOT
-                    when "0101" => proximo_estado <= EXECUTA; -- CMP
-						  when "0110" => proximo_estado <= SALTO_ADR; -- JMP
-                    when "0111" => proximo_estado <= SALTO_ADR; -- JEQ
-						  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
-                    when "1001" =>
-								proximo_estado <= PRE_ACESSO_MEMORIA; -- LOAD
-								--using_pc <= '0';
-								--mem_enable <= '1';
-                    when "1010" => 
-								proximo_estado <= PRE_ACESSO_MEMORIA; -- STORE
-								--using_pc <= '0';
-								--mem_enable <= '1';
-                    when "1011" => proximo_estado <= MOVER; -- MOV
-                    when "1100" => proximo_estado <= ACESSO_IO; -- IN
-                    when "1101" => proximo_estado <= ACESSO_IO; -- OUT
-						  when "1110" => proximo_estado <= ESPERA; -- WAIT
-                    when others => proximo_estado <= ESPERA;
-                end case;
-				
-                -- Decodificação da seleção de registradores
-                case reg_select(3 downto 2) is
-                    when "00" => reg_select_a <= "00"; -- Registrador A
-                    when "01" => reg_select_a <= "01"; -- Registrador B
-                    when "10" => reg_select_a <= "10"; -- Registrador R
-                    when "11" => 
-								reg_select_a <= "11"; -- Literal
-								proximo_estado <= PEGA_LITERAL;
-								--pc_enable <= '1';
-                    when others => reg_select_a <= "00";
-                end case;
+					IF reg_select(3 downto 2) = "11" or reg_select(1 downto 0) = "11" THEN
+						proximo_estado <= PEGA_LITERAL;
+						pc_enable <= '1';
+					ELSE
+						 -- Decodificação do opcode
+						 case opcode is
+							  when "0000" => proximo_estado <= EXECUTA; -- ADD
+							  when "0001" => proximo_estado <= EXECUTA; -- SUB
+							  when "0010" => proximo_estado <= EXECUTA; -- AND
+							  when "0011" => proximo_estado <= EXECUTA; -- OR
+							  when "0100" => proximo_estado <= EXECUTA; -- NOT
+							  when "0101" => proximo_estado <= EXECUTA; -- CMP
+							  when "0110" => proximo_estado <= SALTO_ADR; -- JMP
+							  when "0111" => proximo_estado <= SALTO_ADR; -- JEQ
+							  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
+							  when "1001" =>
+									proximo_estado <= PRE_ACESSO_MEMORIA; -- LOAD
+									--using_pc <= '0';
+									--mem_enable <= '1';
+							  when "1010" => 
+									proximo_estado <= PRE_ACESSO_MEMORIA; -- STORE
+									--using_pc <= '0';
+									--mem_enable <= '1';
+							  when "1011" => proximo_estado <= MOVER; -- MOV
+							  when "1100" => proximo_estado <= ACESSO_IO; -- IN
+							  when "1101" => proximo_estado <= ACESSO_IO; -- OUT
+							  when "1110" => proximo_estado <= ESPERA; -- WAIT
+							  when others => proximo_estado <= ESPERA;
+						 end case;
+					
+						 -- Decodificação da seleção de registradores
+						 case reg_select(3 downto 2) is
+							  when "00" => reg_select_a <= "00"; -- Registrador A
+							  when "01" => reg_select_a <= "01"; -- Registrador B
+							  when "10" => reg_select_a <= "10"; -- Registrador R
+							  when "11" => reg_select_a <= "11"; -- Literal
+									
+							  when others => reg_select_a <= "00";
+						 end case;
 
-                case reg_select(1 downto 0) is
-                    when "00" => reg_select_b <= "00"; -- Registrador A
-                    when "01" => reg_select_b <= "01"; -- Registrador B
-                    when "10" => reg_select_b <= "10"; -- Registrador R
-                    when "11" => 
-								
-								reg_select_b <= "11"; -- Literal
-								proximo_estado <= PEGA_LITERAL;
-								--pc_enable <= '1';
-                    when others => reg_select_b <= "00";
-                end case;
+						 case reg_select(1 downto 0) is
+							  when "00" => reg_select_b <= "00"; -- Registrador A
+							  when "01" => reg_select_b <= "01"; -- Registrador B
+							  when "10" => reg_select_b <= "10"; -- Registrador R
+							  when "11" => reg_select_b <= "11"; -- Literal
+									
+							  when others => reg_select_b <= "00";
+						 end case;
+					 
+					END IF;
 					 ula_code <= opcode;
 					 reg_select_memory <= reg_select;
 					 opcode_memory <= opcode;
 
             when PEGA_LITERAL =>
-					 pc_enable <= '1';
-					 mem_enable <= '1';
+					 --pc_enable <= '1';
 					 proximo_estado <= ESPERA_LITERAL;
 					 --literal_enable <= '1';
+					 mem_enable <= '1';
 					 
 				when ESPERA_LITERAL =>
 					 literal_enable <= '1';
+					 --mem_enable <= '1';
 					 proximo_estado <= DECODIFICA_2;
 					 
 				-- Decodifica a instrução
             when DECODIFICA_2 =>
+					 --literal_enable <= '1';
 					 -- Decodificação do opcode
                 case opcode_memory is
                     when "0000" => proximo_estado <= EXECUTA; -- ADD

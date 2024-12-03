@@ -125,7 +125,7 @@ BEGIN
 			END CASE;
 			
 			IF literal_enable = '1' THEN
-				reg_literal <= data_out;
+				reg_literal <= instrucao;
 			END IF;
 			
 			IF alu_enable = '1' THEN
