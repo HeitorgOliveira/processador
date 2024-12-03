@@ -245,16 +245,23 @@ begin
 								if zero_flag = '1' then
 									 mem_enable <= '1';
 									 proximo_estado <= PULANDO;
+								else proximo_estado <= NAO_PULOU;
 								end if;
 						  when "1000" => -- JGR (salto condicional se sign_flag = 0 e zero_flag = 0)
 								if zero_flag = '0' and sign_flag = '0' then
 									 mem_enable <= '1';
 									 proximo_estado <= PULANDO;
+								else proximo_estado <= NAO_PULOU;
 								end if;
 						  when others =>
 								proximo_estado <= BUSCA;
 					 end case;
-					 
+					
+				when NAO_PULOU =>
+					pc_enable <= '1';
+					mem_enable <= '1';
+					proximo_estado <= BUSCA;
+					
 				when PULANDO =>
 					load_PC <= '1';
 					pc_enable <= '1';
