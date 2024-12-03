@@ -32,7 +32,7 @@ end UnidadeControle;
 architecture Behavioral of UnidadeControle is
     -- Definindo os estados
     type state_type is (INICIO, ESPERA, BUSCA, ESPERA_PC, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL,
-			               SALTO_ADR, PRE_ACESSO_MEMORIA, ACESSO_MEMORIA, MOVER, PULANDO);
+			               SALTO_ADR, PRE_ACESSO_MEMORIA, ACESSO_MEMORIA, MOVER, PULANDO, ESPERA_SAIDA);
     signal estado, proximo_estado : state_type := BUSCA;
     
     signal opcode    : std_logic_vector(3 downto 0); -- OpCode extraído
@@ -214,27 +214,26 @@ begin
 					 
                 proximo_estado <= BUSCA;
 
-            -- Acessa memória ou dispositivos de I/O
+            -- Acessa a dispositivos de I/O
             when ACESSO_IO =>
-					 -- Decodificação da seleção de registradores
-                case reg_select(3 downto 2) is
-                    when "00" => reg_select_a <= "00"; -- Registrador A
-                    when "01" => reg_select_a <= "01"; -- Registrador B
-                    when "10" => reg_select_a <= "10"; -- Registrador R
-                    when "11" => reg_select_a <= "11"; -- Literal
-                    when others => reg_select_a <= "00";
-                end case;
+					 -- Registrador usado
+                reg_select_a <= reg_select_memory(3 downto 2);
 					 
                 case opcode is
                     when "1100" => -- IN
                         input_enable <= '1';
+								proximo_estado <= BUSCA;
                     when "1101" => -- OUT
-                        output_enable <= '1';
+                        proximo_estado <= ESPERA_SAIDA;
                     when others =>
                         -- Não faz nada
                 end case;
-                proximo_estado <= BUSCA;
-
+                
+				--Atraso extra para estabilizar a saida da ula
+				when ESPERA_SAIDA =>
+					proximo_estado <= BUSCA;
+					output_enable <= '1';
+					
 				when SALTO_ADR =>
 					 pc_enable <= '1';
 					 case opcode is
@@ -298,4 +297,4 @@ begin
         end case;
     end process;
 
-end Behavioral;
+end Behavioral; 
