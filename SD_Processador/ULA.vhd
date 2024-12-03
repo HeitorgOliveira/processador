@@ -66,7 +66,7 @@ BEGIN
 				result <= resultado(7 DOWNTO 0);
 			
 			WHEN "0101" => -- CMP (Compare)
-				resultado (8 DOWNTO 0) :=  std_logic_vector(('0' & sig_A) + ('0' & sig_B));  
+				resultado (8 DOWNTO 0) :=  std_logic_vector(('0' & sig_A) - ('0' & sig_B));  
 				--result <= resultado(7 DOWNTO 0);
 				
          WHEN OTHERS => 
