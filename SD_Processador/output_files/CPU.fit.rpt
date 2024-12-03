@@ -1,5 +1,5 @@
 Fitter report for CPU
-Mon Dec  2 23:42:14 2024
+Mon Dec  2 23:49:01 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -64,7 +64,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Fitter Summary                                                                ;
 +---------------------------------+---------------------------------------------+
-; Fitter Status                   ; Successful - Mon Dec  2 23:42:14 2024       ;
+; Fitter Status                   ; Successful - Mon Dec  2 23:49:01 2024       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; CPU                                         ;
 ; Top-level Entity Name           ; CPU                                         ;
@@ -1668,7 +1668,7 @@ Info (170195): Router estimated average interconnect usage is 1% of the availabl
 Info (188005): Design requires adding a large amount of routing delay for some signals to meet hold time requirements, and there is an excessive demand for the available routing resources. The Fitter is reducing the routing delays of some signals to help the routing algorithm converge, but doing so may cause hold time failures. For more information, refer to the "Estimated Delay Added for Hold Timing" section in the Fitter report.
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:25
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:24
 Info (11888): Total time spent on timing analysis during the Fitter is 1.52 seconds.
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
@@ -1677,10 +1677,10 @@ Info (334004): Delay annotation completed successfully
 Info (11801): Fitter post-fit operations ending: elapsed time is 00:00:03
 Info (144001): Generated suppressed messages file C:/Users/15447326/Documents/GitHub/processador/SD_Processador/output_files/CPU.fit.smsg
 Info: Quartus Prime Fitter was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 6305 megabytes
-    Info: Processing ended: Mon Dec  2 23:42:14 2024
+    Info: Peak virtual memory: 6303 megabytes
+    Info: Processing ended: Mon Dec  2 23:49:01 2024
     Info: Elapsed time: 00:00:46
-    Info: Total CPU time (on all processors): 00:01:02
+    Info: Total CPU time (on all processors): 00:01:03
 
 
 +----------------------------+
