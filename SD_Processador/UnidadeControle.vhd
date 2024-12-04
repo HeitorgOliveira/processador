@@ -32,7 +32,7 @@ end UnidadeControle;
 architecture Behavioral of UnidadeControle is
     -- Definindo os estados
     type state_type is (INICIO, ESPERA, BUSCA, ESPERA_PC, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL,
-			               SALTO_ADR, PRE_ACESSO_MEMORIA, ACESSO_MEMORIA, MOVER, PULANDO, NAO_PULOU, ESPERA_SAIDA);
+			               SALTO_ADR, PRE_ACESSO_MEMORIA, ACESSO_MEMORIA, ESPERA_MEMORIA, ESPERA_MEMORIA_2, MOVER, PULANDO, NAO_PULOU, ESPERA_SAIDA);
     signal estado, proximo_estado : state_type := BUSCA;
     
     signal opcode    : std_logic_vector(3 downto 0); -- OpCode extraído
@@ -82,8 +82,8 @@ begin
 					
             -- Estado de espera
             when ESPERA =>
-                if reset = '1' then
-                    proximo_estado <= INICIO;
+                if reset = '0' then
+                    proximo_estado <= BUSCA;
                 else
                     proximo_estado <= ESPERA;
                 end if;
@@ -116,12 +116,12 @@ begin
 							  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
 							  when "1001" =>
 									proximo_estado <= PRE_ACESSO_MEMORIA; -- LOAD
-									--using_pc <= '0';
-									--mem_enable <= '1';
+									using_pc <= '0';
+									mem_enable <= '1';
 							  when "1010" => 
 									proximo_estado <= PRE_ACESSO_MEMORIA; -- STORE
-									--using_pc <= '0';
-									--mem_enable <= '1';
+									using_pc <= '0';
+									mem_enable <= '1';
 							  when "1011" => proximo_estado <= MOVER; -- MOV
 							  when "1100" => proximo_estado <= ACESSO_IO; -- IN
 							  when "1101" => proximo_estado <= ACESSO_IO; -- OUT
@@ -180,12 +180,12 @@ begin
 						  when "1000" => proximo_estado <= SALTO_ADR; -- JGR
                     when "1001" =>
 								proximo_estado <= PRE_ACESSO_MEMORIA; -- LOAD
-								--using_pc <= '0';
-								--mem_enable <= '1';
+								using_pc <= '0';
+								mem_enable <= '1';
                     when "1010" => 
 								proximo_estado <= PRE_ACESSO_MEMORIA; -- STORE
-								--using_pc <= '0';
-								--mem_enable <= '1';
+								using_pc <= '0';
+								mem_enable <= '1';
                     when "1011" => proximo_estado <= MOVER; -- MOV
                     when "1100" => proximo_estado <= ACESSO_IO; -- IN
                     when "1101" => proximo_estado <= ACESSO_IO; -- OUT
@@ -271,6 +271,7 @@ begin
 					proximo_estado <= BUSCA;
 				
 				when PRE_ACESSO_MEMORIA =>
+					 
 					 using_pc <= '0';
 					 mem_enable <= '1';
 					 reg_select_a <= reg_select_memory(3 downto 2); 
@@ -283,17 +284,34 @@ begin
 					 reg_select_a <= reg_select_memory(3 downto 2); 
 					 reg_select_b <= reg_select_memory(1 downto 0); 
 					 
+					 
 					 case opcode_memory is
 						  when "1001" => -- LOAD (carregar da memória)
-								read_enable <= '1';
+								--read_enable <= '1';
 						  when "1010" => -- STORE (armazenar na memória)
 								write_enable <= '1';
 						  when others =>
 								-- Não faz nada
 					 end case;
-					 proximo_estado <= BUSCA;
-				
+					 proximo_estado <= ESPERA_MEMORIA;
 					 
+				when ESPERA_MEMORIA =>
+					reg_select_a <= reg_select_memory(3 downto 2); 
+					reg_select_b <= reg_select_memory(1 downto 0); 
+					
+					using_pc <= '0';
+					mem_enable <= '1';
+					proximo_estado <= ESPERA_MEMORIA_2;
+					
+				when ESPERA_MEMORIA_2 =>
+					reg_select_a <= reg_select_memory(3 downto 2); 
+					reg_select_b <= reg_select_memory(1 downto 0); 
+					if opcode_memory = "1001" then
+							read_enable <= '1';
+					 end if;
+					using_pc <= '1';
+					mem_enable <= '1';
+					proximo_estado <= BUSCA;
             when ESCRITA =>
                 write_enable <= '1';
                 proximo_estado <= BUSCA;

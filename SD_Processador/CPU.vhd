@@ -162,7 +162,7 @@ BEGIN
 					 mem_address <= pc_out;
 				ELSE
 					 -- Se o acesso for baseado no registrador
-					 mem_address <= reg_inter_2; -- Endereço fornecido pelo registrador
+					 mem_address <= reg_inter_2; 
 				END IF;
 
 				-- Operações de leitura/escrita
@@ -255,7 +255,7 @@ BEGIN
 	);
 
 	HEX3_Driver : ENTITY work.DisplayDriver PORT MAP (
-	  value_in => alu_result(3 DOWNTO 0),
+	  value_in => mem_address(3 DOWNTO 0),
 	  hex_out  => hex3
 	);
 
