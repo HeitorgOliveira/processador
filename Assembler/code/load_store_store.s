@@ -1,0 +1,11 @@
+IN A;
+IN B;
+STORE A, 255;
+STORE B, 254;
+LOAD B, 255;
+LOAD A, 254;
+OUT A;
+OUT B;
+ADD A, B;
+MOV R, A;
+WAIT; 
