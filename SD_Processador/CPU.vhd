@@ -9,6 +9,9 @@ ENTITY CPU IS
         switches      : IN  STD_LOGIC_VECTOR(7 DOWNTO 0);-- Entrada (switches)
         leds          : OUT STD_LOGIC_VECTOR(7 DOWNTO 0); -- Saída (LEDs)
         hex0          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
+		  reg_a_saida   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		  reg_b_saida   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		  reg_r_saida   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
         hex1          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         hex2          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         hex3          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
@@ -16,7 +19,9 @@ ENTITY CPU IS
 		  hex5          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         debug1        : OUT STD_LOGIC;
 		  zero          : OUT STD_LOGIC;
-		  sign          : OUT STD_LOGIC
+		  sign          : OUT STD_LOGIC;
+		  overflow      : OUT STD_LOGIC;
+		  carry          : OUT STD_LOGIC
     );
 END CPU;
 
@@ -215,10 +220,19 @@ BEGIN
 	  --result_enable => result_enable
 	);
 
-	PROCESS(zero_flag, sign_flag)
+	PROCESS(zero_flag, sign_flag, carry_flag, overflow_flag)
 	BEGIN
 		zero <= zero_flag;
 		sign <= sign_flag;
+		carry <= carry_flag;
+		overflow <= overflow_flag;
+	END PROCESS;
+	
+	PROCESS(reg_a, reg_b, reg_r)
+	BEGIN
+		reg_a_saida <= reg_a ;
+		reg_b_saida <= reg_b;
+		reg_r_saida <= reg_r;
 	END PROCESS;
 	
 

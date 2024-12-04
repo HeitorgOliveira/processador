@@ -11,5 +11,5 @@ LOOP_START:
     LOAD R, 11111111; -- Carrega o valor do endereco 255 em R
     JMP LOOP_START; -- Repete o loop
 END_LOOP:
-OUT R
-WAIT
+OUT R;
+WAIT;
