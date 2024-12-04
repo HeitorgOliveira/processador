@@ -15,8 +15,15 @@ ENTITY CPU IS
         hex4          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
 		  hex5          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         debug1        : OUT STD_LOGIC;
+		  reg_a_saida   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		  reg_b_saida   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
+		  reg_r_saida   : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);
 		  zero          : OUT STD_LOGIC;
-		  sign          : OUT STD_LOGIC
+		  sign          : OUT STD_LOGIC;
+		  overflow      : OUT STD_LOGIC;
+		  carry         : OUT STD_LOGIC;
+		  estado_atual  : OUT STD_LOGIC_VECTOR(4 DOWNTO 0)
+		 
     );
 END CPU;
 
@@ -83,7 +90,8 @@ BEGIN
 	  ula_code 			  => ula_code,
 	  mov_enable 		  => mov_enable,
 	  using_pc			  => using_pc,
-	  load_PC			  => load_PC
+	  load_PC			  => load_PC,
+	  estado_atual_bin      => estado_atual
 	);
 
 	-- Processo de seleção de registradores para a ULA
@@ -215,12 +223,20 @@ BEGIN
 	  --result_enable => result_enable
 	);
 
-	PROCESS(zero_flag, sign_flag)
+	PROCESS(zero_flag, sign_flag, carry_flag, overflow_flag)
 	BEGIN
 		zero <= zero_flag;
 		sign <= sign_flag;
+		carry <= carry_flag;
+		overflow <= overflow_flag;
 	END PROCESS;
 	
+   PROCESS(reg_a, reg_b, reg_r)
+	BEGIN
+		reg_a_saida <= reg_a;
+		reg_b_saida <= reg_b;
+		reg_r_saida <= reg_r;
+	END PROCESS;
 
 	-- Instância da Unidade de Entrada
 	Entrada : ENTITY work.Input_Unit PORT MAP (

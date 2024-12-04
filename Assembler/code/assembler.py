@@ -76,9 +76,7 @@ def identificar_labels(codigo):
         # Se for uma label, armazenar o endereço atual
         if ":" in line:
             label = line.replace(":", "")
-            labels[label] = num_linha - 1
-            if labels[label] == -1:
-                labels[label] = 255
+            labels[label] = num_linha
         else:
             tokens = line.split()
             opcode = tokens[0]
@@ -178,6 +176,21 @@ def converter_assembly_para_binario(codigo):
     
     return binary_code
 
+def escrever_hex(codigo, caminho_hex):
+    try:
+        with open(caminho_hex, 'w') as arquivo:
+            for addr, linha in enumerate(codigo):
+                # Converte o binário para hexadecimal
+                linha_hex = hex(int(linha, 2))[2:].zfill(2).upper()  # Remove o prefixo '0x', preenche com zeros e deixa maiúsculo
+                # Escreve no formato "addr: hex_code"
+                arquivo.write(f"{linha_hex}\n")
+        print(f"Arquivo '{caminho_hex}' criado com sucesso.")
+    except Exception as e:
+        print(f"Erro ao criar o arquivo .hex: {e}")
+
+
+# Alterar a saída para .hex
+caminho_saida_hex = "processador/SD_Processador/ram256x8.hex"
 
 # Entrada para o nome de um arquivo fornecido pelo usuário
 caminho_entrada = "processador/Assembler/code/"  
@@ -188,8 +201,8 @@ caminho_saida = "processador/SD_Processador/ram256x8.mif"
 codigo_assembly = ler_arquivo_assembly(caminho_entrada)
 
 codigo_binario = converter_assembly_para_binario(codigo_assembly)
-
 if codigo_binario:
     escrever_mif(codigo_binario, caminho_saida)
+    escrever_hex(codigo_binario, caminho_saida_hex)
 else:
     print("Nenhum código foi lido ou o arquivo está vazio.")

@@ -208,11 +208,135 @@
 					"strict" : false
 				},
 				{
+					"name" : "reg_a_saida[0]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_a_saida[1]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_a_saida[2]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_a_saida[3]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_a_saida[4]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_a_saida[5]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_a_saida[6]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_a_saida[7]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_b_saida[0]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_b_saida[1]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_b_saida[2]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_b_saida[3]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_b_saida[4]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_b_saida[5]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_b_saida[6]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_b_saida[7]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_r_saida[0]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_r_saida[1]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_r_saida[2]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_r_saida[3]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_r_saida[4]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_r_saida[5]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_r_saida[6]",
+					"strict" : false
+				},
+				{
+					"name" : "reg_r_saida[7]",
+					"strict" : false
+				},
+				{
 					"name" : "zero",
 					"strict" : false
 				},
 				{
 					"name" : "sign",
+					"strict" : false
+				},
+				{
+					"name" : "overflow",
+					"strict" : false
+				},
+				{
+					"name" : "carry",
+					"strict" : false
+				},
+				{
+					"name" : "estado_atual[0]",
+					"strict" : false
+				},
+				{
+					"name" : "estado_atual[1]",
+					"strict" : false
+				},
+				{
+					"name" : "estado_atual[2]",
+					"strict" : false
+				},
+				{
+					"name" : "estado_atual[3]",
+					"strict" : false
+				},
+				{
+					"name" : "estado_atual[4]",
 					"strict" : false
 				},
 				{

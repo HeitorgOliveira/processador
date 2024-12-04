@@ -25,7 +25,8 @@ entity UnidadeControle is
 		  ula_code      : out std_logic_vector(3 downto 0);
 		  mov_enable    : out std_logic;
 		  using_pc   	 : out std_logic;
-		  load_PC		 : out std_logic
+		  load_PC		 : out std_logic;
+		  estado_atual_bin  : OUT std_logic_vector(4 downto 0)
     );
 end UnidadeControle;
 
@@ -56,6 +57,34 @@ begin
     opcode <= instrucao(7 downto 4);
     reg_select <= instrucao(3 downto 0);
 
+	process (estado)
+	begin
+	 case estado is
+		  when INICIO            => estado_atual_bin <= "00000";
+		  when ESPERA            => estado_atual_bin <= "00001";
+		  when BUSCA             => estado_atual_bin <= "00010";
+		  when ESPERA_PC         => estado_atual_bin <= "00011";
+		  when DECODIFICA        => estado_atual_bin <= "00100";
+		  when DECODIFICA_2      => estado_atual_bin <= "00101";
+		  when EXECUTA           => estado_atual_bin <= "00110";
+		  when ACESSO_IO         => estado_atual_bin <= "00111";
+		  when ESCRITA           => estado_atual_bin <= "01000";
+		  when PEGA_LITERAL      => estado_atual_bin <= "01001";
+		  when ESPERA_LITERAL    => estado_atual_bin <= "01010";
+		  when SALTO_ADR         => estado_atual_bin <= "01011";
+		  when PRE_ACESSO_MEMORIA=> estado_atual_bin <= "01100";
+		  when ACESSO_MEMORIA    => estado_atual_bin <= "01101";
+		  when ESPERA_MEMORIA    => estado_atual_bin <= "01110";
+		  when ESPERA_MEMORIA_2  => estado_atual_bin <= "01111";
+		  when MOVER             => estado_atual_bin <= "10000";
+		  when PULANDO           => estado_atual_bin <= "10001";
+		  when ESPERA_PULO       => estado_atual_bin <= "10010";
+		  when NAO_PULOU         => estado_atual_bin <= "10011";
+		  when ESPERA_SAIDA      => estado_atual_bin <= "10100";
+		  when others            => estado_atual_bin <= "00000";
+	 end case;
+	end process;
+	
     -- Controle de estado e habilitação dos registradores
     process(estado, opcode, reg_select, zero_flag, sign_flag, carry_flag, overflow_flag)
     begin

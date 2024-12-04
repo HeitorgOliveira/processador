@@ -1,0 +1,13 @@
+IN A; -- ENTRADA
+IN B; -- ENTRADA B
+ADD A, B; -- SOMA A+B
+OUT R; -- SAIDA R
+SUB A, B;
+OUT R;
+AND A, B;
+OUT R;
+OR A, B;
+OUT R;
+NOT A;
+OUT A;
+WAIT; 
