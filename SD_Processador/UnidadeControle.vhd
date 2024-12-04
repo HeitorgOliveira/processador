@@ -32,7 +32,7 @@ end UnidadeControle;
 architecture Behavioral of UnidadeControle is
     -- Definindo os estados
     type state_type is (INICIO, ESPERA, BUSCA, ESPERA_PC, DECODIFICA, DECODIFICA_2, EXECUTA, ACESSO_IO, ESCRITA, PEGA_LITERAL, ESPERA_LITERAL,
-			               SALTO_ADR, PRE_ACESSO_MEMORIA, ACESSO_MEMORIA, ESPERA_MEMORIA, ESPERA_MEMORIA_2, MOVER, PULANDO, NAO_PULOU, ESPERA_SAIDA);
+			               SALTO_ADR, PRE_ACESSO_MEMORIA, ACESSO_MEMORIA, ESPERA_MEMORIA, ESPERA_MEMORIA_2, MOVER, PULANDO, ESPERA_PULO, NAO_PULOU, ESPERA_SAIDA);
     signal estado, proximo_estado : state_type := BUSCA;
     
     signal opcode    : std_logic_vector(3 downto 0); -- OpCode extraído
@@ -267,8 +267,13 @@ begin
 					
 				when PULANDO =>
 					load_PC <= '1';
+					mem_enable <= '1';
 					pc_enable <= '1';
+					proximo_estado <= ESPERA_PULO;
+					
+				when ESPERA_PULO =>
 					proximo_estado <= BUSCA;
+					mem_enable <= '1';
 				
 				when PRE_ACESSO_MEMORIA =>
 					 

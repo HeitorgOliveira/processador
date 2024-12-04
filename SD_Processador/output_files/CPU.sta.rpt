@@ -1,5 +1,5 @@
 Timing Analyzer report for CPU
-Wed Dec  4 12:07:51 2024
+Wed Dec  4 13:36:40 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -107,8 +107,8 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   6.6%      ;
-;     Processor 3            ;   6.5%      ;
+;     Processor 2            ;   6.5%      ;
+;     Processor 3            ;   6.4%      ;
 ;     Processor 4            ;   6.4%      ;
 +----------------------------+-------------+
 
@@ -132,12 +132,12 @@ https://fpgasoftware.intel.com/eula.
 +------------+-----------------+---------------------------------------------------------------------------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                                                                                          ; Note ;
 +------------+-----------------+---------------------------------------------------------------------------------------------------------------------+------+
-; 92.06 MHz  ; 92.06 MHz       ; clock                                                                                                               ;      ;
-; 96.64 MHz  ; 96.64 MHz       ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ;      ;
-; 113.28 MHz ; 113.28 MHz      ; UnidadeControle:Controle|ula_code[0]                                                                                ;      ;
-; 127.03 MHz ; 127.03 MHz      ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ;      ;
-; 160.88 MHz ; 160.88 MHz      ; UnidadeControle:Controle|ula_code[1]                                                                                ;      ;
-; 223.86 MHz ; 223.86 MHz      ; UnidadeControle:Controle|estado.DECODIFICA                                                                          ;      ;
+; 96.39 MHz  ; 96.39 MHz       ; clock                                                                                                               ;      ;
+; 99.68 MHz  ; 99.68 MHz       ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ;      ;
+; 130.45 MHz ; 130.45 MHz      ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ;      ;
+; 137.63 MHz ; 137.63 MHz      ; UnidadeControle:Controle|ula_code[1]                                                                                ;      ;
+; 210.08 MHz ; 210.08 MHz      ; UnidadeControle:Controle|ula_code[0]                                                                                ;      ;
+; 229.1 MHz  ; 229.1 MHz       ; UnidadeControle:Controle|estado.DECODIFICA                                                                          ;      ;
 +------------+-----------------+---------------------------------------------------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -153,12 +153,12 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------------------------------------------------------------------------------+---------+---------------+
 ; Clock                                                                                                               ; Slack   ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+---------+---------------+
-; UnidadeControle:Controle|ula_code[1]                                                                                ; -12.160 ; -167.801      ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; -11.775 ; -88.284       ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -11.737 ; -162.220      ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -10.597 ; -96.253       ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -10.516 ; -149.250      ;
-; clock                                                                                                               ; -9.862  ; -485.389      ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -12.689 ; -174.692      ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; -12.420 ; -175.350      ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; -11.852 ; -92.417       ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -11.129 ; -153.533      ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -10.308 ; -103.975      ;
+; clock                                                                                                               ; -9.790  ; -454.546      ;
 +---------------------------------------------------------------------------------------------------------------------+---------+---------------+
 
 
@@ -167,12 +167,12 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; clock                                                                                                               ; -6.730 ; -498.797      ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -1.345 ; -8.177        ;
-; UnidadeControle:Controle|ula_code[1]                                                                                ; -0.783 ; -5.474        ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -0.526 ; -0.526        ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; -0.012 ; -0.012        ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.227  ; 0.000         ;
+; clock                                                                                                               ; -7.205 ; -530.697      ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -2.430 ; -10.200       ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; -0.598 ; -2.991        ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -0.567 ; -0.567        ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; -0.117 ; -0.117        ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -0.100 ; -0.189        ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -181,7 +181,7 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                               ; Slack ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 1.294 ; 0.000         ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 1.830 ; 0.000         ;
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -190,7 +190,7 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -2.396 ; -2.396        ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -3.166 ; -3.166        ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -199,12 +199,12 @@ HTML report is unavailable in plain text report export.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; clock                                                                                                               ; -2.636 ; -213.060      ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; 0.078  ; 0.000         ;
-; UnidadeControle:Controle|ula_code[1]                                                                                ; 0.081  ; 0.000         ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 0.096  ; 0.000         ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; 0.238  ; 0.000         ;
+; clock                                                                                                               ; -2.636 ; -215.101      ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; 0.122  ; 0.000         ;
 ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.265  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; 0.323  ; 0.000         ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 0.335  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; 0.373  ; 0.000         ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -219,12 +219,12 @@ No synchronizer chains to report.
 +------------+-----------------+---------------------------------------------------------------------------------------------------------------------+------+
 ; Fmax       ; Restricted Fmax ; Clock Name                                                                                                          ; Note ;
 +------------+-----------------+---------------------------------------------------------------------------------------------------------------------+------+
-; 96.28 MHz  ; 96.28 MHz       ; clock                                                                                                               ;      ;
-; 98.02 MHz  ; 98.02 MHz       ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ;      ;
-; 118.57 MHz ; 118.57 MHz      ; UnidadeControle:Controle|ula_code[0]                                                                                ;      ;
-; 126.23 MHz ; 126.23 MHz      ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ;      ;
-; 158.83 MHz ; 158.83 MHz      ; UnidadeControle:Controle|ula_code[1]                                                                                ;      ;
-; 229.62 MHz ; 229.62 MHz      ; UnidadeControle:Controle|estado.DECODIFICA                                                                          ;      ;
+; 99.5 MHz   ; 99.5 MHz        ; clock                                                                                                               ;      ;
+; 102.77 MHz ; 102.77 MHz      ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ;      ;
+; 127.94 MHz ; 127.94 MHz      ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ;      ;
+; 147.41 MHz ; 147.41 MHz      ; UnidadeControle:Controle|ula_code[1]                                                                                ;      ;
+; 204.83 MHz ; 204.83 MHz      ; UnidadeControle:Controle|ula_code[0]                                                                                ;      ;
+; 225.84 MHz ; 225.84 MHz      ; UnidadeControle:Controle|estado.DECODIFICA                                                                          ;      ;
 +------------+-----------------+---------------------------------------------------------------------------------------------------------------------+------+
 This panel reports FMAX for every clock in the design, regardless of the user-specified clock periods.  FMAX is only computed for paths where the source and destination registers or ports are driven by the same clock.  Paths of different clocks, including generated clocks, are ignored.  For paths between a clock and its inversion, FMAX is computed as if the rising and falling edges are scaled along with FMAX, such that the duty cycle (in terms of a percentage) is maintained. Altera recommends that you always use clock constraints and other slack reports for sign-off analysis.
 
@@ -234,12 +234,12 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------------------------------------------------------------------+---------+---------------+
 ; Clock                                                                                                               ; Slack   ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+---------+---------------+
-; UnidadeControle:Controle|ula_code[1]                                                                                ; -12.145 ; -167.457      ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -11.764 ; -162.037      ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; -11.668 ; -87.709       ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -10.538 ; -96.146       ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -10.498 ; -148.359      ;
-; clock                                                                                                               ; -9.386  ; -467.378      ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -12.600 ; -173.357      ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; -12.449 ; -174.437      ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; -11.849 ; -91.997       ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -11.087 ; -153.135      ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -10.271 ; -103.238      ;
+; clock                                                                                                               ; -9.226  ; -441.745      ;
 +---------------------------------------------------------------------------------------------------------------------+---------+---------------+
 
 
@@ -248,12 +248,12 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; clock                                                                                                               ; -6.674 ; -495.582      ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -1.533 ; -8.933        ;
-; UnidadeControle:Controle|ula_code[1]                                                                                ; -0.732 ; -5.364        ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -0.490 ; -0.490        ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; -0.034 ; -0.034        ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.108  ; 0.000         ;
+; clock                                                                                                               ; -7.109 ; -524.530      ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -2.427 ; -10.243       ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; -0.706 ; -4.051        ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -0.600 ; -0.600        ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; -0.185 ; -0.252        ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -0.162 ; -0.162        ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -262,7 +262,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                               ; Slack ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 1.204 ; 0.000         ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 1.655 ; 0.000         ;
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -271,7 +271,7 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -2.297 ; -2.297        ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -3.063 ; -3.063        ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -280,12 +280,12 @@ This panel reports FMAX for every clock in the design, regardless of the user-sp
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; clock                                                                                                               ; -2.636 ; -210.718      ;
-; UnidadeControle:Controle|ula_code[1]                                                                                ; 0.097  ; 0.000         ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; 0.109  ; 0.000         ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 0.125  ; 0.000         ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.303  ; 0.000         ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; 0.320  ; 0.000         ;
+; clock                                                                                                               ; -2.636 ; -212.267      ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; 0.187  ; 0.000         ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 0.245  ; 0.000         ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.308  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; 0.365  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; 0.386  ; 0.000         ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -300,12 +300,12 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; clock                                                                                                               ; -5.692 ; -236.541      ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -5.553 ; -72.674       ;
-; UnidadeControle:Controle|ula_code[1]                                                                                ; -5.524 ; -76.903       ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; -5.232 ; -39.120       ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -4.997 ; -43.873       ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -4.929 ; -65.417       ;
+; clock                                                                                                               ; -6.067 ; -213.324      ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -5.960 ; -77.739       ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; -5.727 ; -80.315       ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; -5.368 ; -41.008       ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -5.159 ; -66.122       ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -4.841 ; -48.343       ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -314,12 +314,12 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; clock                                                                                                               ; -3.333 ; -243.914      ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -0.760 ; -3.715        ;
-; UnidadeControle:Controle|ula_code[1]                                                                                ; -0.397 ; -2.723        ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -0.344 ; -0.344        ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; -0.048 ; -0.048        ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.018  ; 0.000         ;
+; clock                                                                                                               ; -3.596 ; -262.744      ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -1.187 ; -4.729        ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -0.249 ; -0.249        ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; -0.177 ; -0.614        ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -0.164 ; -0.243        ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; 0.037  ; 0.000         ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -328,7 +328,7 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                               ; Slack ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 1.114 ; 0.000         ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 1.386 ; 0.000         ;
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -337,7 +337,7 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -1.319 ; -1.319        ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -1.691 ; -1.691        ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -346,12 +346,12 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; clock                                                                                                               ; -2.174 ; -136.095      ;
-; UnidadeControle:Controle|ula_code[1]                                                                                ; 0.119  ; 0.000         ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; 0.158  ; 0.000         ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; 0.260  ; 0.000         ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 0.284  ; 0.000         ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.405  ; 0.000         ;
+; clock                                                                                                               ; -2.174 ; -139.058      ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; 0.200  ; 0.000         ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 0.296  ; 0.000         ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.383  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; 0.384  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; 0.386  ; 0.000         ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -366,12 +366,12 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -5.238 ; -69.156       ;
-; UnidadeControle:Controle|ula_code[1]                                                                                ; -5.210 ; -72.812       ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; -4.901 ; -36.874       ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -4.751 ; -42.607       ;
-; clock                                                                                                               ; -4.682 ; -198.450      ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -4.649 ; -62.384       ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -5.557 ; -73.722       ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; -5.382 ; -75.564       ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; -5.019 ; -38.500       ;
+; clock                                                                                                               ; -4.961 ; -182.539      ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -4.829 ; -63.383       ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -4.633 ; -46.462       ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -380,12 +380,12 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; clock                                                                                                               ; -3.278 ; -242.528      ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -0.683 ; -3.623        ;
-; UnidadeControle:Controle|ula_code[1]                                                                                ; -0.352 ; -2.378        ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -0.285 ; -0.285        ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; -0.034 ; -0.034        ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.047  ; 0.000         ;
+; clock                                                                                                               ; -3.491 ; -259.078      ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -1.092 ; -4.407        ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -0.237 ; -0.237        ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; -0.191 ; -0.797        ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -0.141 ; -0.168        ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; 0.014  ; 0.000         ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -394,7 +394,7 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
 ; Clock                                                                                                               ; Slack ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 1.039 ; 0.000         ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 1.258 ; 0.000         ;
 +---------------------------------------------------------------------------------------------------------------------+-------+---------------+
 
 
@@ -403,7 +403,7 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -1.179 ; -1.179        ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -1.511 ; -1.511        ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -412,12 +412,12 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 ; Clock                                                                                                               ; Slack  ; End Point TNS ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
-; clock                                                                                                               ; -2.174 ; -134.613      ;
-; UnidadeControle:Controle|ula_code[1]                                                                                ; 0.192  ; 0.000         ;
-; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; 0.219  ; 0.000         ;
-; UnidadeControle:Controle|ula_code[0]                                                                                ; 0.310  ; 0.000         ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 0.314  ; 0.000         ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.425  ; 0.000         ;
+; clock                                                                                                               ; -2.174 ; -137.810      ;
+; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; 0.269  ; 0.000         ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 0.311  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[1]                                                                                ; 0.397  ; 0.000         ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 0.406  ; 0.000         ;
+; UnidadeControle:Controle|ula_code[0]                                                                                ; 0.413  ; 0.000         ;
 +---------------------------------------------------------------------------------------------------------------------+--------+---------------+
 
 
@@ -432,20 +432,20 @@ No synchronizer chains to report.
 +----------------------------------------------------------------------------------------------------------------------+-----------+----------+----------+---------+---------------------+
 ; Clock                                                                                                                ; Setup     ; Hold     ; Recovery ; Removal ; Minimum Pulse Width ;
 +----------------------------------------------------------------------------------------------------------------------+-----------+----------+----------+---------+---------------------+
-; Worst-case Slack                                                                                                     ; -12.160   ; -6.730   ; 1.039    ; -2.396  ; -2.636              ;
-;  UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -11.764   ; 0.018    ; N/A      ; N/A     ; 0.265               ;
-;  UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -10.597   ; -0.526   ; N/A      ; N/A     ; 0.078               ;
-;  UnidadeControle:Controle|ula_code[0]                                                                                ; -11.775   ; -0.048   ; N/A      ; N/A     ; 0.238               ;
-;  UnidadeControle:Controle|ula_code[1]                                                                                ; -12.160   ; -0.783   ; N/A      ; N/A     ; 0.081               ;
-;  clock                                                                                                               ; -9.862    ; -6.730   ; N/A      ; N/A     ; -2.636              ;
-;  memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -10.516   ; -1.533   ; 1.039    ; -2.396  ; 0.096               ;
-; Design-wide TNS                                                                                                      ; -1149.197 ; -512.986 ; 0.0      ; -2.396  ; -213.06             ;
-;  UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -162.220  ; 0.000    ; N/A      ; N/A     ; 0.000               ;
-;  UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -96.253   ; -0.526   ; N/A      ; N/A     ; 0.000               ;
-;  UnidadeControle:Controle|ula_code[0]                                                                                ; -88.284   ; -0.048   ; N/A      ; N/A     ; 0.000               ;
-;  UnidadeControle:Controle|ula_code[1]                                                                                ; -167.801  ; -5.474   ; N/A      ; N/A     ; 0.000               ;
-;  clock                                                                                                               ; -485.389  ; -498.797 ; N/A      ; N/A     ; -213.060            ;
-;  memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -149.250  ; -8.933   ; 0.000    ; -2.396  ; 0.000               ;
+; Worst-case Slack                                                                                                     ; -12.689   ; -7.205   ; 1.258    ; -3.166  ; -2.636              ;
+;  UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -12.689   ; -0.600   ; N/A      ; N/A     ; 0.265               ;
+;  UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -10.308   ; -0.164   ; N/A      ; N/A     ; 0.122               ;
+;  UnidadeControle:Controle|ula_code[0]                                                                                ; -11.852   ; -0.185   ; N/A      ; N/A     ; 0.373               ;
+;  UnidadeControle:Controle|ula_code[1]                                                                                ; -12.449   ; -0.706   ; N/A      ; N/A     ; 0.323               ;
+;  clock                                                                                                               ; -9.790    ; -7.205   ; N/A      ; N/A     ; -2.636              ;
+;  memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -11.129   ; -2.430   ; 1.258    ; -3.166  ; 0.245               ;
+; Design-wide TNS                                                                                                      ; -1154.513 ; -544.761 ; 0.0      ; -3.166  ; -215.101            ;
+;  UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; -174.692  ; -0.600   ; N/A      ; N/A     ; 0.000               ;
+;  UnidadeControle:Controle|estado.DECODIFICA                                                                          ; -103.975  ; -0.243   ; N/A      ; N/A     ; 0.000               ;
+;  UnidadeControle:Controle|ula_code[0]                                                                                ; -92.417   ; -0.252   ; N/A      ; N/A     ; 0.000               ;
+;  UnidadeControle:Controle|ula_code[1]                                                                                ; -175.350  ; -4.051   ; N/A      ; N/A     ; 0.000               ;
+;  clock                                                                                                               ; -454.546  ; -530.697 ; N/A      ; N/A     ; -215.101            ;
+;  memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; -153.533  ; -10.243  ; 0.000    ; -3.166  ; 0.000               ;
 +----------------------------------------------------------------------------------------------------------------------+-----------+----------+----------+---------+---------------------+
 
 
@@ -777,17 +777,17 @@ No synchronizer chains to report.
 +---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                                                          ; To Clock                                                                                                            ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
-; clock                                                                                                               ; clock                                                                                                               ; 2842     ; 0        ; 0        ; 0        ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; clock                                                                                                               ; 87       ; 69       ; 0        ; 0        ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; clock                                                                                                               ; 193      ; 176      ; 0        ; 0        ;
+; clock                                                                                                               ; clock                                                                                                               ; 2858     ; 0        ; 0        ; 0        ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; clock                                                                                                               ; 88       ; 69       ; 0        ; 0        ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; clock                                                                                                               ; 194      ; 176      ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; clock                                                                                                               ; 184      ; 818      ; 0        ; 0        ;
 ; UnidadeControle:Controle|ula_code[0]                                                                                ; clock                                                                                                               ; 33       ; 25       ; 0        ; 0        ;
 ; UnidadeControle:Controle|ula_code[1]                                                                                ; clock                                                                                                               ; 41       ; 42       ; 0        ; 0        ;
-; clock                                                                                                               ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 88       ; 0        ; 0        ; 0        ;
+; clock                                                                                                               ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 89       ; 0        ; 0        ; 0        ;
 ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 11       ; 11       ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 4        ; 4        ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 7        ; 28       ; 0        ; 0        ;
-; clock                                                                                                               ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 87       ; 0        ; 0        ; 0        ;
+; clock                                                                                                               ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 88       ; 0        ; 0        ; 0        ;
 ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 11       ; 11       ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 4        ; 4        ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 7        ; 28       ; 0        ; 0        ;
@@ -811,17 +811,17 @@ Entries labeled "false path" only account for clock-to-clock false paths and not
 +---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
 ; From Clock                                                                                                          ; To Clock                                                                                                            ; RR Paths ; FR Paths ; RF Paths ; FF Paths ;
 +---------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------+----------+----------+----------+----------+
-; clock                                                                                                               ; clock                                                                                                               ; 2842     ; 0        ; 0        ; 0        ;
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; clock                                                                                                               ; 87       ; 69       ; 0        ; 0        ;
-; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; clock                                                                                                               ; 193      ; 176      ; 0        ; 0        ;
+; clock                                                                                                               ; clock                                                                                                               ; 2858     ; 0        ; 0        ; 0        ;
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; clock                                                                                                               ; 88       ; 69       ; 0        ; 0        ;
+; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; clock                                                                                                               ; 194      ; 176      ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; clock                                                                                                               ; 184      ; 818      ; 0        ; 0        ;
 ; UnidadeControle:Controle|ula_code[0]                                                                                ; clock                                                                                                               ; 33       ; 25       ; 0        ; 0        ;
 ; UnidadeControle:Controle|ula_code[1]                                                                                ; clock                                                                                                               ; 41       ; 42       ; 0        ; 0        ;
-; clock                                                                                                               ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 88       ; 0        ; 0        ; 0        ;
+; clock                                                                                                               ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 89       ; 0        ; 0        ; 0        ;
 ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 11       ; 11       ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 4        ; 4        ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; 7        ; 28       ; 0        ; 0        ;
-; clock                                                                                                               ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 87       ; 0        ; 0        ; 0        ;
+; clock                                                                                                               ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 88       ; 0        ; 0        ; 0        ;
 ; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 11       ; 11       ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 4        ; 4        ; 0        ; 0        ;
 ; UnidadeControle:Controle|estado.DECODIFICA                                                                          ; UnidadeControle:Controle|estado.ACESSO_IO                                                                           ; 7        ; 28       ; 0        ; 0        ;
@@ -880,7 +880,7 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 ; Illegal Clocks                  ; 0     ; 0    ;
 ; Unconstrained Clocks            ; 0     ; 0    ;
 ; Unconstrained Input Ports       ; 9     ; 9    ;
-; Unconstrained Input Port Paths  ; 110   ; 110  ;
+; Unconstrained Input Port Paths  ; 111   ; 111  ;
 ; Unconstrained Output Ports      ; 53    ; 53   ;
 ; Unconstrained Output Port Paths ; 187   ; 187  ;
 +---------------------------------+-------+------+
@@ -1062,14 +1062,14 @@ No non-DPA dedicated SERDES Receiver circuitry present in device or used in desi
 Info: *******************************************************************
 Info: Running Quartus Prime Timing Analyzer
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Dec  4 12:07:45 2024
+    Info: Processing started: Wed Dec  4 13:36:34 2024
 Info: Command: quartus_sta CPU -c CPU
 Info: qsta_default_script.tcl version: #1
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (21077): Low junction temperature is 0 degrees C
 Info (21077): High junction temperature is 85 degrees C
-Warning (335093): The Timing Analyzer is analyzing 45 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
+Warning (335093): The Timing Analyzer is analyzing 46 combinational loops as latches. For more details, run the Check Timing command in the Timing Analyzer or view the "User-Specified and Inferred Latches" table in the Analysis & Synthesis report.
 Critical Warning (332012): Synopsys Design Constraints File file not found: 'CPU.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
 Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
 Info (332105): Deriving Clocks
@@ -1081,174 +1081,174 @@ Info (332105): Deriving Clocks
     Info (332105): create_clock -period 1.000 -name memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]
 Warning (332125): Found combinational loop of 2 nodes File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 30
     Warning (332126): Node "ULA|Mux1~4|combout"
-    Warning (332126): Node "ULA|Mux1~4|datae"
+    Warning (332126): Node "ULA|Mux1~4|datad"
 Info (332143): No user constrained clock uncertainty found in the design. Calling "derive_clock_uncertainty"
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
 Info: Analyzing Slow 1100mV 85C Model
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -12.160
+Info (332146): Worst-case setup slack is -12.689
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -12.160            -167.801 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):   -11.775             -88.284 UnidadeControle:Controle|ula_code[0] 
-    Info (332119):   -11.737            -162.220 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):   -10.597             -96.253 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):   -10.516            -149.250 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-    Info (332119):    -9.862            -485.389 clock 
-Info (332146): Worst-case hold slack is -6.730
+    Info (332119):   -12.689            -174.692 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):   -12.420            -175.350 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):   -11.852             -92.417 UnidadeControle:Controle|ula_code[0] 
+    Info (332119):   -11.129            -153.533 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):   -10.308            -103.975 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -9.790            -454.546 clock 
+Info (332146): Worst-case hold slack is -7.205
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -6.730            -498.797 clock 
-    Info (332119):    -1.345              -8.177 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-    Info (332119):    -0.783              -5.474 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -0.526              -0.526 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):    -0.012              -0.012 UnidadeControle:Controle|ula_code[0] 
-    Info (332119):     0.227               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
-Info (332146): Worst-case recovery slack is 1.294
+    Info (332119):    -7.205            -530.697 clock 
+    Info (332119):    -2.430             -10.200 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):    -0.598              -2.991 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -0.567              -0.567 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -0.117              -0.117 UnidadeControle:Controle|ula_code[0] 
+    Info (332119):    -0.100              -0.189 UnidadeControle:Controle|estado.DECODIFICA 
+Info (332146): Worst-case recovery slack is 1.830
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.294               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-Info (332146): Worst-case removal slack is -2.396
+    Info (332119):     1.830               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+Info (332146): Worst-case removal slack is -3.166
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.396              -2.396 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):    -3.166              -3.166 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
 Info (332146): Worst-case minimum pulse width slack is -2.636
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.636            -213.060 clock 
-    Info (332119):     0.078               0.000 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):     0.081               0.000 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):     0.096               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-    Info (332119):     0.238               0.000 UnidadeControle:Controle|ula_code[0] 
+    Info (332119):    -2.636            -215.101 clock 
+    Info (332119):     0.122               0.000 UnidadeControle:Controle|estado.DECODIFICA 
     Info (332119):     0.265               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):     0.323               0.000 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):     0.335               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):     0.373               0.000 UnidadeControle:Controle|ula_code[0] 
 Info: Analyzing Slow 1100mV 0C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -12.145
+Info (332146): Worst-case setup slack is -12.600
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):   -12.145            -167.457 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):   -11.764            -162.037 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):   -11.668             -87.709 UnidadeControle:Controle|ula_code[0] 
-    Info (332119):   -10.538             -96.146 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):   -10.498            -148.359 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-    Info (332119):    -9.386            -467.378 clock 
-Info (332146): Worst-case hold slack is -6.674
+    Info (332119):   -12.600            -173.357 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):   -12.449            -174.437 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):   -11.849             -91.997 UnidadeControle:Controle|ula_code[0] 
+    Info (332119):   -11.087            -153.135 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):   -10.271            -103.238 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):    -9.226            -441.745 clock 
+Info (332146): Worst-case hold slack is -7.109
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -6.674            -495.582 clock 
-    Info (332119):    -1.533              -8.933 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-    Info (332119):    -0.732              -5.364 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -0.490              -0.490 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):    -0.034              -0.034 UnidadeControle:Controle|ula_code[0] 
-    Info (332119):     0.108               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
-Info (332146): Worst-case recovery slack is 1.204
+    Info (332119):    -7.109            -524.530 clock 
+    Info (332119):    -2.427             -10.243 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):    -0.706              -4.051 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -0.600              -0.600 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -0.185              -0.252 UnidadeControle:Controle|ula_code[0] 
+    Info (332119):    -0.162              -0.162 UnidadeControle:Controle|estado.DECODIFICA 
+Info (332146): Worst-case recovery slack is 1.655
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.204               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-Info (332146): Worst-case removal slack is -2.297
+    Info (332119):     1.655               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+Info (332146): Worst-case removal slack is -3.063
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.297              -2.297 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):    -3.063              -3.063 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
 Info (332146): Worst-case minimum pulse width slack is -2.636
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.636            -210.718 clock 
-    Info (332119):     0.097               0.000 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):     0.109               0.000 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):     0.125               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-    Info (332119):     0.303               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):     0.320               0.000 UnidadeControle:Controle|ula_code[0] 
+    Info (332119):    -2.636            -212.267 clock 
+    Info (332119):     0.187               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     0.245               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):     0.308               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):     0.365               0.000 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):     0.386               0.000 UnidadeControle:Controle|ula_code[0] 
 Info: Analyzing Fast 1100mV 85C Model
 Info (334003): Started post-fitting delay annotation
 Info (334004): Delay annotation completed successfully
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -5.692
+Info (332146): Worst-case setup slack is -6.067
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.692            -236.541 clock 
-    Info (332119):    -5.553             -72.674 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):    -5.524             -76.903 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -5.232             -39.120 UnidadeControle:Controle|ula_code[0] 
-    Info (332119):    -4.997             -43.873 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):    -4.929             -65.417 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-Info (332146): Worst-case hold slack is -3.333
+    Info (332119):    -6.067            -213.324 clock 
+    Info (332119):    -5.960             -77.739 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -5.727             -80.315 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -5.368             -41.008 UnidadeControle:Controle|ula_code[0] 
+    Info (332119):    -5.159             -66.122 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):    -4.841             -48.343 UnidadeControle:Controle|estado.DECODIFICA 
+Info (332146): Worst-case hold slack is -3.596
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.333            -243.914 clock 
-    Info (332119):    -0.760              -3.715 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-    Info (332119):    -0.397              -2.723 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -0.344              -0.344 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):    -0.048              -0.048 UnidadeControle:Controle|ula_code[0] 
-    Info (332119):     0.018               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
-Info (332146): Worst-case recovery slack is 1.114
+    Info (332119):    -3.596            -262.744 clock 
+    Info (332119):    -1.187              -4.729 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):    -0.249              -0.249 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -0.177              -0.614 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -0.164              -0.243 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     0.037               0.000 UnidadeControle:Controle|ula_code[0] 
+Info (332146): Worst-case recovery slack is 1.386
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.114               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-Info (332146): Worst-case removal slack is -1.319
+    Info (332119):     1.386               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+Info (332146): Worst-case removal slack is -1.691
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.319              -1.319 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):    -1.691              -1.691 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
 Info (332146): Worst-case minimum pulse width slack is -2.174
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.174            -136.095 clock 
-    Info (332119):     0.119               0.000 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):     0.158               0.000 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):     0.260               0.000 UnidadeControle:Controle|ula_code[0] 
-    Info (332119):     0.284               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-    Info (332119):     0.405               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -2.174            -139.058 clock 
+    Info (332119):     0.200               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     0.296               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):     0.383               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):     0.384               0.000 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):     0.386               0.000 UnidadeControle:Controle|ula_code[0] 
 Info: Analyzing Fast 1100mV 0C Model
 Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
 Critical Warning (332148): Timing requirements not met
     Info (11105): For recommendations on closing timing, run Report Timing Closure Recommendations in the Timing Analyzer.
-Info (332146): Worst-case setup slack is -5.238
+Info (332146): Worst-case setup slack is -5.557
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -5.238             -69.156 UnidadeControle:Controle|estado.ACESSO_IO 
-    Info (332119):    -5.210             -72.812 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -4.901             -36.874 UnidadeControle:Controle|ula_code[0] 
-    Info (332119):    -4.751             -42.607 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):    -4.682            -198.450 clock 
-    Info (332119):    -4.649             -62.384 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-Info (332146): Worst-case hold slack is -3.278
+    Info (332119):    -5.557             -73.722 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -5.382             -75.564 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -5.019             -38.500 UnidadeControle:Controle|ula_code[0] 
+    Info (332119):    -4.961            -182.539 clock 
+    Info (332119):    -4.829             -63.383 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):    -4.633             -46.462 UnidadeControle:Controle|estado.DECODIFICA 
+Info (332146): Worst-case hold slack is -3.491
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -3.278            -242.528 clock 
-    Info (332119):    -0.683              -3.623 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-    Info (332119):    -0.352              -2.378 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):    -0.285              -0.285 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):    -0.034              -0.034 UnidadeControle:Controle|ula_code[0] 
-    Info (332119):     0.047               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
-Info (332146): Worst-case recovery slack is 1.039
+    Info (332119):    -3.491            -259.078 clock 
+    Info (332119):    -1.092              -4.407 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):    -0.237              -0.237 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -0.191              -0.797 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):    -0.141              -0.168 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     0.014               0.000 UnidadeControle:Controle|ula_code[0] 
+Info (332146): Worst-case recovery slack is 1.258
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):     1.039               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-Info (332146): Worst-case removal slack is -1.179
+    Info (332119):     1.258               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+Info (332146): Worst-case removal slack is -1.511
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -1.179              -1.179 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):    -1.511              -1.511 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
 Info (332146): Worst-case minimum pulse width slack is -2.174
     Info (332119):     Slack       End Point TNS Clock 
     Info (332119): ========= =================== =====================
-    Info (332119):    -2.174            -134.613 clock 
-    Info (332119):     0.192               0.000 UnidadeControle:Controle|ula_code[1] 
-    Info (332119):     0.219               0.000 UnidadeControle:Controle|estado.DECODIFICA 
-    Info (332119):     0.310               0.000 UnidadeControle:Controle|ula_code[0] 
-    Info (332119):     0.314               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
-    Info (332119):     0.425               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):    -2.174            -137.810 clock 
+    Info (332119):     0.269               0.000 UnidadeControle:Controle|estado.DECODIFICA 
+    Info (332119):     0.311               0.000 memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] 
+    Info (332119):     0.397               0.000 UnidadeControle:Controle|ula_code[1] 
+    Info (332119):     0.406               0.000 UnidadeControle:Controle|estado.ACESSO_IO 
+    Info (332119):     0.413               0.000 UnidadeControle:Controle|ula_code[0] 
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus Prime Timing Analyzer was successful. 0 errors, 10 warnings
     Info: Peak virtual memory: 5104 megabytes
-    Info: Processing ended: Wed Dec  4 12:07:51 2024
+    Info: Processing ended: Wed Dec  4 13:36:40 2024
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:07
 
