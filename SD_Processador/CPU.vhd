@@ -16,7 +16,9 @@ ENTITY CPU IS
 		  hex5          : OUT STD_LOGIC_VECTOR(6 DOWNTO 0);
         debug1        : OUT STD_LOGIC;
 		  zero          : OUT STD_LOGIC;
-		  sign          : OUT STD_LOGIC
+		  sign          : OUT STD_LOGIC;
+		  carry         : OUT STD_LOGIC;
+		  overflow      : OUT STD_LOGIC
     );
 END CPU;
 
@@ -215,10 +217,12 @@ BEGIN
 	  --result_enable => result_enable
 	);
 
-	PROCESS(zero_flag, sign_flag)
+	PROCESS(zero_flag, sign_flag, carry_flag, overflow_flag)
 	BEGIN
 		zero <= zero_flag;
 		sign <= sign_flag;
+		carry <= carry_flag;
+		overflow <= overflow_flag;
 	END PROCESS;
 	
 

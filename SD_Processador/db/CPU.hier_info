@@ -186,6 +186,8 @@ hex5[6] << displaydriver:HEX5_Driver.hex_out[6]
 debug1 << unidadecontrole:Controle.pc_enable
 zero << zero_flag.DB_MAX_OUTPUT_PORT_TYPE
 sign << sign_flag.DB_MAX_OUTPUT_PORT_TYPE
+carry << carry_flag.DB_MAX_OUTPUT_PORT_TYPE
+overflow << overflow_flag.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |CPU|program_counter:PC
