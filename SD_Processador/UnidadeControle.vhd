@@ -263,7 +263,7 @@ begin
 				when NAO_PULOU =>
 					pc_enable <= '1';
 					mem_enable <= '1';
-					proximo_estado <= BUSCA;
+					proximo_estado <= ESPERA_PULO;
 					
 				when PULANDO =>
 					load_PC <= '1';
