@@ -10,7 +10,7 @@ Type  : Slow 1100mV 85C Model Setup 'UnidadeControle:Controle|ula_code[1]'
 Slack : -12.038
 TNS   : -173.882
 
-Type  : Slow 1100mV 85C Model Setup 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Slow 1100mV 85C Model Setup 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -11.054
 TNS   : -161.593
 
@@ -30,7 +30,7 @@ Type  : Slow 1100mV 85C Model Hold 'clock'
 Slack : -7.835
 TNS   : -553.188
 
-Type  : Slow 1100mV 85C Model Hold 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Slow 1100mV 85C Model Hold 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -1.725
 TNS   : -9.341
 
@@ -50,11 +50,11 @@ Type  : Slow 1100mV 85C Model Hold 'UnidadeControle:Controle|estado.ACESSO_IO'
 Slack : -0.539
 TNS   : -1.104
 
-Type  : Slow 1100mV 85C Model Recovery 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Slow 1100mV 85C Model Recovery 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : 0.313
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Removal 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Slow 1100mV 85C Model Removal 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -1.420
 TNS   : -1.420
 
@@ -78,7 +78,7 @@ Type  : Slow 1100mV 85C Model Minimum Pulse Width 'UnidadeControle:Controle|esta
 Slack : 0.208
 TNS   : 0.000
 
-Type  : Slow 1100mV 85C Model Minimum Pulse Width 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : 0.239
 TNS   : 0.000
 
@@ -90,7 +90,7 @@ Type  : Slow 1100mV 0C Model Setup 'UnidadeControle:Controle|estado.ACESSO_IO'
 Slack : -11.944
 TNS   : -169.937
 
-Type  : Slow 1100mV 0C Model Setup 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Slow 1100mV 0C Model Setup 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -10.904
 TNS   : -159.712
 
@@ -110,7 +110,7 @@ Type  : Slow 1100mV 0C Model Hold 'clock'
 Slack : -7.639
 TNS   : -545.222
 
-Type  : Slow 1100mV 0C Model Hold 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Slow 1100mV 0C Model Hold 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -1.767
 TNS   : -10.063
 
@@ -130,11 +130,11 @@ Type  : Slow 1100mV 0C Model Hold 'UnidadeControle:Controle|estado.ACESSO_IO'
 Slack : -0.551
 TNS   : -1.138
 
-Type  : Slow 1100mV 0C Model Recovery 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Slow 1100mV 0C Model Recovery 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : 0.296
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Removal 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Slow 1100mV 0C Model Removal 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -1.448
 TNS   : -1.448
 
@@ -158,7 +158,7 @@ Type  : Slow 1100mV 0C Model Minimum Pulse Width 'UnidadeControle:Controle|estad
 Slack : 0.209
 TNS   : 0.000
 
-Type  : Slow 1100mV 0C Model Minimum Pulse Width 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : 0.304
 TNS   : 0.000
 
@@ -174,7 +174,7 @@ Type  : Fast 1100mV 85C Model Setup 'clock'
 Slack : -5.391
 TNS   : -208.393
 
-Type  : Fast 1100mV 85C Model Setup 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Fast 1100mV 85C Model Setup 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -5.163
 TNS   : -70.582
 
@@ -190,7 +190,7 @@ Type  : Fast 1100mV 85C Model Hold 'clock'
 Slack : -3.890
 TNS   : -269.702
 
-Type  : Fast 1100mV 85C Model Hold 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Fast 1100mV 85C Model Hold 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -0.807
 TNS   : -3.777
 
@@ -210,11 +210,11 @@ Type  : Fast 1100mV 85C Model Hold 'UnidadeControle:Controle|estado.ACESSO_IO'
 Slack : -0.258
 TNS   : -0.441
 
-Type  : Fast 1100mV 85C Model Recovery 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Fast 1100mV 85C Model Recovery 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : 0.468
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Removal 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Fast 1100mV 85C Model Removal 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -0.650
 TNS   : -0.650
 
@@ -238,7 +238,7 @@ Type  : Fast 1100mV 85C Model Minimum Pulse Width 'UnidadeControle:Controle|esta
 Slack : 0.328
 TNS   : 0.000
 
-Type  : Fast 1100mV 85C Model Minimum Pulse Width 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : 0.355
 TNS   : 0.000
 
@@ -250,7 +250,7 @@ Type  : Fast 1100mV 0C Model Setup 'UnidadeControle:Controle|ula_code[1]'
 Slack : -5.225
 TNS   : -73.402
 
-Type  : Fast 1100mV 0C Model Setup 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Fast 1100mV 0C Model Setup 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -4.832
 TNS   : -66.877
 
@@ -270,7 +270,7 @@ Type  : Fast 1100mV 0C Model Hold 'clock'
 Slack : -3.740
 TNS   : -265.240
 
-Type  : Fast 1100mV 0C Model Hold 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Fast 1100mV 0C Model Hold 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -0.745
 TNS   : -3.671
 
@@ -290,11 +290,11 @@ Type  : Fast 1100mV 0C Model Hold 'UnidadeControle:Controle|estado.ACESSO_IO'
 Slack : -0.227
 TNS   : -0.388
 
-Type  : Fast 1100mV 0C Model Recovery 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Fast 1100mV 0C Model Recovery 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : 0.463
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Removal 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Fast 1100mV 0C Model Removal 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : -0.613
 TNS   : -0.613
 
@@ -318,7 +318,7 @@ Type  : Fast 1100mV 0C Model Minimum Pulse Width 'UnidadeControle:Controle|estad
 Slack : 0.354
 TNS   : 0.000
 
-Type  : Fast 1100mV 0C Model Minimum Pulse Width 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5]'
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5]'
 Slack : 0.378
 TNS   : 0.000
 

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Wed Dec  4 15:52:28 2024
+Wed Dec  4 16:31:26 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -21,7 +21,7 @@ Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
  13. Registers Removed During Synthesis
  14. General Register Statistics
  15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Source assignments for memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated
+ 16. Source assignments for memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated
  17. Parameter Settings for User Entity Instance: memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component
  18. altsyncram Parameter Settings by Entity Instance
  19. Post-Synthesis Netlist Statistics for Top Partition
@@ -53,7 +53,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Dec  4 15:52:28 2024       ;
+; Analysis & Synthesis Status     ; Successful - Wed Dec  4 16:31:25 2024       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; CPU                                         ;
 ; Top-level Entity Name           ; CPU                                         ;
@@ -173,37 +173,37 @@ https://fpgasoftware.intel.com/eula.
 ;                            ;             ;
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
-;     Processor 2            ;   0.1%      ;
+;     Processor 2            ;   0.0%      ;
 ;     Processors 3-4         ;   0.0%      ;
 +----------------------------+-------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                 ;
-+----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                        ; File Name with Absolute Path                                                         ; Library ;
-+----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------+---------+
-; DisplayDriver.vhd                ; yes             ; User VHDL File                   ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/DisplayDriver.vhd      ;         ;
-; CPU.vhd                          ; yes             ; User VHDL File                   ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd                ;         ;
-; ULA.vhd                          ; yes             ; User VHDL File                   ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd                ;         ;
-; UnidadeControle.vhd              ; yes             ; User VHDL File                   ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd    ;         ;
-; Input_Unit.vhd                   ; yes             ; User VHDL File                   ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd         ;         ;
-; Output_Unit.vhd                  ; yes             ; User VHDL File                   ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/Output_Unit.vhd        ;         ;
-; program_counter.vhd              ; yes             ; User VHDL File                   ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/program_counter.vhd    ;         ;
-; memoria_unidade.vhd              ; yes             ; User VHDL File                   ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd    ;         ;
-; ram256x8.vhd                     ; yes             ; User Wizard-Generated File       ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ram256x8.vhd           ;         ;
-; ram256x8.mif                     ; yes             ; User Memory Initialization File  ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ram256x8.mif           ;         ;
-; altsyncram.tdf                   ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altsyncram.tdf                ;         ;
-; stratix_ram_block.inc            ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/stratix_ram_block.inc         ;         ;
-; lpm_mux.inc                      ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/lpm_mux.inc                   ;         ;
-; lpm_decode.inc                   ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/lpm_decode.inc                ;         ;
-; aglobal211.inc                   ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/aglobal211.inc                ;         ;
-; a_rdenreg.inc                    ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/a_rdenreg.inc                 ;         ;
-; altrom.inc                       ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altrom.inc                    ;         ;
-; altram.inc                       ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altram.inc                    ;         ;
-; altdpram.inc                     ; yes             ; Megafunction                     ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altdpram.inc                  ;         ;
-; db/altsyncram_e504.tdf           ; yes             ; Auto-Generated Megafunction      ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf ;         ;
-+----------------------------------+-----------------+----------------------------------+--------------------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                       ;
++----------------------------------+-----------------+----------------------------------------+--------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                         ; Library ;
++----------------------------------+-----------------+----------------------------------------+--------------------------------------------------------------------------------------+---------+
+; DisplayDriver.vhd                ; yes             ; User VHDL File                         ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/DisplayDriver.vhd      ;         ;
+; CPU.vhd                          ; yes             ; User VHDL File                         ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd                ;         ;
+; ULA.vhd                          ; yes             ; User VHDL File                         ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd                ;         ;
+; UnidadeControle.vhd              ; yes             ; User VHDL File                         ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd    ;         ;
+; Input_Unit.vhd                   ; yes             ; User VHDL File                         ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd         ;         ;
+; Output_Unit.vhd                  ; yes             ; User VHDL File                         ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/Output_Unit.vhd        ;         ;
+; program_counter.vhd              ; yes             ; User VHDL File                         ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/program_counter.vhd    ;         ;
+; memoria_unidade.vhd              ; yes             ; User VHDL File                         ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/memoria_unidade.vhd    ;         ;
+; ram256x8.vhd                     ; yes             ; User Wizard-Generated File             ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ram256x8.vhd           ;         ;
+; altsyncram.tdf                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altsyncram.tdf                ;         ;
+; stratix_ram_block.inc            ; yes             ; Megafunction                           ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/stratix_ram_block.inc         ;         ;
+; lpm_mux.inc                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/lpm_mux.inc                   ;         ;
+; lpm_decode.inc                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/lpm_decode.inc                ;         ;
+; aglobal211.inc                   ; yes             ; Megafunction                           ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/aglobal211.inc                ;         ;
+; a_rdenreg.inc                    ; yes             ; Megafunction                           ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/a_rdenreg.inc                 ;         ;
+; altrom.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altrom.inc                    ;         ;
+; altram.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altram.inc                    ;         ;
+; altdpram.inc                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altdpram.inc                  ;         ;
+; db/altsyncram_n504.tdf           ; yes             ; Auto-Generated Megafunction            ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_n504.tdf ;         ;
+; ram256x8.hex                     ; yes             ; Auto-Found Memory Initialization File  ; C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ram256x8.hex           ;         ;
++----------------------------------+-----------------+----------------------------------------+--------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------------+
@@ -253,19 +253,19 @@ https://fpgasoftware.intel.com/eula.
 ;    |memoria_unidade:Memoria|                 ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |CPU|memoria_unidade:Memoria                                                                                      ; memoria_unidade ; work         ;
 ;       |ram256x8:ram_instance|                ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |CPU|memoria_unidade:Memoria|ram256x8:ram_instance                                                                ; ram256x8        ; work         ;
 ;          |altsyncram:altsyncram_component|   ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |CPU|memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component                                ; altsyncram      ; work         ;
-;             |altsyncram_e504:auto_generated| ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |CPU|memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated ; altsyncram_e504 ; work         ;
+;             |altsyncram_n504:auto_generated| ; 0 (0)               ; 0 (0)                     ; 2048              ; 0          ; 0    ; 0            ; |CPU|memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated ; altsyncram_n504 ; work         ;
 ;    |program_counter:PC|                      ; 8 (8)               ; 8 (8)                     ; 0                 ; 0          ; 0    ; 0            ; |CPU|program_counter:PC                                                                                           ; program_counter ; work         ;
 +----------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------------------+-----------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis RAM Summary                                                                                                                                                                                                    ;
-+-------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+--------------+
-; Name                                                                                                                    ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF          ;
-+-------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+--------------+
-; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 256          ; 8            ; 256          ; 8            ; 2048 ; ram256x8.mif ;
-+-------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                            ;
++-------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; Name                                                                                                                    ; Type ; Mode             ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size ; MIF  ;
++-------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
+; memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|ALTSYNCRAM ; AUTO ; Simple Dual Port ; 256          ; 8            ; 256          ; 8            ; 2048 ; None ;
++-------------------------------------------------------------------------------------------------------------------------+------+------------------+--------------+--------------+--------------+--------------+------+------+
 
 
 +--------------------------------------------------------------------------------------------------------------------------------------+
@@ -422,7 +422,7 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------+
-; Source assignments for memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated ;
+; Source assignments for memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated ;
 +---------------------------------+--------------------+------+-----------------------------------------------------------------------+
 ; Assignment                      ; Value              ; From ; To                                                                    ;
 +---------------------------------+--------------------+------+-----------------------------------------------------------------------+
@@ -473,7 +473,7 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 ; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                        ;
 ; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                        ;
 ; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                        ;
-; INIT_FILE                          ; ram256x8.mif         ; Untyped                                                        ;
+; INIT_FILE                          ; ram256x8.hex         ; Untyped                                                        ;
 ; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                        ;
 ; MAXIMUM_DEPTH                      ; 0                    ; Signed Integer                                                 ;
 ; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                        ;
@@ -486,7 +486,7 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 ; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                        ;
 ; WIDTH_ECCSTATUS                    ; 3                    ; Signed Integer                                                 ;
 ; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                        ;
-; CBXI_PARAMETER                     ; altsyncram_e504      ; Untyped                                                        ;
+; CBXI_PARAMETER                     ; altsyncram_n504      ; Untyped                                                        ;
 +------------------------------------+----------------------+----------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
@@ -551,7 +551,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -561,7 +561,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Dec  4 15:52:12 2024
+    Info: Processing started: Wed Dec  4 16:31:16 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -689,7 +689,7 @@ Info (12133): Instantiated megafunction "memoria_unidade:Memoria|ram256x8:ram_in
     Info (12134): Parameter "indata_aclr_a" = "UNUSED"
     Info (12134): Parameter "indata_aclr_b" = "NONE"
     Info (12134): Parameter "indata_reg_b" = "CLOCK1"
-    Info (12134): Parameter "init_file" = "ram256x8.mif"
+    Info (12134): Parameter "init_file" = "ram256x8.hex"
     Info (12134): Parameter "init_file_layout" = "PORT_A"
     Info (12134): Parameter "maximum_depth" = "0"
     Info (12134): Parameter "numwords_a" = "256"
@@ -719,11 +719,9 @@ Info (12133): Instantiated megafunction "memoria_unidade:Memoria|ram256x8:ram_in
     Info (12134): Parameter "wrcontrol_wraddress_reg_b" = "CLOCK1"
     Info (12134): Parameter "lpm_hint" = "UNUSED"
     Info (12134): Parameter "lpm_type" = "altsyncram"
-Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_e504.tdf
-    Info (12023): Found entity 1: altsyncram_e504 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 28
-Info (12128): Elaborating entity "altsyncram_e504" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated" File: c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
-Warning (113028): 236 out of 256 addresses are uninitialized. The Quartus Prime software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported. File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ram256x8.mif Line: 1
-    Warning (113027): Addresses ranging from 20 to 255 are not initialized File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ram256x8.mif Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_n504.tdf
+    Info (12023): Found entity 1: altsyncram_n504 File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_n504.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_n504" for hierarchy "memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated" File: c:/intelfpga_lite/21.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
 Info (12128): Elaborating entity "ULA" for hierarchy "ULA:ULA" File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 211
 Warning (10631): VHDL Process Statement warning at ULA.vhd(21): inferring latch(es) for signal or variable "resultado", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
 Warning (10631): VHDL Process Statement warning at ULA.vhd(21): inferring latch(es) for signal or variable "result", which holds its previous value in one or more paths through the process File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
@@ -783,9 +781,9 @@ Warning (13012): Latch UnidadeControle:Controle|proximo_estado.BUSCA_672 has uns
 Warning (13012): Latch UnidadeControle:Controle|proximo_estado.SALTO_ADR_577 has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 60
     Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.ACESSO_IO File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 36
 Warning (13012): Latch UnidadeControle:Controle|proximo_estado.PULANDO_511 has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 60
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[7] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[7] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_n504.tdf Line: 34
 Warning (13012): Latch UnidadeControle:Controle|proximo_estado.NAO_PULOU_489 has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 60
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[7] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[7] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_n504.tdf Line: 34
 Warning (13012): Latch ULA:ULA|resultado[2] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
     Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|ula_code[2] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 60
 Warning (13012): Latch ULA:ULA|resultado[3] has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
@@ -803,13 +801,13 @@ Warning (13012): Latch ULA:ULA|resultado[1] has unsafe behavior File: C:/Users/1
 Warning (13012): Latch UnidadeControle:Controle|proximo_estado.ACESSO_IO_617 has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 60
     Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.ACESSO_IO File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 36
 Warning (13012): Latch UnidadeControle:Controle|proximo_estado.PRE_ACESSO_MEMORIA_566 has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 60
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_n504.tdf Line: 34
 Warning (13012): Latch UnidadeControle:Controle|proximo_estado.MOVER_522 has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 60
     Warning (13013): Ports D and ENA on the latch are fed by the same signal UnidadeControle:Controle|estado.ACESSO_IO File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 36
 Warning (13012): Latch UnidadeControle:Controle|proximo_estado.EXECUTA_628 has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 60
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_n504.tdf Line: 34
 Warning (13012): Latch UnidadeControle:Controle|proximo_estado.ESPERA_683 has unsafe behavior File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/UnidadeControle.vhd Line: 60
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_e504:auto_generated|q_b[5] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_e504.tdf Line: 34
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal memoria_unidade:Memoria|ram256x8:ram_instance|altsyncram:altsyncram_component|altsyncram_n504:auto_generated|q_b[5] File: C:/Users/15678578/Documents/GitHub/processador/SD_Processador/db/altsyncram_n504.tdf Line: 34
 Info (286030): Timing-Driven Synthesis is running
 Info (17049): 2 registers lost all their fanouts during netlist optimizations.
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
@@ -819,10 +817,10 @@ Info (21057): Implemented 407 device resources after synthesis - the final resou
     Info (21059): Implemented 79 output pins
     Info (21061): Implemented 310 logic cells
     Info (21064): Implemented 8 RAM segments
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 97 warnings
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 95 warnings
     Info: Peak virtual memory: 4876 megabytes
-    Info: Processing ended: Wed Dec  4 15:52:28 2024
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:24
+    Info: Processing ended: Wed Dec  4 16:31:26 2024
+    Info: Elapsed time: 00:00:10
+    Info: Total CPU time (on all processors): 00:00:19
 
 
