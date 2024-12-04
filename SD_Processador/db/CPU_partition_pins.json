@@ -220,11 +220,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "switches[0]",
+					"name" : "reset",
 					"strict" : false
 				},
 				{
-					"name" : "reset",
+					"name" : "switches[0]",
 					"strict" : false
 				},
 				{

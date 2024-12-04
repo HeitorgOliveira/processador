@@ -234,7 +234,8 @@ BEGIN
 	  data_in       => reg_inter_1,
 	  leds          => leds,
 	  output_enable => output_enable,
-	  clock         => clock
+	  clock         => clock,
+	  reset			 => reset
 	);
 
 

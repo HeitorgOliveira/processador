@@ -6,21 +6,24 @@ entity Output_Unit is
         data_in       : in  std_logic_vector(7 downto 0);  -- Dados do barramento de dados
         leds          : out std_logic_vector(7 downto 0);  
         output_enable : in  std_logic;                     
-        clock         : in  std_logic                      -- Clock do sistema
+        clock         : in  std_logic;                      -- Clock do sistema
+		  reset			 : in  std_logic
     );
 end Output_Unit;
 
 architecture Behavioral of Output_Unit is
     signal output_reg : std_logic_vector(7 downto 0);  -- Registrador para armazenar o valor atual
 begin
-    process(clock)
+    process(clock, reset)
     begin
-        if rising_edge(clock) then
+		  if reset = '0' then     
+				output_reg <= "00000000";
+        elsif rising_edge(clock) then
             if output_enable = '1' then
                 output_reg <= data_in;  -- Atualiza o registrador com o valor do barramento de dados
             end if;
         end if;
     end process;
-
+	 
     leds <= output_reg;  -- Exibe o valor armazenado nos LEDs
 end Behavioral;

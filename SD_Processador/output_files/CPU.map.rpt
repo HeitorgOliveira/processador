@@ -1,5 +1,5 @@
 Analysis & Synthesis report for CPU
-Wed Dec  4 13:35:39 2024
+Wed Dec  4 13:58:54 2024
 Quartus Prime Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
 
 
@@ -53,7 +53,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Wed Dec  4 13:35:39 2024       ;
+; Analysis & Synthesis Status     ; Successful - Wed Dec  4 13:58:54 2024       ;
 ; Quartus Prime Version           ; 21.1.0 Build 842 10/21/2021 SJ Lite Edition ;
 ; Revision Name                   ; CPU                                         ;
 ; Top-level Entity Name           ; CPU                                         ;
@@ -230,8 +230,8 @@ https://fpgasoftware.intel.com/eula.
 ;                                             ;             ;
 ; Maximum fan-out node                        ; clock~input ;
 ; Maximum fan-out                             ; 101         ;
-; Total fan-out                               ; 1672        ;
-; Average fan-out                             ; 3.42        ;
+; Total fan-out                               ; 1680        ;
+; Average fan-out                             ; 3.44        ;
 +---------------------------------------------+-------------+
 
 
@@ -393,7 +393,7 @@ Note: All cells listed above may not be present at the end of synthesis due to v
 ; Total registers                              ; 93    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 24    ;
-; Number of registers using Asynchronous Clear ; 67    ;
+; Number of registers using Asynchronous Clear ; 75    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 74    ;
 ; Number of registers using Preset             ; 0     ;
@@ -517,8 +517,8 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; arriav_ff             ; 93                          ;
 ;     CLR               ; 19                          ;
-;     ENA               ; 26                          ;
-;     ENA CLR           ; 24                          ;
+;     ENA               ; 18                          ;
+;     ENA CLR           ; 32                          ;
 ;     ENA CLR SLD       ; 24                          ;
 ; arriav_lcell_comb     ; 268                         ;
 ;     arith             ; 16                          ;
@@ -558,7 +558,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 21.1.0 Build 842 10/21/2021 SJ Lite Edition
-    Info: Processing started: Wed Dec  4 13:35:29 2024
+    Info: Processing started: Wed Dec  4 13:58:43 2024
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off CPU -c CPU
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -580,7 +580,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file input_u
     Info (12022): Found design unit 1: Input_Unit-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 12
     Info (12023): Found entity 1: Input_Unit File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 4
 Info (12021): Found 2 design units, including 1 entities, in source file output_unit.vhd
-    Info (12022): Found design unit 1: Output_Unit-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Output_Unit.vhd Line: 13
+    Info (12022): Found design unit 1: Output_Unit-Behavioral File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Output_Unit.vhd Line: 14
     Info (12023): Found entity 1: Output_Unit File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Output_Unit.vhd Line: 4
 Warning (12019): Can't analyze file -- file Decodificador.vhd is missing
 Info (12021): Found 2 design units, including 1 entities, in source file address_bus.vhd
@@ -739,7 +739,7 @@ Info (10041): Inferred latch for "resultado[5]" at ULA.vhd(21) File: C:/Users/15
 Info (10041): Inferred latch for "resultado[6]" at ULA.vhd(21) File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/ULA.vhd Line: 21
 Info (12128): Elaborating entity "Input_Unit" for hierarchy "Input_Unit:Entrada" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 226
 Info (12128): Elaborating entity "Output_Unit" for hierarchy "Output_Unit:Saida" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 233
-Info (12128): Elaborating entity "DisplayDriver" for hierarchy "DisplayDriver:HEX0_Driver" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 242
+Info (12128): Elaborating entity "DisplayDriver" for hierarchy "DisplayDriver:HEX0_Driver" File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/CPU.vhd Line: 243
 Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
     Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[0]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
     Warning (13049): Converted tri-state buffer "Input_Unit:Entrada|data_out[1]" feeding internal logic into a wire File: C:/Users/15447326/Documents/GitHub/processador/SD_Processador/Input_Unit.vhd Line: 7
@@ -815,9 +815,9 @@ Info (21057): Implemented 376 device resources after synthesis - the final resou
     Info (21061): Implemented 305 logic cells
     Info (21064): Implemented 8 RAM segments
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 95 warnings
-    Info: Peak virtual memory: 4874 megabytes
-    Info: Processing ended: Wed Dec  4 13:35:39 2024
-    Info: Elapsed time: 00:00:10
+    Info: Peak virtual memory: 4885 megabytes
+    Info: Processing ended: Wed Dec  4 13:58:54 2024
+    Info: Elapsed time: 00:00:11
     Info: Total CPU time (on all processors): 00:00:20
 
 
